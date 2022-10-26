@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<main class="container">
+		<div class="row">
+			<h1 class="text-center m-3">Liste des super produits !</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Année</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for wine in wines %}
+					<tr>
+						<td>{{ wine.name }}</td>
+						<td>{{ wine.price }}</td>
+						<td>{{ wine.year }}</td>
+						<td>{{ wine.description }}</td>
+
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+	</main>
+
+{% endblock %}
