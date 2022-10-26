@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<main class="container">
+		<div class="row">
+			<h1 class="text-center m-3">Fiche produit</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom du produit</th>
+					<th>Année</th>
+					<th>Prix</th>
+					<th>Catégorie</th>
+					<th>Description</th>
+					<th>ID fournisseur</th>
+				</tr>
+			</thead>
+			<tbody>
+
+
+				<tr>
+					<td>{{ wine.id }}</td>
+					<td>{{ wine.name }}</td>
+					<td>{{ wine.year }}</td>
+					<td>{{ wine.price }}</td>
+					<td>{{ wine.category }}</td>
+					<td>{{ wine.description }}</td>
+					<td>{{ wine.partner_id }}</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+
+	</main>
+{% endblock %}

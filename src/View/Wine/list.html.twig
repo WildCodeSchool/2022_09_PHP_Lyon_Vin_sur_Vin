@@ -9,26 +9,34 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Nom</th>
-					<th>Prix</th>
-					<th>Année</th>
-					<th>Description</th>
+					<th>Nom du produit</th>
+					<th>Action</th>
+					<th>Action</th>
+
 				</tr>
 			</thead>
 			<tbody>
 
 				{% for wine in wines %}
 					<tr>
-						<td>{{ wine.name }}</td>
-						<td>{{ wine.price }}</td>
-						<td>{{ wine.year }}</td>
-						<td>{{ wine.description }}</td>
+						<td>
+							<a href="/wines/show?id={{ wine.id }}">{{ wine.name }}</a>
+						</td>
+
+						<td>
+							<a href="/wines/edit">Modifier</a>
+						</td>
+						<td>
+							<a href="/wines/delete">Supprimer</a>
+						</td>
+
 
 					</tr>
 				{% endfor %}
 
 			</tbody>
 		</table>
+
 
 	</main>
  {% include 'Wine/add.html.twig' %}

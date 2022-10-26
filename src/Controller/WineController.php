@@ -10,27 +10,21 @@ class WineController extends AbstractController
     {
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();
-
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
-
     public function add(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $wine = array_map('trim', $_POST);
-
             // TODO validations (length, format...)
-
             // if validation is ok, insert and redirection
             $wineManager = new WineManager();
             $id = $wineManager->insert($wine);
-
             header('Location:/wines/show?id=' . $id);
             return null;
         }
-
-        return $this->twig->render('Wine/add.html.twig');
+            return $this->twig->render('Wine/add.html.twig');
     }
     public function delete(): void
     {
@@ -38,8 +32,13 @@ class WineController extends AbstractController
             $id = trim($_POST['id']);
             $wineManager = new WineManager();
             $wineManager->delete((int)$id);
-
             header('Location:/wines');
         }
+    }
+    public function show(int $id): string
+    {
+        $wineManager = new WineManager();
+        $wine = $wineManager->selectOneById($id);
+        return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
 }
