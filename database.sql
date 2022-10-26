@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS vin_sur_vin_test;
-CREATE DATABASE vin_sur_vin_test;
-USE vin_sur_vin_test;
+DROP DATABASE IF EXISTS vin_sur_vin;
+CREATE DATABASE vin_sur_vin;
+USE vin_sur_vin;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
