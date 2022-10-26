@@ -1,63 +1,52 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+DROP DATABASE IF EXISTS vin_sur_vin_test;
+CREATE DATABASE vin_sur_vin_test;
+USE vin_sur_vin_test;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `simple-mvc`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `item`
---
 
 CREATE TABLE `item` (
   `id` int(11) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `item`
---
-
 INSERT INTO `item` (`id`, `title`) VALUES
 (1, 'Stuff'),
 (2, 'Doodads');
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `item`
---
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `item`
---
 ALTER TABLE `item`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE partner (
+id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+firstname VARCHAR(100) NOT NULL,
+lastname VARCHAR(100),
+address VARCHAR(255),
+email VARCHAR(100),
+phone INT NOT NULL,
+description TEXT(1000)
+);
+CREATE TABLE wine (
+id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+name VARCHAR(100) NOT NULL,
+year YEAR NOT NULL,
+category VARCHAR(100),
+price INT NOT NULL,
+description TEXT(1000),
+partner_id INT NOT NULL,
+CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id)
+);
+
+INSERT INTO partner (firstname, phone)
+VALUES ('Damien', 0677665522), ('Allan', 0766554433), ('Lila', 0577889900), ('Mathieu', 0612324252), ('Jesse', 0633831565);
+
+INSERT INTO wine (name, year, price, partner_id)
+VALUES ('Beaujolais de Damien', 1989, 10, 1), ('La villageoise de Allan', 2023, 2, 2), ('Rosé de Lila ', 1987, 7, 3),
+('Viognier de Mathieu', 1994, 12, 4), ('Bordeaux de Jesse', 1995, 11, 5);
+
+SELECT * FROM partner;
+SELECT * FROM wine;
+ SELECT * FROM item;
