@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<main class="container">
+		<div class="row">
+			<h1 class="text-center m-3">Liste des super produits !</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom du produit</th>
+					<th>Action</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for wine in wines %}
+					<tr>
+						<td>
+							<a href="/wines/show?id={{ wine.id }}">{{ wine.name }}</a>
+						</td>
+
+						<td>
+							<a href="/wines/edit">Modifier</a>
+						</td>
+						<td>
+							<a href="/wines/delete">Supprimer</a>
+						</td>
+
+
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+
+	</main>
+
+{% endblock %}
