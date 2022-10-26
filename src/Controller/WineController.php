@@ -21,4 +21,29 @@ class WineController extends AbstractController
 
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
+
+    public function edit(int $id): ?string
+    {
+        $wineManager = new WineManager();
+        $wine = $wineManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $wine = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $wineManager->update($wine);
+
+            header('Location: /wines/show?id=' . $id);
+
+            // we are redirecting so we don't want any content rendered
+            return null;
+        }
+
+        return $this->twig->render('Wine/edit.html.twig', [
+            'wine' => $wine,
+        ]);
+    }
 }

@@ -15,4 +15,5 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'wines' => ['WineController', 'list',],
     'wines/show' => ['WineController', 'show', ['id']],
+    'wines/edit' => ['WineController', 'edit', ['id']],
 ];
