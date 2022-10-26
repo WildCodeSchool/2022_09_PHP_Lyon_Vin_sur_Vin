@@ -12,6 +12,35 @@ class WineController extends AbstractController
         $wines = $wineManager->selectAll();
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
+
+
+    public function show(int $id): string
+    {
+        $wineManager = new WineManager();
+        $wine = $wineManager->selectOneById($id);
+
+        return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
+    }
+
+    public function edit(int $id): ?string
+    {
+        $wineManager = new WineManager();
+        $wine = $wineManager->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $wine = array_map('trim', $_POST);
+            // TODO validations (length, format...)
+            // if validation is ok, update and redirection
+            $wineManager->update($wine);
+            header('Location: /wines/show?id=' . $id);
+            // we are redirecting so we don't want any content rendered
+            return null;
+        }
+        return $this->twig->render('Wine/edit.html.twig', [
+            'wine' => $wine,
+        ]);
+    }
+
     public function add(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,8 +53,9 @@ class WineController extends AbstractController
             header('Location:/wines/show?id=' . $id);
             return null;
         }
-            return $this->twig->render('Wine/add.html.twig');
+        return $this->twig->render('Wine/add.html.twig');
     }
+
     public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
