@@ -32,12 +32,14 @@ class WineController extends AbstractController
 
         return $this->twig->render('Wine/add.html.twig');
     }
-    
-    public function delete(int $id)
+    public function delete(): void
     {
-        $this->model->delete($id);
-        header('Location:/wines/show?id=' . $id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $wineManager = new WineManager();
+            $wineManager->delete((int)$id);
+
+            header('Location:/wines');
+        }
     }
-
 }
-
