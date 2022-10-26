@@ -25,7 +25,7 @@ class PartnerController extends AbstractController
 
             // if validation is ok, insert and redirection
             $partnerManager = new PartnerManager();
-            $id = $partnerManager->insert($partner);
+            $partnerManager->insert($partner);
 
             header('Location:/partner');
             return null;
