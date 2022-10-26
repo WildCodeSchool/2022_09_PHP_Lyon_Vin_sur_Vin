@@ -8,7 +8,7 @@ class WineManager extends AbstractManager
 {
     public const TABLE = 'wine';
 
-    public function update(array $item): bool
+    public function update(array $wine): bool
     {
         $query = "UPDATE " . self::TABLE . " SET `name` = :name, `year` = :year, `price` = :price,
         `partner_id` = :partner_id, `description`= :description WHERE id=:id";
