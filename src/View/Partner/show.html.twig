@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Partenaire {{ partner.firstname }} {{ partner.lastname }}</h1>
+        <table class="table">
+			<thead>
+				<tr>
+					<th>Id du partenaire</th>
+					<th>Prénom</th>
+					<th>Nom</th>
+                    <th>Adresse</th>
+                    <th>E-mail</th>
+                    <th>Téléphone</th>
+                    <th>Description</th>
+                    <th>Edition</th>
+                    <th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+
+                <tr>
+                    <td> {{ partner.id }} </td>
+                    <td> {{ partner.firstname }} </td>
+                    <td> {{ partner.lastname }} </td>
+                    <td> {{ partner.address }} </td>
+                    <td> {{ partner.email }} </td>
+                    <td> {{ partner.phone }} </td>
+                    <td> {{ partner.description }} </td>
+                    <td><a href="/partner/edit?id={{ partner.id }}">Editer</a></td>
+                    <td>
+                        <form action="/partner/delete" method="POST">
+                        <input type="hidden" name="id" value="{{ partner.id }}">
+                        <button>Delete</button>
+					</td>
+                </tr>
+
+			</tbody>
+		</table>
+    <a href="/partner">Back</a>
+{% endblock %}

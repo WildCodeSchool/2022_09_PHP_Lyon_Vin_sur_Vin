@@ -13,6 +13,15 @@ class PartnerController extends AbstractController
 
         return $this->twig->render('Partner/list.html.twig', ['partners' => $partners]);
     }
+
+    public function show(int $id): string
+    {
+        $partnerManager = new PartnerManager();
+        $partner = $partnerManager->selectOneById($id);
+
+        return $this->twig->render('Partner/show.html.twig', ['partner' => $partner]);
+    }
+
     public function add(): ?string
     {
 
@@ -25,12 +34,46 @@ class PartnerController extends AbstractController
 
             // if validation is ok, insert and redirection
             $partnerManager = new PartnerManager();
-            $partnerManager->insert($partner);
+            $id = $partnerManager->insert($partner);
 
-            header('Location:/partner');
+            header('Location:/partner/show?id=' . $id);
             return null;
         }
 
-        return $this->twig->render('partner/add.html.twig');
+        return $this->twig->render('Partner/add.html.twig');
+    }
+
+    public function edit(int $id): ?string
+    {
+        $partnerManager = new PartnerManager();
+        $partner = $partnerManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $partner = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $partnerManager->update($partner);
+
+            header('Location: /partner/show?id=' . $id);
+
+            return null;
+        }
+
+        return $this->twig->render('Partner/edit.html.twig', [
+            'partner' => $partner,
+        ]);
+    }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $partnerManager = new PartnerManager();
+            $partnerManager->delete((int)$id);
+
+            header('Location:/partner');
+        }
     }
 }

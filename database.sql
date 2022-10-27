@@ -49,4 +49,5 @@ VALUES ('Beaujolais de Damien', 1989, 10, 1), ('La villageoise de Allan', 2023, 
 
 SELECT * FROM partner;
 SELECT * FROM wine;
- SELECT * FROM item;
+
+SELECT * FROM item;

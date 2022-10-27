@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edit partner {{ partner.firstname }} {{ partner.lastname }}</h1>
+    {% include 'Partner/_form.html.twig' %}
+    <a href="/partner/show?id={{ partner.id }}">Back</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<main class="container">
+		<div class="row">
+			<h1 class="text-center m-3">Liste des super partenaires !</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom du partenaire</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for partner in partners %}
+					<tr>
+					    <td><a href="/partner/show?id={{ partner.id }}">{{ partner.id }}. {{ partner.firstname }} {{ partner.lastname }}</a></td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+    <a href="/partner/add">Ajouter</a>
+
+	</main>
+
+{% endblock %}

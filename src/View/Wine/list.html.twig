@@ -9,35 +9,25 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Nom du produit</th>
-					<th>Action</th>
-					<th>Action</th>
-
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Année</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				{% for wine in wines %}
 					<tr>
-						<td>
-							<a href="/wines/show?id={{ wine.id }}">{{ wine.name }}</a>
-						</td>
-
-						<td>
-							<a href="/wines/edit">Modifier</a>
-						</td>
-						<td>
-							<a href="/wines/delete">Supprimer</a>
-						</td>
-
-
+						<td>{{ wine.name }}</td>
+						<td>{{ wine.price }}</td>
+						<td>{{ wine.year }}</td>
+						<td>{{ wine.description }}</td>
 					</tr>
 				{% endfor %}
 
 			</tbody>
 		</table>
-
-
 	</main>
 
 {% endblock %}
