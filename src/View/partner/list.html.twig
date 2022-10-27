@@ -10,24 +10,26 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Prix</th>
-					<th>Année</th>
-					<th>Description</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Téléphone</th>
 				</tr>
 			</thead>
 			<tbody>
 
-				{% for wine in wines %}
+				{% for partner in partners %}
 					<tr>
-						<td>{{ wine.name }}</td>
-						<td>{{ wine.price }}</td>
-						<td>{{ wine.year }}</td>
-						<td>{{ wine.description }}</td>
+						<td>{{ partner.lastname }}</td>
+						<td>{{ partner.firstname }}</td>
+						<td>{{ partner.address }}</td>
+						<td>{{ partner.phone }}</td>
+
 					</tr>
 				{% endfor %}
 
 			</tbody>
 		</table>
+		{% include "partner/add.html.twig" %}
 	</main>
 
 {% endblock %}
