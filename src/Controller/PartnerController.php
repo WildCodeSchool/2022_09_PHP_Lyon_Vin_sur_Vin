@@ -15,10 +15,10 @@ class PartnerController extends AbstractController
     }
     public function add(): ?string
     {
-        echo 'toto';
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            var_dump($_POST);
+
             $partner = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
