@@ -17,4 +17,6 @@ return [
     'partner' => ['PartnerController', 'list',],
     'partner/edit' => ['PartnerController', 'edit', ['id']],
     'partner/show' => ['PartnerController', 'show', ['id']],
+    'partner/add' => ['PartnerController', 'add',],
+    'partner/delete' => ['PartnerController', 'delete',],
 ];

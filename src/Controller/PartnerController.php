@@ -22,6 +22,27 @@ class PartnerController extends AbstractController
         return $this->twig->render('Partner/show.html.twig', ['partner' => $partner]);
     }
 
+    public function add(): ?string
+    {
+        echo 'toto';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            var_dump($_POST);
+            $partner = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, insert and redirection
+            $partnerManager = new PartnerManager();
+            $id = $partnerManager->insert($partner);
+
+            header('Location:/partner/show?id=' . $id);
+            return null;
+        }
+
+        return $this->twig->render('Partner/add.html.twig');
+    }
+
     public function edit(int $id): ?string
     {
         $partnerManager = new PartnerManager();
@@ -40,8 +61,19 @@ class PartnerController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('partner/edit.html.twig', [
+        return $this->twig->render('Partner/edit.html.twig', [
             'partner' => $partner,
         ]);
+    }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $partnerManager = new PartnerManager();
+            $partnerManager->delete((int)$id);
+
+            header('Location:/partner');
+        }
     }
 }

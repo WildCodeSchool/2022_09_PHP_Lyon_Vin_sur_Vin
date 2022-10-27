@@ -12,6 +12,8 @@
                     <th>E-mail</th>
                     <th>Téléphone</th>
                     <th>Description</th>
+                    <th>Edition</th>
+                    <th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,6 +26,12 @@
                     <td> {{ partner.email }} </td>
                     <td> {{ partner.phone }} </td>
                     <td> {{ partner.description }} </td>
+                    <td><a href="/partner/edit?id={{ partner.id }}">Editer</a></td>
+                    <td>
+                        <form action="/partner/delete" method="POST">
+                        <input type="hidden" name="id" value="{{ partner.id }}">
+                        <button>Delete</button>
+					</td>
                 </tr>
 
 			</tbody>
