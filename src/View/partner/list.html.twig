@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+	<main class="container">
+		<div class="row">
+			<h1 class="text-center m-3">Liste des super produits !</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Téléphone</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for partner in partners %}
+					<tr>
+						<td>{{ partner.lastname }}</td>
+						<td>{{ partner.firstname }}</td>
+						<td>{{ partner.address }}</td>
+						<td>{{ partner.phone }}</td>
+
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+		{% include "partner/add.html.twig" %}
+	</main>
+
+{% endblock %}
