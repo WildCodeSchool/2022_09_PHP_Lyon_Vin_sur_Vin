@@ -26,7 +26,7 @@ firstname VARCHAR(100) NOT NULL,
 lastname VARCHAR(100),
 address VARCHAR(255),
 email VARCHAR(100),
-phone INT NOT NULL,
+phone VARCHAR,
 description TEXT(1000)
 );
 CREATE TABLE wine (
@@ -49,4 +49,5 @@ VALUES ('Beaujolais de Damien', 1989, 10, 1), ('La villageoise de Allan', 2023, 
 
 SELECT * FROM partner;
 SELECT * FROM wine;
- SELECT * FROM item;
+
+SELECT * FROM item;

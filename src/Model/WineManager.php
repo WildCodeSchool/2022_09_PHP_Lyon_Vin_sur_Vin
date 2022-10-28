@@ -10,8 +10,10 @@ class WineManager extends AbstractManager
 
     public function insert(array $wine): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, year, price, partner_id, description)
-        VALUES (:name, :year, :price, :partner_id, :description)");
+        $query = "UPDATE " . self::TABLE . " SET `name` = :name, `year` = :year, `price` = :price,
+        `partner_id` = :partner_id, `description`= :description WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $wine['id'], \PDO::PARAM_INT);
         $statement->bindValue(':name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $wine['year'], \PDO::PARAM_INT);
         $statement->bindValue(':price', $wine['price'], \PDO::PARAM_INT);
