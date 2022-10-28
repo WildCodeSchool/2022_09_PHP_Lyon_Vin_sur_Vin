@@ -23,6 +23,9 @@ p {
     margin-block-start: -2em;
     margin-inline-start: -0.4em;
 }
+label {
+    padding-left: 1.5vw;
+}
 .img-thumbnail {
     max-width: 3.5em;
     margin: 0.6em;
@@ -59,6 +62,44 @@ a.navbar-brand {
 }
 .button.navbar-toggler {
     justify-self: left;
+}
+
+.form-control-color {
+    width: 30vw;
+    height: 4vh;
+    margin: 0.6vh 0.6vh 0.6vh 1.5vh;
+    background-color: #BAA99B;
+    cursor: default;
+}
+
+.form-control-color:not(:disabled):not([readonly]) {
+    cursor: default;
+}
+
+#price {
+    width: 15vh;
+}
+
+#year {
+    width: 15vh;
+}
+
+#description {
+    height: 20vh;
+}
+#addbutton {
+    padding-left: 1.5vw;
+
+}
+
+button {
+    font-family: var(--bs-font-sans-serif);
+    color: white;
+    background-color: #8D3939;
+    margin: 1vh 1vh 1vh 0vh;
+    border-radius: 12px;
+    border: 0px;
+    padding: 5px;
 }
 
 @media screen and (max-width: 992px)  {

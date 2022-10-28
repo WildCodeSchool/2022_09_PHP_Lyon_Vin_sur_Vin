@@ -20,8 +20,6 @@ class WineController extends AbstractController
         $wine = $wineManager->selectOneById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
-    
-
     public function edit(int $id): ?string
     {
         $wineManager = new WineManager();
