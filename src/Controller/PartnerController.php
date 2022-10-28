@@ -36,7 +36,7 @@ class PartnerController extends AbstractController
             $partnerManager = new PartnerManager();
             $id = $partnerManager->insert($partner);
 
-            header('Location:/partner/show?id=' . $id);
+            header('Location:/partners/show?id=' . $id);
             return null;
         }
 
@@ -56,7 +56,7 @@ class PartnerController extends AbstractController
             // if validation is ok, update and redirection
             $partnerManager->update($partner);
 
-            header('Location: /partner/show?id=' . $id);
+            header('Location: /partners/show?id=' . $id);
 
             return null;
         }
@@ -73,7 +73,7 @@ class PartnerController extends AbstractController
             $partnerManager = new PartnerManager();
             $partnerManager->delete((int)$id);
 
-            header('Location:/partner');
+            header('Location:/partners');
         }
     }
 }

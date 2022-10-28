@@ -1,5 +1,4 @@
-{% extends "layout.html.twig" %}
-
+{% extends "Shared/admin.html.twig" %}
 {% block content %}
 	<main class="container">
 		<div class="row">
@@ -10,21 +9,39 @@
 			<thead>
 				<tr>
 					<th>Nom du partenaire</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				{% for partner in partners %}
 					<tr>
-					    <td><a href="/partner/show?id={{ partner.id }}">{{ partner.id }}. {{ partner.firstname }} {{ partner.lastname }}</a></td>
+						<td>
+							<a href="/partners/show?id={{ partner.id }}">{{ partner.id }}.
+								{{ partner.firstname }}
+								{{ partner.lastname }}</a>
+						</td>
+						<td>
+							<button>
+								<a href="/partner/edit?id={{ partner.id }}">Modifier</a>
+							</button>
+						</td>
+						<td>
+							<form action="/partner/delete" method="POST">
+								<input type="hidden" name="id" value="{{ partner.id }}">
+								<button>Supprimer</button>
+							</td>
+						</td>
 					</tr>
 				{% endfor %}
 
 			</tbody>
 		</table>
 
-    <a href="/partner/add">Ajouter</a>
+		<button>
+			<a href="/partners/add">Ajouter un partenaire</a>
+		</button>
 
 	</main>
-
 {% endblock %}

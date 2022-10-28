@@ -1,0 +1,28 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ wine.id }}" name="id">
+	<div>
+		<label for="Nom du produit">Nom du produit :</label><br>
+		<input type="text" value="{{ wine.name }}" id="name" name="name">
+	</div>
+	<div>
+		<label for="Année">Année :</label><br>
+		<input type="text" value="{{ wine.year }}" id="year" name="year">
+	</div>
+	<div>
+		<label for="Prix">Prix :</label><br>
+		<input type="number" value="{{ wine.price }}" id="price" name="price">
+	</div>
+	<div>
+		<label for="Identifiant partenaire">Identifiant partenaire :</label><br>
+		<input type="number" value="{{ wine.partner_id }}" id="partner_id" name="partner_id">
+	</div>
+	<div>
+		<label for="description">Description :</label><br>
+		<textarea id="description" value="{{ wine.description }}" name="description" rows=" 10" cols=" 50"></textarea>
+	</div>
+	<div class="button">
+		<button type="add">Ajouter le produit</button>
+	</div>
+</form>
