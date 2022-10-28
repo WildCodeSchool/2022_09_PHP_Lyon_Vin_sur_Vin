@@ -1,6 +1,15 @@
-{% extends 'layout.html.twig' %}
-
 {% block content %}
-    <h1>Add a new item</h1>
-    {% include 'Wine/_form.html.twig' %}
+
+	<h1>Ajouter un produit</h1>
+	<section>
+		{% include 'Wine/_form.html.twig' %}
+		{% block errors %}
+			<ul>
+				{% for error in errors %}
+					<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+		{% endblock %}
+	</section>
+	<a href="/wines">Retour</a>
 {% endblock %}

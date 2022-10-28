@@ -9,6 +9,6 @@ class AdminController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Wine/admin.html.twig');
+        return $this->twig->render('Shared/admin.html.twig');
     }
 }

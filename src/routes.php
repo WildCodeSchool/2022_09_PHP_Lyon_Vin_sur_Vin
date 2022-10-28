@@ -18,4 +18,5 @@ return [
     'wines/edit' => ['WineController', 'edit', ['id']],
     'admin' => ['AdminController', 'index',],
     'wines/add' => ['WineController', 'add',],
+    'wines/delete' => ['WineController', 'delete',],
 ];
