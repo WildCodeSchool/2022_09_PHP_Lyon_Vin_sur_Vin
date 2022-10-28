@@ -13,7 +13,6 @@ class WineController extends AbstractController
     {
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();
-
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
 
@@ -55,7 +54,6 @@ class WineController extends AbstractController
             }
             $wineManager = new WineManager();
             $id = $wineManager->insert($wine);
-
             header('Location:/wines/show?id=' . $id);
             return null;
         }
