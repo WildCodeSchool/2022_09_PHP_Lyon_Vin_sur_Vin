@@ -46,14 +46,13 @@
 					<td>
 						<button>
 							<a href="/partners/edit?id={{ partner.id }}">Modifier</a>
-							<button></td>
-							<td>
-								<form action="/partners/delete" method="POST">
-									<input type="hidden" name="id" value="{{ partner.id }}">
-									<button>Supprimer</button>
-								</td>
-							</td>
-						</tr>
+						</button>
+					</td>
+					<td>
+						<form action="/partners/delete" method="POST">
+							<input type="hidden" name="id" value="{{ partner.id }}">
+							<button>Supprimer</button>
+						</td>
 					</td>
 				</tr>
 			</tbody>
