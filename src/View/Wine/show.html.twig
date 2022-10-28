@@ -32,7 +32,9 @@
 					<td>{{ wine.description }}</td>
 					<td>{{ wine.partner_id }}</td>
 					<td>
-						<a href="/wines/edit?id={{wine.id}}">Modifier</a>
+						<button>
+							<a href="/wines/edit?id={{wine.id}}">Modifier</a>
+						</button>
 					</td>
 					<td>
 						<form action="/wines/delete" method="POST">
@@ -41,11 +43,10 @@
 						</form>
 					</td>
 				</tr>
-
-
 			</tbody>
 		</table>
-		<a href="/wines">Retour</a>
-
+		<button>
+			<a href="/wines">Retour</a>
+		</button>
 	</main>
 {% endblock %}

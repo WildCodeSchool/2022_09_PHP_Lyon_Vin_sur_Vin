@@ -23,7 +23,9 @@
 							<a href="/wines/show?id={{ wine.id }}">{{ wine.name }}</a>
 						</td>
 						<td>
-							<a href="/wines/edit?id={{wine.id}}">Modifier</a>
+							<button>
+								<a href="/wines/edit?id={{wine.id}}">Modifier</a>
+							</button>
 						</td>
 						<td>
 							<form action="/wines/delete" method="POST">
@@ -35,12 +37,10 @@
 				{% endfor %}
 
 			</tbody>
-			<tfoot>
-				<a href="/wines/add">Ajouter un nouveau produit</a>
-			</tfoot>
 		</table>
-
-
+		<button>
+			<a href="/wines/add">Ajouter un produit</a>
+		</button>
 	</main>
 
 {% endblock %}
