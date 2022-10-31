@@ -101,14 +101,3 @@ button {
     border: 0px;
     padding: 5px;
 }
-
-@media screen and (max-width: 992px)  {
-    a.navbar-brand {
-       margin-left: 24vw;
-    }
-}
-@media screen and (max-width: 702px)  {
-    a.navbar-brand {
-       margin-left: 18vw;
-    }
-}
