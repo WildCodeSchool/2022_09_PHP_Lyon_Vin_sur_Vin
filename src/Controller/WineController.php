@@ -21,10 +21,8 @@ class WineController extends AbstractController
     {
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
-
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
-
     public function edit(int $id): ?string
     {
         $wineManager = new WineManager();
@@ -39,7 +37,7 @@ class WineController extends AbstractController
             header('Location: /wines/show?id=' . $id);
             return null;
         }
-        return $this->twig->render('Wine/edit.html.twig', ['wine' => $wine,]);
+        return $this->twig->render('Wine/edit.html.twig', ['wine' => $wine]);
     }
 
     public function add(): ?string
