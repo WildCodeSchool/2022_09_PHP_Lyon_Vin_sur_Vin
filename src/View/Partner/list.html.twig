@@ -2,7 +2,7 @@
 {% block content %}
 	<main class="container">
 		<div class="row">
-			<h1 class="text-center m-3">Liste des super partenaires !</h1>
+			<h1 class="text-center m-5">Liste des super partenaires !</h1>
 		</div>
 
 		<table class="table">
@@ -24,17 +24,18 @@
 						</td>
 						<td>
 							<button>
-								<a href="/partner/edit?id={{ partner.id }}">Modifier</a>
+								<a href="/partners/edit?id={{ partner.id }}">Modifier</a>
 							</button>
 						</td>
 						<td>
-							<form action="/partner/delete" method="POST">
+							<form action="/partners/delete" method="POST">
 								<input type="hidden" name="id" value="{{ partner.id }}">
 								<button>Supprimer</button>
 							</td>
 						</td>
 					</tr>
 				{% endfor %}
+
 
 			</tbody>
 		</table>

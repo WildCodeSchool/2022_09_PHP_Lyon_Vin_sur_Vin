@@ -36,4 +36,10 @@ class WineManager extends AbstractManager
         $statement->execute();
         return $statement->execute();
     }
+    public function selectFavorites(): array
+    {
+        $query = 'SELECT name, year, price, description FROM ' . static::TABLE . ' WHERE favorite = true';
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

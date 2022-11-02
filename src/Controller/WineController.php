@@ -23,6 +23,7 @@ class WineController extends AbstractController
         $wine = $wineManager->selectOneById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
+
     public function edit(int $id): ?string
     {
         $wineManager = new WineManager();
@@ -113,5 +114,11 @@ class WineController extends AbstractController
         if (strlen($wine[$field]) > $maxLength) {
             $this->errors[] = "C'est trop long, $maxLength caractères MAX";
         }
+    }
+    public function showCard(): string
+    {
+        $wineManager = new WineManager();
+        $wines = $wineManager->selectFavorites();
+        return $this->twig->render('Home/index.html.twig', ['wines' => $wines]);
     }
 }

@@ -24,4 +24,5 @@ return [
     'partners/show' => ['PartnerController', 'show', ['id']],
     'partners/add' => ['PartnerController', 'add',],
     'partners/delete' => ['PartnerController', 'delete',],
+    '' => ['WineController', 'showCard',]
 ];

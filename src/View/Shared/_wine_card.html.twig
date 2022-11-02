@@ -1,15 +1,13 @@
-<div class="card col-4 {% if product.category == 'computer' %} computerCard {% endif %}">
-	<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveaspectratio="xMidYMid slice" focusable="false">
-		<title>Placeholder</title>
-		<rect width="100%" height="100%" fill="#868e96"></rect>
-		<text x="50%" y="50%" fi" dy=" .3em">Image cap</text>
-	</svg>
-
+<div class="card" style="width: 25rem;">
+	<img src="https://media.auchan.fr/P02000000000X2QPRIMARY_512x512/B2CD/%22/%3E" class="card-img-top" alt="...">
 	<div class="card-body">
-		<h5 class="card-title">{{ product.name }}
-			({{product.category}})</h5>
-		<p class="card-text">{{ product.price }}
-			€</p>
-		<a href="#" class="btn btn-primary">Voir le joli produit</a>
+		<h3 class="card-title">{{wine.name}}</h3>
+		<h4>{{wine.price}}€</h4>
+		<h4>Cuvée :
+			{{wine.year}}</h4>
+		<div class="card-text">{{wine.description}}</div>
+		<button>
+			<a href="/wines/show?id={{ wine.id }}">Détails</a>
+		</button>
 	</div>
 </div>
