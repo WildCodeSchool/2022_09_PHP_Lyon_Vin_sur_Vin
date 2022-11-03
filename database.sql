@@ -26,7 +26,7 @@ firstname VARCHAR(100) NOT NULL,
 lastname VARCHAR(100),
 address VARCHAR(255),
 email VARCHAR(100),
-phone VARCHAR,
+phone VARCHAR(10),
 description TEXT(1000)
 );
 CREATE TABLE wine (
@@ -37,6 +37,7 @@ category VARCHAR(100),
 price INT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
+favorite BOOLEAN,
 CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id)
 );
 
@@ -46,6 +47,7 @@ VALUES ('Damien', 0677665522), ('Allan', 0766554433), ('Lila', 0577889900), ('Ma
 INSERT INTO wine (name, year, price, partner_id)
 VALUES ('Beaujolais de Damien', 1989, 10, 1), ('La villageoise de Allan', 2023, 2, 2), ('Rosé de Lila ', 1987, 7, 3),
 ('Viognier de Mathieu', 1994, 12, 4), ('Bordeaux de Jesse', 1995, 11, 5);
+UPDATE wine SET favorite = 1 WHERE id BETWEEN 1 and 3;
 
 SELECT * FROM partner;
 SELECT * FROM wine;
