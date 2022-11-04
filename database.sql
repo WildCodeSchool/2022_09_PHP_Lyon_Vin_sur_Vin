@@ -52,4 +52,3 @@ UPDATE wine SET favorite = 1 WHERE id BETWEEN 1 and 3;
 SELECT * FROM partner;
 SELECT * FROM wine;
 
-SELECT * FROM item;

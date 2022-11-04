@@ -30,7 +30,7 @@ class WineController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
-            if (empty($this->errors)) {
+            if (!empty($this->errors)) {
                 return $this->twig->render('Wine/edit.html.twig', ['errors' => $this->errors]);
             }
             $wineManager->update($wine);

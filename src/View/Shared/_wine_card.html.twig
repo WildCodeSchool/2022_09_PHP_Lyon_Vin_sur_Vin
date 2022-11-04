@@ -1,0 +1,11 @@
+<img src="https://media.auchan.fr/P02000000000X2QPRIMARY_512x512/B2CD/%22/%3E" class="card-img-top" alt="...">
+<div class="card-body">
+	<h3 class="card-title text-center">{{wine.name}}</h3>
+	<h4 class="card-subtitle text-center m-1">{{wine.price}}€</h4>
+	<h4 class="card-subtitle text-center m-1">Cuvée :
+		{{wine.year}}</h4>
+	<div class="card-text">{{wine.description}}</div>
+	<button>
+		<a href="/wines/show?id={{ wine.id }}">Détails</a>
+	</button>
+</div>
