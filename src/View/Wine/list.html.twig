@@ -12,6 +12,8 @@
 					<th>Nom du produit</th>
 					<th>Modifier</th>
 					<th>Supprimer</th>
+					<th>Ajouter favoris</th>
+					<th>Supprimer favoris</th>
 
 				</tr>
 			</thead>
@@ -31,6 +33,19 @@
 							<form action="/wines/delete" method="POST">
 								<input type="hidden" name="id" value="{{ wine.id }}">
 								<button>Supprimer</button>
+							</form>
+						</td>
+						<td>
+							<form action="/wines/super" method="POST">
+								<input type="hidden" name="id" value="{{ wine.id }}">
+								<button>Meilleures ventes</button>
+							</form>
+						</td>
+						<td>
+
+							<form action="/wines/nomoresuper" method="POST">
+								<input type="hidden" name="id" value="{{ wine.id }}">
+								<button>No more super</button>
 							</form>
 						</td>
 					</tr>

@@ -16,7 +16,6 @@ class WineController extends AbstractController
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
 
-
     public function show(int $id): string
     {
         $wineManager = new WineManager();
@@ -115,10 +114,32 @@ class WineController extends AbstractController
             $this->errors[] = "C'est trop long, $maxLength caractères MAX";
         }
     }
-    public function showCard(): string
+    public function showFavorites(): string
     {
         $wineManager = new WineManager();
         $wines = $wineManager->selectFavorites();
         return $this->twig->render('Home/index.html.twig', ['wines' => $wines]);
+    }
+
+    public function addSuper(): void
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $wineManager = new WineManager();
+            $wineManager->addFavorite((int)$id);
+            header('Location:/wines');
+        }
+    }
+
+    public function deleteSuper(): void
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $wineManager = new WineManager();
+            $wineManager->deleteFavorite((int)$id);
+            header('Location:/wines');
+        }
     }
 }

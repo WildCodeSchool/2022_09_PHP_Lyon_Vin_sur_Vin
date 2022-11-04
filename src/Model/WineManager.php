@@ -36,10 +36,27 @@ class WineManager extends AbstractManager
         $statement->execute();
         return $statement->execute();
     }
+
     public function selectFavorites(): array
     {
         $query = 'SELECT name, year, price, description FROM ' . static::TABLE . ' WHERE favorite = true';
 
         return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function addFavorite(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . static::TABLE . " SET favorite = 1 WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function deleteFavorite(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . static::TABLE . " SET favorite = 0 WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }
