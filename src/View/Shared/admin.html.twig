@@ -1,35 +1,34 @@
 {% extends "layout.html.twig" %}
 
 {% block admin_board %}
-	<main class="container">
+	<main class="container d-flex flex-column">
 		<div class="row">
 			<h1>ESPACE ADMIN</h1>
-			<div>
-				<div class="row">
-					<p>Panneau administrateur</p>
-					<div>
-						<div class="row">
-							<table class="table">
-								<thead>
-									<tr>
-										<td>
-											<a href="/partners">Partenaires</a>
-										</td>
-									</tr>
-									<td>
-										<a href="/wines">Vins</a>
-									</td>
-									<tr>
-										<td>
-											<a href="#">Carroussel</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<a href="#">Avis</a>
-										</td>
-									</tr>
-								</thead>
-							</table>
-							<div></main>
-						{% endblock %}
+		</div>
+		<h3 class="row align-self-center">Panneau administrateur</h3>
+		<div class="row align-self-center">
+				<table class="table">
+					<thead>
+						<tr>
+							<td>
+								<a href="/partners">Partenaires</a>
+							</td>
+						</tr>
+							<td>
+								<a href="/wines">Vins</a>
+							</td>
+						<tr>
+							<td>
+								<a href="#">Carroussel</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="#">Avis</a>
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</main>
+{% endblock %}

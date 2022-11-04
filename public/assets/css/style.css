@@ -14,7 +14,12 @@ h1 {
     display: flex;
     font-size: 2em;
 }
-
+h3 {
+    color: #807165;
+    justify-content: center;
+    display: flex;
+    font-size: 1.4em;
+}
 a {
     text-decoration: none;
     color: black;
@@ -31,7 +36,7 @@ p {
 }
 
 label {
-    padding-left: 1.5vw;
+    padding-left: 0.9vw;
 }
 
 .img-thumbnail {
@@ -106,7 +111,7 @@ a.navbar-brand {
 }
 
 #addbutton {
-    padding-left: 1.5vw;
+    padding-left: 0.9vw;
 
 }
 
@@ -118,6 +123,18 @@ button {
     border-radius: 12px;
     border: 0px;
     padding: 5px;
+}
+#connectionbutton {
+    color: #8D3939;
+    background-color: #FDF2E9;
+    border-radius: 12px;
+    border: 0px;
+    padding: 5px 10px 0px 10px;
+    height: 5vh;
+}
+.btn-xl {
+    font-size: xx-large;
+    color: #8D3939;
 }
 
 /* css du carousel */
