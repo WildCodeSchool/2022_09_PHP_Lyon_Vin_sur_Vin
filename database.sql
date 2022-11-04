@@ -37,6 +37,7 @@ category VARCHAR(100),
 price INT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
+favorite BOOLEAN,
 CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id)
 );
 

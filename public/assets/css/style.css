@@ -1,65 +1,80 @@
 body {
     color: #807165;
 }
+
 .table {
     width: 9em;
     border: 1px solid #807165;
 }
+
 h1 {
     color: #807165;
     justify-content: center;
     display: flex;
     font-size: 2em;
 }
+
 a {
     text-decoration: none;
-    color: black; 
+    color: black;
 }
+
 a:hover {
     color: #8D3939;
     text-decoration: underline;
-  }
+}
+
 p {
     margin-block-start: -2em;
     margin-inline-start: -0.4em;
 }
+
 label {
     padding-left: 1.5vw;
 }
+
 .img-thumbnail {
     max-width: 3.5em;
     margin: 0.6em;
     background-color: rgba(0, 0, 0, 0);
     border: 0px;
-   }
+}
+
 .navbar>.container-fluid {
     background-color: #8D3939;
     justify-content: left;
 }
+
 .container-fluid {
     padding-left: 0em;
 }
+
 .navbar {
     padding-top: 0em;
 }
+
 a.nav-link {
     color: #FDF2E9;
     margin: 1.3em;
     font-size: 1.3em;
 }
+
 a.navbar-brand {
     color: #FDF2E9;
     margin-left: 0.5em;
     font-size: 1.5em;
 }
+
 .navbar-collapse {
     justify-content: end;
 }
+
 .navbar-toggler {
     background-color: #FDF2E9;
     justify-items: left;
     margin: 1em;
 }
+
 .button.navbar-toggler {
     justify-self: left;
 }
@@ -87,6 +102,7 @@ a.navbar-brand {
 #description {
     height: 20vh;
 }
+
 #addbutton {
     padding-left: 1.5vw;
 
@@ -100,4 +116,17 @@ button {
     border-radius: 12px;
     border: 0px;
     padding: 5px;
+}
+
+/* css du carousel */
+@font-face {
+    font-family: 'swap';
+    src: url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+}
+
+h3,
+h4,
+h5 {
+    font-family: 'swap';
+
 }
