@@ -1,8 +1,10 @@
 {% extends "Shared/admin.html.twig" %}
 {% block content %}
-	<h1>Modifier le partenaire
+	<h1 class="text-center m-5">Modifier le partenaire
 		{{ partner.firstname }}
 		{{ partner.lastname }}</h1>
 	{% include 'Partner/_form.html.twig' %}
-</button>
-<a href="/partners/show?id={{partners.id}}">Retour</a></button>{% endblock %}
+	<button>
+		<a href="/partners/show?id={{partners.id}}">Retour</a>
+	</button>
+{% endblock %}

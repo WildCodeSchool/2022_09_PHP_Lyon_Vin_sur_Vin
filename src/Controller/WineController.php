@@ -16,13 +16,13 @@ class WineController extends AbstractController
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
 
-
     public function show(int $id): string
     {
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
+
     public function edit(int $id): ?string
     {
         $wineManager = new WineManager();
@@ -30,7 +30,7 @@ class WineController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
-            if (empty($this->errors)) {
+            if (!empty($this->errors)) {
                 return $this->twig->render('Wine/edit.html.twig', ['errors' => $this->errors]);
             }
             $wineManager->update($wine);
@@ -114,10 +114,27 @@ class WineController extends AbstractController
             $this->errors[] = "C'est trop long, $maxLength caractères MAX";
         }
     }
-    public function showCard(): string
+
+    public function showFavorites(): string
     {
         $wineManager = new WineManager();
         $wines = $wineManager->selectFavorites();
         return $this->twig->render('Home/index.html.twig', ['wines' => $wines]);
+    }
+
+    public function toggleSuper(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $wineManager = new WineManager();
+            $isSuper = $wineManager->checkIfFavorite((int)$id);
+            if ($isSuper['favorite'] === 1) {
+                $wineManager->deleteFavorite((int)$id);
+                header('Location:/wines');
+            } else {
+                $wineManager->addFavorite((int)$id);
+                header('Location:/wines');
+            }
+        }
     }
 }

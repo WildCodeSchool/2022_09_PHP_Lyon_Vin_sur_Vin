@@ -1,32 +1,32 @@
 {# TODO : manage errors display #}
 
 
-    <div class="container d-flex flex-column">
-    <form method="post" class="col align-self-center">
-            <input type="hidden" value="{{ wine.id }}" name="id">
-        <div>
-            <label for="Nom du produit">Nom du produit :</label>
-            <input type="text" class="form-control form-control-color" value="{{ wine.name }}" id="name" name="name">
-        </div>
-        <div>
-            <label for="Année">Année :</label>
-            <input type="text" class="form-control form-control-color" value="{{ wine.year }}" id="year" name="year">
-        </div>
-        <div>
-            <label for="Prix">Prix :</label>
-            <input type="text" class="form-control form-control-color" value="{{ wine.price }}" id="price" name="price">
-        </div>
-        <div>
-            <label for="Identifiant partenaire">Identifiant partenaire :</label>
-            <input type="text" class="form-control form-control-color" value="{{ wine.partner_id }}" id="partner_id" name="partner_id">
-        </div>
-    
-        <div>
-            <label for="description">Description :</label>
-            <textarea id="description" class="form-control form-control-color" value="{{ wine.description }}" name="description"></textarea>
-        </div>
-        <div  class="button" id="addbutton">
-            <button type="add">Ajouter le produit</button>
-        </div>
-    </form>
-    </div>
+<div class="container d-flex flex-column">
+	<form method="post" class="col align-self-center">
+		<input type="hidden" value="{{ wine.id }}" name="id">
+		<div>
+			<label for="Nom du produit">Nom du produit :</label>
+			<input type="text" class="form-control form-control-color" value="{{ wine.name }}" id="name" name="name">
+		</div>
+		<div>
+			<label for="Année">Année :</label>
+			<input type="text" class="form-control form-control-color" value="{{ wine.year }}" id="year" name="year">
+		</div>
+		<div>
+			<label for="Prix">Prix :</label>
+			<input type="text" class="form-control form-control-color" value="{{ wine.price }}" id="price" name="price">
+		</div>
+		<div>
+			<label for="Identifiant partenaire">Identifiant partenaire :</label>
+			<input type="text" class="form-control form-control-color" value="{{ wine.partner_id }}" id="partner_id" name="partner_id">
+		</div>
+
+		<div>
+			<label for="description">Description :</label>
+			<textarea id="description" class="form-control form-control-color" value="{{ wine.description }}" name="description"></textarea>
+		</div>
+		<div class="button" id="addbutton">
+			<button type="add">Ajouter le produit</button>
+		</div>
+	</form>
+</div>
