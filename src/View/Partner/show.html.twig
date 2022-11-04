@@ -37,15 +37,17 @@
 						{{ partner.description }}</div>
 				</li>
 			</ul>
-			<div class"container d-inline-flex flex-row">
-				<button class="m-3">
-					<a href="/partners/edit?id={{ partner.id }}">Modifier</a>
-				</button>
-				<form action="/partners/delete" method="POST">
-					<input type="hidden" name="id" value="{{ partner.id }}">
-					<button class="m-3">Supprimer</button>
-				</form>
+			<div>
+				<a role="button" class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}">
+					<i class="bi bi-pencil-fill"></i>
+				</a>
 			</div>
+			<form action="/partners/delete" method="POST">
+				<input type="hidden" name="id" value="{{ partner.id }}">
+				<button class="btn btn-xl align-self-center" role="button">
+					<i class="bi bi-trash3-fill"></i>
+				</button>
+			</form>
 		</div>
 		<button class="m-3">
 			<a href="/partners">Retour</a>

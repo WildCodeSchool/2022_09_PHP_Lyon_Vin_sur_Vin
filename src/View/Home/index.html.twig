@@ -1,8 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<h1>Hello Wilder !</h1>
-
+	<header class="banner">
+		<img src="/assets/images/vigne.jpg" alt="bannière vigne" class="img-fluid">
+	</header>
+	<main class="row align-items-center justify-content-around">
+		<div class="col col-lg-6">
+			<h1>Site de présentation de produits de caviste</h1>
+			<br>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nulla ex,
+																				            posuere eu ultricies vel, euismod at urna. In nec turpis id leo ornare viverra.</p>
+		</div>
+		<div class="col col-lg-5">
+			<img src="/assets/images/bouteilles-de-vin.jpg" alt="logo vins sur vins" class="img-fluid">
+		</div>
+	</main>
 	{% include "Shared/_carrousel.html.twig" %}
-
+	<h1 class="mt-5">Vous voulez proposer votre vin sur le site ?</h1>
+	<h1 class="mb-3">Contactez l'équipe via ce formulaire</h1>
+	{% include 'Home/_form.html.twig' %}
 {% endblock %}
