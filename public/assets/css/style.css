@@ -1,5 +1,6 @@
 body {
     color: #807165;
+    margin-bottom: 120px;
 }
 
 .table {
@@ -51,6 +52,7 @@ label {
 
 .navbar {
     padding-top: 0em;
+    padding-bottom: 0px;
 }
 
 a.nav-link {
@@ -128,5 +130,12 @@ h3,
 h4,
 h5 {
     font-family: 'swap';
+}
 
+.banner {
+    margin-bottom: 50px;
+}
+
+.footerbar {
+    background-color: #8D3939;
 }
