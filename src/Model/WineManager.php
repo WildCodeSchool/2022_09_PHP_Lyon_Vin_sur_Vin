@@ -59,4 +59,14 @@ class WineManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function checkIfFavorite(int $id): array|false
+    {
+        // prepared request
+        $statement = $this->pdo->prepare('SELECT favorite FROM ' . static::TABLE . ' WHERE id=:id');
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

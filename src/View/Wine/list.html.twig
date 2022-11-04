@@ -12,8 +12,10 @@
 					<th>Nom du produit</th>
 					<th>Modifier</th>
 					<th>Supprimer</th>
-					<th>Ajouter favoris</th>
-					<th>Supprimer favoris</th>
+					<th>Best-seller</th>
+					<th>+ Best-seller</th>
+					<th>- Best-seller</th>
+					<th>Toggle Best-seller</th>
 
 				</tr>
 			</thead>
@@ -36,9 +38,14 @@
 							</form>
 						</td>
 						<td>
+							{% if wine.favorite == 1 %}Oui{% else %}Non
+							{% endif %}
+
+						</td>
+						<td>
 							<form action="/wines/super" method="POST">
 								<input type="hidden" name="id" value="{{ wine.id }}">
-								<button>Meilleures ventes</button>
+								<button>Super!</button>
 							</form>
 						</td>
 						<td>
@@ -46,6 +53,13 @@
 							<form action="/wines/nomoresuper" method="POST">
 								<input type="hidden" name="id" value="{{ wine.id }}">
 								<button>No more super</button>
+							</form>
+						</td>
+						<td>
+
+							<form action="/wines/togglesuper" method="POST">
+								<input type="hidden" name="id" value="{{ wine.id }}">
+								<button>toggle super</button>
 							</form>
 						</td>
 					</tr>

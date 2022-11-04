@@ -27,5 +27,6 @@ return [
     'partners/delete' => ['PartnerController', 'delete',],
     'wines/super' => ['WineController', 'addSuper', ['id']],
     'wines/nomoresuper' => ['WineController', 'deleteSuper', ['id']],
+    'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
     // '' => ['WineController', 'showCard',]
 ];

@@ -142,4 +142,20 @@ class WineController extends AbstractController
             header('Location:/wines');
         }
     }
+
+    public function toggleSuper(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $wineManager = new WineManager();
+            $isSuper = $wineManager->checkIfFavorite((int)$id);
+            if ($isSuper['favorite'] === 1) {
+                $wineManager->deleteFavorite((int)$id);
+                header('Location:/wines');
+            } else {
+                $wineManager->addFavorite((int)$id);
+                header('Location:/wines');
+            }
+        }
+    }
 }
