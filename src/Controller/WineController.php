@@ -114,4 +114,10 @@ class WineController extends AbstractController
             $this->errors[] = "C'est trop long, $maxLength caractères MAX";
         }
     }
+    public function showCard(): string
+    {
+        $wineManager = new WineManager();
+        $wines = $wineManager->selectFavorites();
+        return $this->twig->render('Home/index.html.twig', ['wines' => $wines]);
+    }
 }

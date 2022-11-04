@@ -26,7 +26,7 @@ firstname VARCHAR(100) NOT NULL,
 lastname VARCHAR(100),
 address VARCHAR(255),
 email VARCHAR(100),
-phone VARCHAR,
+phone VARCHAR(10),
 description TEXT(1000)
 );
 CREATE TABLE wine (
@@ -37,6 +37,7 @@ category VARCHAR(100),
 price INT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
+favorite BOOLEAN,
 CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id)
 );
 

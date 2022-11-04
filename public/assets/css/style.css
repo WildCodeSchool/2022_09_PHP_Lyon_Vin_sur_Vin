@@ -137,6 +137,18 @@ button {
     color: #8D3939;
 }
 
+/* css du carousel */
+@font-face {
+    font-family: 'swap';
+    src: url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+}
+
+h3,
+h4,
+h5 {
+    font-family: 'swap';
+}
+
 .banner {
     margin-bottom: 50px;
 }
