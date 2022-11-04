@@ -26,7 +26,7 @@ firstname VARCHAR(100) NOT NULL,
 lastname VARCHAR(100),
 address VARCHAR(255),
 email VARCHAR(100),
-phone VARCHAR,
+phone VARCHAR(10),
 description TEXT(1000)
 );
 CREATE TABLE wine (
