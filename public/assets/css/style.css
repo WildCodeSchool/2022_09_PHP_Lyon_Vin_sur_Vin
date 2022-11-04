@@ -126,6 +126,11 @@ button {
 button > a {
     color: white;
 }
+
+.connexion {
+    color: black;
+}
+
 #connectionbutton {
     color: #8d3939;
     background-color: #fdf2e9;
