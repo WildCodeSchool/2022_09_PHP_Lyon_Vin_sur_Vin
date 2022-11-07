@@ -95,18 +95,6 @@ label {
     cursor: default;
 }
 
-#price {
-    width: 15vh;
-}
-
-#year {
-    width: 15vh;
-}
-
-#description {
-    height: 20vh;
-}
-
 button {
     color: white;
     background-color: #8d3939;
@@ -148,6 +136,12 @@ h3,
 h4,
 h5 {
     font-family: "swap";
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
 }
 
 .banner {
