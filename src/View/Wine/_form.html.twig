@@ -4,23 +4,33 @@
 		<div class="col-10">
 			<label for="Nom du produit">Nom du produit :</label>
 			<input type="text" class="form-control" value="{{ wine.name }}" id="name" name="name">
+			<div class="errors">{{errors.emptyfield}}</div>
 		</div>
-		<div class="col-md-5 col-sm-4 col-xs-8">
+		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Année">Année :</label>
 			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
+			<div class="errors">{{errors.year}}</div>
 		</div>
-		<div class="col-md-5 col-sm-4 col-xs-8">
+		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Prix">Prix :</label>
 			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
+			<div class="errors">{{errors.price}}</div>
 		</div>
-		<div class="col-10">
-			<label for="Identifiant partenaire">Identifiant partenaire :</label>
-			<input type="text" class="form-control" value="{{ wine.partner_id }}" id="partner_id" name="partner_id">
+		<div class="col-md-4 col-sm-4 col-xs-8">
+			<label for="Identifiant partenaire">Partenaire :</label>
+			<select class="form-control" id="partner_id" name="partner_id">
+				<option value="">Sélectionner un partenaire</option>
+				{% for partner in partners %}
+					<option value="{{partner.id}}">{{partner.lastname ~ ' ' ~ partner.firstname}}</option>
+				{% endfor %}
+			</select>
+			<div class="errors">{{errors.partner}}</div>
 		</div>
 
 		<div class="col-10">
 			<label for="description">Description :</label>
 			<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>
+			<div class="errors">{{errors.description}}</div>
 		</div>
 		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
 			<button>Envoyer</button>
