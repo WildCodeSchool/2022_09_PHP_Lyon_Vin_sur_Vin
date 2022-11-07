@@ -25,12 +25,12 @@
 							<td>
 								<a href="/wines/show?id={{ wine.id }}">{{ wine.name }}</a>
 							</td>
-							<td class="container flex-column">
+							<td>
 								<a class="btn btn-xl align-self-center" href="/wines/edit?id={{wine.id}}" role="button">
 									<i class="bi bi-pencil-fill"></i>
 								</a>
 							</td>
-							<td class="container flex-column">
+							<td>
 								<form action="/wines/delete" method="POST">
 									<input type="hidden" name="id" value="{{ wine.id }}">
 									<button class="btn btn-xl align-self-center" role="button">

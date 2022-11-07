@@ -23,12 +23,12 @@
 									{{ partner.firstname }}
 									{{ partner.lastname }}</a>
 							</td>
-							<td class="container flex-column">
+							<td>
 								<a class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}" role="button">
 									<i class="bi bi-pencil-fill"></i>
 								</a>
 							</td>
-							<td class="container flex-column">
+							<td>
 								<form action="/partners/delete" method="POST">
 									<input type="hidden" name="id" value="{{ partner.id }}">
 									<button class="btn btn-xl align-self-center" role="button">

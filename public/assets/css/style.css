@@ -3,11 +3,17 @@ body {
     margin-bottom: 120px;
 }
 
-.table {
+.tableau {
     width: 9em;
     border: 1px solid #807165;
 }
 
+.table {
+    font-size: 1.5em;
+}
+ul {
+    font-size: 1.5rem;
+}
 h1 {
     color: #807165;
 }
@@ -22,10 +28,6 @@ a {
 a:hover {
     color: #8d3939;
     text-decoration: underline;
-}
-p {
-    margin-block-start: -2em;
-    margin-inline-start: -0.4em;
 }
 
 label {
@@ -56,7 +58,7 @@ label {
 a.nav-link {
     color: #fdf2e9;
 
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 a.navbar-brand {
@@ -82,16 +84,11 @@ a.navbar-brand {
 
 .form-control {
     background-color: #baa99b;
-    height: 4vh;
-    margin: 0.6vh 0.6vh 0.6vh 1.5vh;
+    height: 5vh;
 }
 
-.form-control-color {
-    width: 35vw;
-    height: 4vh;
-    margin: 0.6vh 0.6vh 0.6vh 1.5vh;
-    background-color: #baa99b;
-    cursor: default;
+label {
+    font-size: 1.5rem;
 }
 
 .form-control-color:not(:disabled):not([readonly]) {
@@ -108,10 +105,6 @@ a.navbar-brand {
 
 #description {
     height: 20vh;
-}
-
-#addbutton {
-    padding-left: 0.9vw;
 }
 
 button {
