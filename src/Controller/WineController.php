@@ -74,14 +74,12 @@ class WineController extends AbstractController
     {
         $wine['description'] = filter_var($wine['description'], FILTER_SANITIZE_ENCODED);
         $wine['name'] = filter_var($wine['name'], FILTER_SANITIZE_ENCODED);
-        $this->checkInputValues($wine, 'name', 100);
-        $this->checkInputValues($wine, 'year', 4);
-        $this->checkInputValues($wine, 'price', 1000);
-        $this->checkInputValues($wine, 'partner_id', 100);
+        $this->checkLength($wine, 'name', 100);
+        $this->checkLength($wine, 'description', 1000);
+        $this->checkIfEmpty($wine, 'name');
+        $this->checkIfEmpty($wine, 'price');
+        $this->checkIfEmpty($wine, 'year');
 
-        if (strlen($wine['description']) > 1000) {
-            $this->errors['description'] = 'C\'est trop long, 1000 caractères MAX';
-        }
         if (
             filter_var(
                 $wine['year'],
@@ -101,20 +99,24 @@ class WineController extends AbstractController
         ) {
             $this->errors['price'] = 'Le prix n\'est pas correct';
         }
-        if (!filter_var($wine['partner_id'], FILTER_VALIDATE_INT)) {
-            $this->errors['partner'] = "Seuls les chiffres sont acceptés.";
+        if (!isset($wine['partner_id']) || empty($wine['partner_id'])) {
+            $this->errors['partner'] = "Veuillez sélectionner un partenaire";
         }
         // A FAIRE : MODIFIER partner_id pour qu'il soit automatiquement associer à un partnenaire
         return $this->errors ?? [];
     }
 
-    public function checkInputValues(array $wine, string $field, int $maxLength)
+    public function checkLength(array $wine, string $field, int $maxLength)
+    {
+        if (strlen($wine[$field]) > $maxLength && isset($wine[$field]) && !empty($wine[$field])) {
+            $this->errors['toolong'] = "C'est trop long, $maxLength caractères MAX";
+        }
+    }
+
+    public function checkIfEmpty(array $wine, string $field)
     {
         if (!isset($wine[$field]) || empty($wine[$field])) {
             $this->errors['emptyfield'] = "Ce champ est aussi vide que mon verre";
-        }
-        if (strlen($wine[$field]) > $maxLength) {
-            $this->errors['toolong'] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
