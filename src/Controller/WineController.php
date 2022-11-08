@@ -74,11 +74,11 @@ class WineController extends AbstractController
     {
         $wine['description'] = filter_var($wine['description'], FILTER_SANITIZE_ENCODED);
         $wine['name'] = filter_var($wine['name'], FILTER_SANITIZE_ENCODED);
-        $this->checkLength($wine, 'name', 100);
-        $this->checkLength($wine, 'description', 1000);
-        $this->checkIfEmpty($wine, 'name');
-        $this->checkIfEmpty($wine, 'price');
-        $this->checkIfEmpty($wine, 'year');
+        $this->checkLength($wine, 'name', 100, 'name_length');
+        $this->checkLength($wine, 'description', 1000, 'description_length');
+        $this->checkIfEmpty($wine, 'name', 'empty_name');
+        $this->checkIfEmpty($wine, 'price', 'empty_price');
+        $this->checkIfEmpty($wine, 'year', 'empty_year');
 
         if (
             filter_var(
@@ -106,17 +106,17 @@ class WineController extends AbstractController
         return $this->errors ?? [];
     }
 
-    public function checkLength(array $wine, string $field, int $maxLength)
+    public function checkLength(array $wine, string $field, int $maxLength, string $key)
     {
         if (strlen($wine[$field]) > $maxLength && isset($wine[$field]) && !empty($wine[$field])) {
-            $this->errors['toolong'] = "C'est trop long, $maxLength caractères MAX";
+            $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $wine, string $field)
+    public function checkIfEmpty(array $wine, string $field, string $key)
     {
         if (!isset($wine[$field]) || empty($wine[$field])) {
-            $this->errors['emptyfield'] = "Ce champ est aussi vide que mon verre";
+            $this->errors[$key] = "Ce champ est aussi vide que mon verre";
         }
     }
 

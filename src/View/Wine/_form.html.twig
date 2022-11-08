@@ -4,19 +4,19 @@
 		<div class="col-10">
 			<label for="Nom du produit">Nom du produit :</label>
 			<input type="text" class="form-control" value="{{ wine.name }}" id="name" name="name">
-			<div class="errors">{{errors.emptyfield}}
-				{{errors.toolong}}</div>
+			<div class="errors">{{errors.empty_name}}<br>
+				{{errors.name_length}}</div>
 		</div>
 		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Année">Année :</label>
 			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
-			<div class="errors">{{errors.emptyfield}}
+			<div class="errors">{{errors.empty_year}}<br>
 				{{errors.year}}</div>
 		</div>
 		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Prix">Prix :</label>
 			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
-			<div class="errors">{{errors.emptyfield}}
+			<div class="errors">{{errors.empty_price}}<br>
 				{{errors.price}}</div>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-8">
@@ -33,7 +33,7 @@
 		<div class="col-10">
 			<label for="description">Description :</label>
 			<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>
-			<div class="errors">{{errors.toolong}}</div>
+			<div class="errors">{{errors.description_length}}</div>
 		</div>
 		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
 			<button>Envoyer</button>
