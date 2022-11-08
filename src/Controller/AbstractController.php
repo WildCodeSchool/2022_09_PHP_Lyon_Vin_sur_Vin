@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\AdminManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -12,6 +13,7 @@ use Twig\Loader\FilesystemLoader;
 abstract class AbstractController
 {
     protected Environment $twig;
+    protected array|false $user;
 
 
     public function __construct()
@@ -25,5 +27,8 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+        //$adminManager = new AdminManager();
+        //$this->user = isset($_SESSION['admin_id']) ? $adminManager->selectOneById($_SESSION['admin_id']) : false;
+        //$this->twig->addGlobal('admin', $this->admin);
     }
 }
