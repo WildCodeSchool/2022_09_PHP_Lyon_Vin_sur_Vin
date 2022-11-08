@@ -84,7 +84,7 @@ class WineController extends AbstractController
             filter_var(
                 $wine['year'],
                 FILTER_VALIDATE_INT,
-                array("options" => array("min_range" => 1800, "max_range" => 2022))
+                array("options" => array("min_range" => 1800, "max_range" => 2023))
             ) === false
         ) {
             $this->errors[] = 'L\'année doit être comprise entre 1800 et 2023';

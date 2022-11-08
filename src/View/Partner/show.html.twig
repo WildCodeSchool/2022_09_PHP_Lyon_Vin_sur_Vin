@@ -6,34 +6,41 @@
 			Fiche partenaire
 			{{ partner.firstname }}
 			{{ partner.lastname }}</h3>
-		<div class="container d-flex flex-row justify-content-evenly bg-white">
-			<ul>
-				<li>
-					<div>Identifiant:
-						{{ partner.id }}</div>
+		<div class="container d-flex flex-row justify-content-evenly bg-white shadow-lg p-3 mb-5 bg-white rounded">
+			<ul class="row">
+				<li class="row">
+					<div class="col-md-2 fw-bold">Identifiant:</div>
+					<div class="col-md-10">
+					{{ partner.id }}</div>
 				</li>
-				<li>
-					<div>Nom:
-						{{ partner.lastname }}</div>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Nom:</div>
+					<div class="col-md-10">
+					{{ partner.lastname }}</div>
 				</li>
-				<li>
-					<div>Prénom:
+				<li class="row">
+					<div class="col-md-2 fw-bold">Prénom:</div>
+					<div class="col-md-10">
 						{{ partner.firstname }}</div>
 				</li>
-				<li>
-					<div>Adresse:
+				<li class="row">
+					<div class="col-md-2 fw-bold">Adresse:</div>
+					<div class="col-md-10">
 						{{ partner.address }}</div>
 				</li>
-				<li>
-					<div>Mail:
+				<li class="row">
+					<div class="col-md-2 fw-bold">Mail:</div>
+					<div class="col-md-10">
 						{{ partner.email }}</div>
 				</li>
-				<li>
-					<div>Téléphone:
+				<li class="row">
+					<div class="col-md-2 fw-bold">Téléphone:</div>
+					<div class="col-md-10">
 						{{ partner.phone }}</div>
 				</li>
-				<li>
-					<div>Description:
+				<li class="row">
+					<div class="col-md-2 fw-bold">Description:</div>
+					<div class="col-md-10">
 						{{ partner.description }}</div>
 				</li>
 			</ul>
@@ -41,16 +48,16 @@
 				<a role="button" class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}">
 					<i class="bi bi-pencil-fill"></i>
 				</a>
+				<form action="/partners/delete" method="POST">
+					<input type="hidden" name="id" value="{{ partner.id }}">
+					<button class="btn btn-xl align-self-center" role="button">
+						<i class="bi bi-trash3-fill"></i>
+					</button>
+				</form>
 			</div>
-			<form action="/partners/delete" method="POST">
-				<input type="hidden" name="id" value="{{ partner.id }}">
-				<button class="btn btn-xl align-self-center" role="button">
-					<i class="bi bi-trash3-fill"></i>
+		</div>	
+				<button class="m-3">
+					<a href="/partners">Retour</a>
 				</button>
-			</form>
-		</div>
-		<button class="m-3">
-			<a href="/partners">Retour</a>
-		</button>
 	</main>
 {% endblock %}
