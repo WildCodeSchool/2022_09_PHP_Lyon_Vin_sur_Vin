@@ -173,3 +173,7 @@ h5 {
 .divCarousel {
     opacity: calc(90%);
 }
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+}
