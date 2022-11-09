@@ -1,37 +1,53 @@
 <div class="container d-flex flex-column">
-<form method="post" class="col align-self-center">
-	<div>
-		<input type="hidden" value="{{ partner.id }}" name="id">
-	</div>
+	<form method="post" class="col align-self-center">
+		<div>
+			<input type="hidden" value="{{ partner.id }}" name="id">
+		</div>
 
-	<div>
-		<label for="lastname">Nom :</label><br>
-		<input type="text" class="form-control form-control-color" value="{{ partner.lastname }}" name="lastname" id="lastname">
-	</div>
-	<div>
+		<div>
+			<label for="lastname">Nom :</label><br>
+			<input type="text" class="form-control form-control-color" value="{{ partner.lastname }}" name="lastname" id="lastname">
+			<div class="errors">{{errors.empty_lastname}}<br>
+				{{errors.last_length}}
+			</div>
+		</div>
+		<div>
 
-		<label for="firstaname">Prénom :</label><br>
-		<input type="text" class="form-control form-control-color" value="{{ partner.firstname }}" name="firstname" id="firstname">
-	</div>
+			<label for="firstname">Prénom :</label><br>
+			<input type="text" class="form-control form-control-color" value="{{ partner.firstname }}" name="firstname" id="firstname">
+			<div class="errors">{{errors.empty_firstname}}<br>
+				{{errors.first_length}}
+			</div>
+		</div>
 
-	<div>
-		<label for="address">Adresse :</label><br>
-		<input type="text" class="form-control form-control-color" value="{{ partner.address }}" name="address" id="address">
-	</div>
-	<div>
-		<label for="email">Email :</label><br>
-		<input type="email" class="form-control form-control-color" value="{{ partner.email }}" name="email" id="email">
-	</div>
-	<div>
-		<label for="phone">Téléphone :</label><br>
-		<input type="tel" class="form-control form-control-color" value="{{ partner.phone }}" name="phone" id="phone">
-	</div>
+		<div>
+			<label for="address">Adresse :</label><br>
+			<input type="text" class="form-control form-control-color" value="{{ partner.address }}" name="address" id="address">
+			<div class="errors">{{errors.empty_address}}<br>
+				{{errors.address_length}}
+			</div>
+		</div>
+		<div>
+			<label for="email">Email :</label><br>
+			<input type="email" class="form-control form-control-color" value="{{ partner.email }}" name="email" id="email">
+			<div class="errors">{{errors.email}}<br>{{errors.empty_email}}<br>{{errors.email_length}}
+			</div>
+		</div>
+		<div>
+			<label for="phone">Téléphone :</label><br>
+			<input type="tel" class="form-control form-control-color" value="{{ partner.phone }}" name="phone" id="phone">
+			<div class="errors">{{errors.phone}}<br>{{errors.empty_phone}}
+			</div>
+		</div>
 
-	<div>
-		<label for="description">Description :</label><br>
-		<textarea name="description" class="form-control form-control-color" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
-	</div>
+		<div>
+			<label for="description">Description :</label><br>
+			<textarea name="description" class="form-control form-control-color" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
+			<div class="errors">
+				{{errors.description_length}}
+			</div>
+		</div>
 
-	<button>Envoyer</button>
-</form>
+		<button>Envoyer</button>
+	</form>
 </div>
