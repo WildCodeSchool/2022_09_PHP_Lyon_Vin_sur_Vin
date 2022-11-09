@@ -9,7 +9,6 @@ class PartnerController extends AbstractController
     public array $errors = [];
 
     public function list(): string
-
     {
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->selectAll();
@@ -99,10 +98,9 @@ class PartnerController extends AbstractController
             $this->errors['email'] = 'L\'email n\'est pas valide';
         }
 
-        if ((strlen($partner['phone']) != 10) || (!filter_var($partner['phone'],  FILTER_VALIDATE_INT))) {
+        if ((strlen($partner['phone']) != 10) || (!filter_var($partner['phone'], FILTER_VALIDATE_INT))) {
             $this->errors['phone'] = "Numéro invalide. Le numéro doit contenir 10 chiffres.";
         }
-
         return $this->errors ?? [];
     }
     public function checkLength(array $partner, string $field, int $maxLength, string $key)
