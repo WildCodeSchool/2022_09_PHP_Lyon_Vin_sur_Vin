@@ -1,34 +1,37 @@
 {% extends "layout.html.twig" %}
 
 {% block admin_board %}
-	<main class="container d-flex flex-column">
-		<div class="row">
-			<h1 m-5>ESPACE ADMIN</h1>
-		</div>
-		<h3 class="row align-self-center m-5">Panneau administrateur</h3>
+	<section class="container d-flex flex-column">
 		<div class="row align-self-center">
-				<table class="table">
-					<thead>
-						<tr>
-							<td>
-								<a href="/partners">Partenaires</a>
-							</td>
-						</tr>
-							<td>
-								<a href="/wines">Vins</a>
-							</td>
-						<tr>
-							<td>
-								<a href="#">Carroussel</a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="#">Avis</a>
-							</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</main>
-{% endblock %}
+			<h1 class="m-5">ESPACE ADMIN</h1>
+		</div>
+		<h2 class="row align-self-start m-5">
+			<strong>Panneau administrateur<strong></h2>
+				<div class="row align-self-start mx-5">
+					<table class="table tableau">
+						<thead>
+							<tr>
+								<td>
+									<a href="/partners">Partenaires</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="/wines">Vins</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#">Carroussel</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#">Avis</a>
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</section>
+		{% endblock %}
