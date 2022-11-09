@@ -1,41 +1,44 @@
 {% extends "Shared/admin.html.twig" %}
 {% block content %}
-	<main>
 
 		<h3 class="text-center m-5">Fiche produit</h3>
-		
+
 		<div class="container d-flex flex-row justify-content-evenly bg-white">
-						<ul>
-							<li>ID</li>
-							<li>Nom du produit</li>
-							<li>Année</li>
-							<li>Prix</li>
-							<li>Catégorie</li>
-							<li>Description</li>
-							<li>ID fournisseur</li>
-							<li>Modifier</li>
-							<li>Supprimer</li>
-						</ul>
-						<ul>
-							<div>{{ wine.id }}</div>
-							<div>{{ wine.name }}</div>
-							<div>{{ wine.year }}</div>
-							<div>{{ wine.price }}</div>
-							<div>{{ wine.category }}</div>
-							<div>{{ wine.description }}</div>
-							<div>{{ wine.partner_id }}</div>
-</ul>
-							<div>
-								<a role="button" class="btn btn-xl align-self-center" href="/wines/edit?id={{wine.id}}"><i class="bi bi-pencil-fill"></i></a>
-								<form action="/wines/delete" method="POST">
-									<input type="hidden" name="id" value="{{ wine.id }}">
-									<button class="btn btn-xl align-self-center" role="button"><i class="bi bi-trash3-fill"></i></button>
-								</form>
-							</div>
-						
+			<ul>
+				<li>ID</li>
+				<li>Nom du produit</li>
+				<li>Année</li>
+				<li>Prix</li>
+				<li>Catégorie</li>
+				<li>Description</li>
+				<li>ID fournisseur</li>
+				<li>Modifier</li>
+				<li>Supprimer</li>
+			</ul>
+			<ul>
+				<div>{{ wine.id }}</div>
+				<div>{{ wine.name }}</div>
+				<div>{{ wine.year }}</div>
+				<div>{{ wine.price }}</div>
+				<div>{{ wine.category }}</div>
+				<div>{{ wine.description }}</div>
+				<div>{{ wine.partner_id }}</div>
+			</ul>
+			<div>
+				<a role="button" class="btn btn-xl align-self-center" href="/wines/edit?id={{wine.id}}">
+					<i class="bi bi-pencil-fill"></i>
+				</a>
+				<form action="/wines/delete" method="POST">
+					<input type="hidden" name="id" value="{{ wine.id }}">
+					<button class="btn btn-xl align-self-center" role="button">
+						<i class="bi bi-trash3-fill"></i>
+					</button>
+				</form>
+			</div>
+
 		</div>
-				<button>
-					<a href="/wines">Retour</a>
-				</button>
-	</main>
+		<button>
+			<a href="/wines">Retour</a>
+		</button>
+
 {% endblock %}
