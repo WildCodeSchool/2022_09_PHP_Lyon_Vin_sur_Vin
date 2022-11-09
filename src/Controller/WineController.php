@@ -9,12 +9,12 @@ class WineController extends AbstractController
     private array $errors = [];
 
 
-    public function list(): string
+    public function list(): ?string
     {
         if (!$this->admin) {
-            echo 'Seuls les adminsitrateurs ont accès à cette page';
+            echo 'Seuls les administrateurs ont accès à cette page';
             header('HTTP/1.1 401 Unauthorized');
-            exit();
+            return null;
         }
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();

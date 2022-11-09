@@ -9,13 +9,13 @@ class AdminController extends AbstractController
     /**
      * Display home page
      */
-    public function index(): string
+    public function index(): ?string
     {
         if (!$this->admin) {
-            echo 'Seuls les adminsitrateurs ont accès à cette page';
+            echo 'Seuls les administrateurs ont accès à cette page';
             header('HTTP/1.1 401 Unauthorized');
-            exit();
-        } 
+            return null;
+        }
         return $this->twig->render('Shared/admin.html.twig');
     }
 
