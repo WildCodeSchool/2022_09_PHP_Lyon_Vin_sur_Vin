@@ -11,6 +11,11 @@ class WineController extends AbstractController
 
     public function list(): string
     {
+        if (!$this->admin) {
+            echo 'Seuls les adminsitrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            exit();
+        }
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);

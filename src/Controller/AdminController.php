@@ -11,6 +11,11 @@ class AdminController extends AbstractController
      */
     public function index(): string
     {
+        if (!$this->admin) {
+            echo 'Seuls les adminsitrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            exit();
+        } 
         return $this->twig->render('Shared/admin.html.twig');
     }
 
@@ -33,5 +38,17 @@ class AdminController extends AbstractController
     {
         unset($_SESSION['admin_id']);
         header('Location: /');
+    }
+    public function register(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //      @todo make some controls and if errors send them to the view
+            $credentials = $_POST;
+            $adminManager = new AdminManager();
+            if ($adminManager->insert($credentials)) {
+                return $this->login();
+            }
+        }
+        return $this->twig->render('Admin/register.html.twig');
     }
 }

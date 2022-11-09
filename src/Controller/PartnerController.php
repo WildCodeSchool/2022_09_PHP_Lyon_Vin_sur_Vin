@@ -4,10 +4,17 @@ namespace App\Controller;
 
 use App\Model\PartnerManager;
 
+
 class PartnerController extends AbstractController
 {
+
     public function list(): string
     {
+        if (!$this->admin) {
+            echo 'Seuls les adminsitrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            exit();
+        }        
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->selectAll();
 

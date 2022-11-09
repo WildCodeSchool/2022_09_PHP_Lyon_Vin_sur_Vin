@@ -21,6 +21,7 @@ return [
     'admin' => ['AdminController', 'index',],
     'login' => ['AdminController', 'login',],
     'logout' => ['AdminController', 'logout',],
+    'register' => ['AdminController', 'register',],
     'partners' => ['PartnerController', 'list',],
     'partners/edit' => ['PartnerController', 'edit', ['id']],
     'partners/show' => ['PartnerController', 'show', ['id']],

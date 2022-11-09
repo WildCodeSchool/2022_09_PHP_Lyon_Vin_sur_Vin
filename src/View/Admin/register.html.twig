@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>Créer un compte</h1>
+            <p>Merci de remplir le formulaire suivant pour vous créer un compte.</p>
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Create account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
