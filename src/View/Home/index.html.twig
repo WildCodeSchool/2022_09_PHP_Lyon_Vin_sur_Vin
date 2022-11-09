@@ -1,22 +1,31 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<header class="banner">
-		<img src="/assets/images/vigne.jpg" alt="bannière vigne" class="img-fluid">
-	</header>
-	<main class="row align-items-center justify-content-around">
-		<div class="col col-lg-6">
-			<h1>Site de présentation de produits de caviste</h1>
+	<div class="banner">
+		<img src="/assets/images/vigne-split.jpg" alt="bannière vigne" class="img-fluid">
+	</div>
+
+	<section class="row align-items-center justify-content-around mx-3 my-5">
+
+
+		<div class="align-self-start col-xl-6 col-lg-10 col-md-10 col-sm-11 col-xs-11">
+			<h1 class="mt-5 mb-5 text-center">Achetez votre vin directement à la source</h1>
 			<br>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nulla ex,
-																				            posuere eu ultricies vel, euismod at urna. In nec turpis id leo ornare viverra.</p>
+			<p class="fs-4 text-center">Ce site a pour vocation de permettre à de petits exploitants d'avoir de la visibilité sur internet.
+																																								En passant par notre plateforme pour boire votre canon, vous contribuez à sauver les petits vignerons.<br>
+				Vous trouverez ici des vins que vous n'auriez jamais découverts ailleurs.
+			</p>
 		</div>
-		<div class="col col-lg-5">
+		<div class="col-xl-5 col-lg-7 col-md-9 col-sm-11 col-xs-12 my-3">
 			<img src="/assets/images/bouteilles-de-vin.jpg" alt="logo vins sur vins" class="img-fluid">
 		</div>
-	</main>
-	{% include "Shared/_carrousel.html.twig" %}
-	<h1 class="mt-5">Vous voulez proposer votre vin sur le site ?</h1>
-	<h1 class="mb-3">Contactez l'équipe via ce formulaire</h1>
+	</section>
+	<section class="cave py-5">
+		{% include "Shared/_carrousel.html.twig" %}
+	</section>
+	<h2 class="mt-5 text-center">Vous voulez proposer votre vin sur le site ?</h2>
+	<h2 class="mb-5 text-center fs-4">Contactez l'équipe via ce formulaire</h2>
+
+
 	{% include 'Home/_form.html.twig' %}
 {% endblock %}

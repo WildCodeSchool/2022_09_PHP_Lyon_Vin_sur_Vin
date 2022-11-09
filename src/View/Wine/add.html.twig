@@ -1,16 +1,9 @@
 {% extends "Shared/admin.html.twig" %}
 {% block content %}
 
-	<h1 class= "m-5">Ajouter un produit</h1>
+	<h1 class="text-center m-5">Ajouter un produit</h1>
 	<section>
 		{% include 'Wine/_form.html.twig' %}
-		{% block errors %}
-			<ul>
-				{% for error in errors %}
-					<li>{{ error }}</li>
-				{% endfor %}
-			</ul>
-		{% endblock %}
 	</section>
 	<button>
 		<a href="/wines">Retour</a>

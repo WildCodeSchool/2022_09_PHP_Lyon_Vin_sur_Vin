@@ -1,32 +1,42 @@
-{# TODO : manage errors display #}
-
-
-<div class="container d-flex flex-column">
-	<form method="post" class="col align-self-center">
+<div class="container d-flex">
+	<form method="post" class="row gy-3 justify-content-center my-5">
 		<input type="hidden" value="{{ wine.id }}" name="id">
-		<div>
+		<div class="col-10">
 			<label for="Nom du produit">Nom du produit :</label>
-			<input type="text" class="form-control form-control-color" value="{{ wine.name }}" id="name" name="name">
+			<input type="text" class="form-control" value="{{ wine.name }}" id="name" name="name">
+			<div class="errors">{{errors.empty_name}}<br>
+				{{errors.name_length}}</div>
 		</div>
-		<div>
+		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Année">Année :</label>
-			<input type="text" class="form-control form-control-color" value="{{ wine.year }}" id="year" name="year">
+			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
+			<div class="errors">{{errors.empty_year}}<br>
+				{{errors.year}}</div>
 		</div>
-		<div>
+		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Prix">Prix :</label>
-			<input type="text" class="form-control form-control-color" value="{{ wine.price }}" id="price" name="price">
+			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
+			<div class="errors">{{errors.empty_price}}<br>
+				{{errors.price}}</div>
 		</div>
-		<div>
-			<label for="Identifiant partenaire">Identifiant partenaire :</label>
-			<input type="text" class="form-control form-control-color" value="{{ wine.partner_id }}" id="partner_id" name="partner_id">
+		<div class="col-md-4 col-sm-4 col-xs-8">
+			<label for="Identifiant partenaire">Partenaire :</label>
+			<select class="form-control" id="partner_id" name="partner_id">
+				<option value="">Sélectionner un partenaire</option>
+				{% for partner in partners %}
+					<option value="{{partner.id}}">{{partner.lastname ~ ' ' ~ partner.firstname}}</option>
+				{% endfor %}
+			</select>
+			<div class="errors">{{errors.partner}}</div>
 		</div>
 
-		<div>
+		<div class="col-10">
 			<label for="description">Description :</label>
-			<textarea id="description" class="form-control form-control-color" value="{{ wine.description }}" name="description"></textarea>
+			<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>
+			<div class="errors">{{errors.description_length}}</div>
 		</div>
-		<div class="button" id="addbutton">
-			<button type="add">Ajouter le produit</button>
+		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
+			<button>Envoyer</button>
 		</div>
 	</form>
 </div>
