@@ -8,7 +8,7 @@ class PartnerController extends AbstractController
 {
     public array $errors = [];
 
-    public function list(): string
+    public function list(): ?string
     {
         if (!$this->admin) {
             echo 'Seuls les administrateurs ont accès à cette page';
@@ -21,8 +21,13 @@ class PartnerController extends AbstractController
         return $this->twig->render('Partner/list.html.twig', ['partners' => $partners]);
     }
 
-    public function show(int $id): string
+    public function show(int $id): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $partnerManager = new PartnerManager();
         $partner = $partnerManager->selectOneById($id);
 
@@ -31,7 +36,11 @@ class PartnerController extends AbstractController
 
     public function add(): ?string
     {
-
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $partnerManager = new PartnerManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $partner = array_map('trim', $_POST);
@@ -53,6 +62,11 @@ class PartnerController extends AbstractController
 
     public function edit(int $id): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $partnerManager = new PartnerManager();
         $partner = $partnerManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

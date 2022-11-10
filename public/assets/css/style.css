@@ -57,8 +57,6 @@ label {
 
 a.nav-link {
     color: #fdf2e9;
-
-    font-size: 1.5em;
 }
 
 a.navbar-brand {
@@ -86,6 +84,7 @@ a.navbar-brand {
     background-color: #baa99b;
     height: 5vh;
     font-weight: bold;
+    border-radius: 15px;
 }
 
 .form-control:focus {
@@ -112,7 +111,7 @@ button {
     color: white;
     background-color: #8d3939;
     margin: 1vh;
-    border-radius: 12px;
+    border-radius: 30px;
     border: 0px;
     font-size: 1.5rem;
     padding: 1rem;
@@ -130,7 +129,7 @@ button > a {
 #connectionbutton {
     color: #8d3939;
     background-color: #fdf2e9;
-    border-radius: 12px;
+    border-radius: 30px;
     border: 0px;
     padding: 0.5rem;
 }
