@@ -61,9 +61,10 @@ CREATE TABLE admin (
 );
 
 INSERT INTO admin (email, password)
-VALUES ('ljacobieski@gmail.com','rl1tEi4WKU/fA'), ('broyerdamien@gmail.com','rlgi19aTIPFvE'),
-('vallentjesse@live.com','rlxVmLyyXlrD2'), ('mat.lecanu@gmail.com','rlAvAcnbfX1O.');
+VALUES ('ljacobieski@gmail.com','$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS'), ('broyerdamien@gmail.com','$2y$10$x0zb3ZtuSzkeWt0Mp1Ccle7zZ60Lq9utb7oRTDQpxfTsUpd89nBgW'),
+('vallentjesse@live.com','$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri'), ('mat.lecanu@gmail.com','$2y$10$wtQaLMYckQQ35gRgSBFj2u1wjHY2DO0FtHHcanvIq01VXHeKxYEyu');
 
 SELECT * FROM partner;
 SELECT * FROM wine;
+SELECT * FROM admin;
 

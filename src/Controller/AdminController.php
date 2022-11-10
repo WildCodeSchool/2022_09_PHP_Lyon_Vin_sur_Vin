@@ -23,13 +23,30 @@ class AdminController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
-            //      @todo make some controls on email and password fields and if errors, send them to the view
+            //      @todo faire des controles pour dire si l'email et le mdp est bon
+            $errors = [];
+            if (empty($credentials['email'])) {
+                $errors['enter_email'] = 'Veuillez saisir votre adresse e-mail.';
+            }
+
+            if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL) && !empty($credentials['email'])) {
+                $errors['email_incorrect'] = "L'adresse e-mail saisie est incorrecte. ";
+            }
+
+            if (empty($credentials['password'])) {
+                $errors['enter_password'] = 'Veuillez saisir votre mot de passe.';
+            }
+
             $adminManager = new AdminManager();
             $user = $adminManager->selectOneByEmail($credentials['email']);
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['admin_id'] = $user['id'];
                 header('Location: /');
             }
+        }
+
+        if (!empty($errors)) {
+            return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
         }
         return $this->twig->render('Admin/login.html.twig');
     }
@@ -38,17 +55,5 @@ class AdminController extends AbstractController
     {
         unset($_SESSION['admin_id']);
         header('Location: /');
-    }
-    public function register(): string
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //      @todo make some controls and if errors send them to the view
-            $credentials = $_POST;
-            $adminManager = new AdminManager();
-            if ($adminManager->insert($credentials)) {
-                return $this->login();
-            }
-        }
-        return $this->twig->render('Admin/register.html.twig');
     }
 }
