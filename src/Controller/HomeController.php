@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\WineManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -10,5 +12,16 @@ class HomeController extends AbstractController
     public function index(): string
     {
         return $this->twig->render('Home/index.html.twig');
+    }
+    public function displayCatalog(): string
+    {
+        return $this->twig->render('Home/catalog.html.twig');
+    }
+
+    public function showCatalog(): string
+    {
+        $wineManager = new WineManager();
+        $wines = $wineManager->selectAll();
+        return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines]);
     }
 }
