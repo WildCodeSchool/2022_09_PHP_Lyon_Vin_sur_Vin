@@ -177,3 +177,9 @@ h5 {
 .copyright {
     background-color: rgba(0, 0, 0, 0.2);
 }
+.banniere {
+    background-image: url('/assets/images/vigne.jpg');
+    background-size: 100%;
+    height: 50vh;
+    color: #FDF2E9;
+}

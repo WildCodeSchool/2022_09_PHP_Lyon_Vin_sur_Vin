@@ -2,7 +2,11 @@
 
 {% block content %}
 	<div class="banner">
-		<img src="/assets/images/vigne-split.jpg" alt="bannière vigne" class="img-fluid">
+			<div class="banniere text-center p-4 fs-3">
+						{% if admin %}
+					Bienvenue {{admin.email}}
+			{% endif %}
+	</div>
 	</div>
 
 	<section class="row align-items-center justify-content-around mx-3 my-5">

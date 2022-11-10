@@ -9,19 +9,19 @@
 		</div>
 		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Année">Année :</label>
-			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
+			<input type="number" class="form-control form-control-color" value="{{ wine.year }}" id="year" name="year">
 			<div class="errors">{{errors.empty_year}}<br>
 				{{errors.year}}</div>
 		</div>
 		<div class="col-md-3 col-sm-4 col-xs-8">
 			<label for="Prix">Prix :</label>
-			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
+			<input type="number" class="form-control form-control-color" value="{{ wine.price }}" id="price" name="price">
 			<div class="errors">{{errors.empty_price}}<br>
 				{{errors.price}}</div>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-8">
 			<label for="Identifiant partenaire">Partenaire :</label>
-			<select class="form-control" id="partner_id" name="partner_id">
+			<select class="form-control form-control-color" id="partner_id" name="partner_id">
 				<option value="">Sélectionner un partenaire</option>
 				{% for partner in partners %}
 					<option value="{{partner.id}}">{{partner.lastname ~ ' ' ~ partner.firstname}}</option>
@@ -40,3 +40,4 @@
 		</div>
 	</form>
 </div>
+

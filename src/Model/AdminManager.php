@@ -14,4 +14,14 @@ class AdminManager extends AbstractManager
 
         return $statement->fetch();
     }
+    public function insert(array $credentials): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
+            " (`email`, `password`)
+            VALUES (:email, :password)");
+        $statement->bindValue(':email', $credentials['email']);
+        $statement->bindValue(':password', password_hash($credentials['password'], PASSWORD_DEFAULT));
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
+    }
 }
