@@ -9,15 +9,25 @@ class WineController extends AbstractController
     public array $errors = [];
 
 
-    public function list(): string
+    public function list(): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();
         return $this->twig->render('Wine/list.html.twig', ['wines' => $wines]);
     }
 
-    public function show(int $id): string
+    public function show(int $id): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
@@ -25,6 +35,11 @@ class WineController extends AbstractController
 
     public function edit(int $id): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
         $partners = $wineManager->selectPartner();
@@ -43,6 +58,11 @@ class WineController extends AbstractController
 
     public function add(): ?string
     {
+        if (!$this->admin) {
+            echo 'Seuls les administrateurs ont accès à cette page';
+            header('HTTP/1.1 401 Unauthorized');
+            return null;
+        }
         $wineManager = new WineManager();
         $partners = $wineManager->selectPartner();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -17,46 +17,45 @@
 		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
     </head>
 
-    <body>
+	<body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <img src="/assets/images/VinsSurVins_1.png" class="img-thumbnail" alt="logo vins sur vins">
-
-                <a class="navbar-brand ps-5" href="/">Vins sur vins</a>
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container-fluid">
+                <a href="/">
+                    <img src="/assets/images/VinsSurVins_1.png" class="img-thumbnail" alt="logo vins sur vins">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand ps-5" href="/">Vins sur vins</a>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/">Accueil</a>
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item p-2">
+                            <a class="nav-link p-2 fs-5" href="/partners">Partenaires</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/partners">Nos Partenaires</a>
+                        <li class="nav-item p-2">
+                            <a class="nav-link p-2 fs-5" href="/wines">Catalogue</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/wines">Catalogue</a>
+                        <li class="nav-item ">
+                            <a class="nav-link p-2 fs-5" href="/admin">Administrateur</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Espace administrateur</a>
-                        </li>
+                        <button class="col d-flex align-self-center" id="connectionbutton">
+                            {% if admin %}
+                            <a id="connexion" href="/logout">Déconnexion</a>
+                            {% else %}
+                            <a id="connexion" href="/login">Connexion</a>
+                            {% endif %}
+                        </button>
                     </ul>
-
-                    <button class="mx-1" id="connectionbutton">
-                        <a href="/connexion" id="connexion">Connexion</a>
-                    </button>
-
                 </div>
-            </div>
-        </nav>
+			</div>
+		</nav>
     </header>
         <main>
             {% block admin_board %}{% endblock %}
             {% block content %}{% endblock %}
             {% block javascript %}{% endblock %}
         </main>
-
         <footer
             class="footerbar text-center container-fluid fixed-bottom">
             <!-- Grid container -->
@@ -81,7 +80,6 @@
                     <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com" role="button">
                         <i class="bi bi-instagram"></i>
                     </a>
-
                 </section>
             </div>
 

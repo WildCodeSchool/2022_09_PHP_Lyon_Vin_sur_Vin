@@ -1,57 +1,61 @@
 {% extends "Shared/admin.html.twig" %}
 {% block content %}
 
-	<h3 class="text-center m-5">
-		Fiche partenaire
-		{{ partner.firstname }}
-		{{ partner.lastname }}</h3>
-	<div class="container d-flex flex-row justify-content-evenly bg-white">
-		<ul>
-			<li>
-				Identifiant:
-				{{ partner.id }}
-			</li>
-			<li>
-				Nom:
-				{{ partner.lastname }}
-			</li>
-			<li>
-				Prénom:
-				{{ partner.firstname }}
-			</li>
-			<li>
-				Adresse:
-				{{ partner.address }}
-			</li>
-			<li>
-				Mail:
-				{{ partner.email }}
-			</li>
-			<li>
-				Téléphone:
-				{{ partner.phone }}
-			</li>
-			<li>
-				Description:
-				{{ partner.description }}
-			</li>
-		</ul>
-		<div>
-			<a role="button" class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}">
-				<i class="bi bi-pencil-fill"></i>
-			</a>
-		</div>
-		<div>
-			<form action="/partners/delete" method="POST">
-				<input type="hidden" name="id" value="{{ partner.id }}">
-				<button class="btn btn-xl align-self-center" role="button">
-					<i class="bi bi-trash3-fill"></i>
+		<h2 class="text-center m-5">
+			Fiche partenaire
+			{{ partner.firstname }}
+			{{ partner.lastname }}</h2>
+		<div class="container d-flex flex-row justify-content-evenly bg-white shadow-lg p-3 mb-5 bg-white rounded">
+			<ul class="row">
+				<li class="row">
+					<div class="col-md-2 fw-bold">Identifiant:</div>
+					<div class="col-md-10">
+					{{ partner.id }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Nom:</div>
+					<div class="col-md-10">
+					{{ partner.lastname }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Prénom:</div>
+					<div class="col-md-10">
+						{{ partner.firstname }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Adresse:</div>
+					<div class="col-md-10">
+						{{ partner.address }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Mail:</div>
+					<div class="col-md-10">
+						{{ partner.email }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Téléphone:</div>
+					<div class="col-md-10">
+						{{ partner.phone }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-2 fw-bold">Description:</div>
+					<div class="col-md-10">
+						{{ partner.description }}</div>
+				</li>
+			</ul>
+			<div>
+				<a role="button" class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}">
+					<i class="bi bi-pencil-fill"></i>
+				</a>
+				<form action="/partners/delete" method="POST">
+					<input type="hidden" name="id" value="{{ partner.id }}">
+					<button class="btn btn-xl align-self-center" role="button">
+						<i class="bi bi-trash3-fill"></i>
+					</button>
+				</form>
+			</div>
+		</div>	
+				<button class="m-3">
+					<a href="/partners">Retour</a>
 				</button>
-			</form>
-		</div>
-	</div>
-	<button class="m-3">
-		<a href="/partners">Retour</a>
-	</button>
-
 {% endblock %}
