@@ -73,7 +73,8 @@ class PartnerController extends AbstractController
 
             if (!empty($this->errors)) {
                 return $this->twig->render(
-                    'Partner/edit.html.twig', ['errors' => $this->errors, 'partner' => $partner],
+                    'Partner/edit.html.twig',
+                    ['errors' => $this->errors, 'partner' => $partner],
                 );
             }
             $partnerManager->update($partner);
