@@ -28,7 +28,7 @@ class WineController extends AbstractController
             return null;
         }
         $wineManager = new WineManager();
-        $wine = $wineManager->selectOneById($id);
+        $wine = $wineManager->selectOneWineById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
 
@@ -101,6 +101,8 @@ class WineController extends AbstractController
         $this->checkIfEmpty($wine, 'name', 'empty_name');
         $this->checkIfEmpty($wine, 'price', 'empty_price');
         $this->checkIfEmpty($wine, 'year', 'empty_year');
+        $this->checkIfEmpty($wine, 'color', 'empty_color');
+        $this->checkIfEmpty($wine, 'region', 'empty_region');
 
         if (
             filter_var(
