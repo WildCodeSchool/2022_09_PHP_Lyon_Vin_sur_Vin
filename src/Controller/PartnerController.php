@@ -58,8 +58,6 @@ class PartnerController extends AbstractController
         return $this->twig->render('Partner/add.html.twig');
     }
 
-
-
     public function edit(int $id): ?string
     {
         if (!$this->admin) {
@@ -74,7 +72,9 @@ class PartnerController extends AbstractController
             $this->errors = $this->validate($partner);
 
             if (!empty($this->errors)) {
-                return $this->twig->render('Partner/edit.html.twig', ['errors' => $this->errors]);
+                return $this->twig->render(
+                    'Partner/edit.html.twig', ['errors' => $this->errors, 'partner' => $partner],
+                );
             }
             $partnerManager->update($partner);
             header('Location:/partners/show?id=' . $id);
@@ -83,8 +83,6 @@ class PartnerController extends AbstractController
 
         return $this->twig->render('Partner/edit.html.twig', ['partner' => $partner,]);
     }
-
-
 
     public function delete(): void
     {
@@ -111,7 +109,6 @@ class PartnerController extends AbstractController
         $this->checkIfEmpty($partner, 'email', 'empty_email');
         $this->checkIfEmpty($partner, 'address', 'empty_address');
         $this->checkIfEmpty($partner, 'phone', 'empty_phone');
-
 
         if (!filter_var($partner['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = 'L\'email n\'est pas valide';

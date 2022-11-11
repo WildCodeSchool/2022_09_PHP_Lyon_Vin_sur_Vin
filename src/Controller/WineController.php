@@ -8,7 +8,6 @@ class WineController extends AbstractController
 {
     public array $errors = [];
 
-
     public function list(): ?string
     {
         if (!$this->admin) {
@@ -47,7 +46,10 @@ class WineController extends AbstractController
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
             if (!empty($this->errors)) {
-                return $this->twig->render('Wine/edit.html.twig', ['errors' => $this->errors]);
+                return $this->twig->render(
+                    'Wine/edit.html.twig',
+                    ['errors' => $this->errors, 'wine' => $wine, 'partners' => $partners]
+                );
             }
             $wineManager->update($wine);
             header('Location: /wines/show?id=' . $id);
@@ -109,7 +111,6 @@ class WineController extends AbstractController
         ) {
             $this->errors['year'] = 'L\'année doit être comprise entre 1901 et 2023';
         }
-
         if (
             filter_var(
                 $wine['price'],
