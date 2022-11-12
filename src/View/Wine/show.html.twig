@@ -31,9 +31,6 @@
 					<div class="col-md-9">{{ wine.lastname ~ " " ~ wine.firstname}}</div>
 				</li>
 			</ul>
-            <pre>
-                {{ dump(wine.id) }}
-            </pre>
 				<div>
 					<a role="button" class="btn btn-xl align-self-center" href="/wines/edit?id={{wine.id}}"><i class="bi bi-pencil-fill"></i></a>
 					<form action="/wines/delete" method="POST">

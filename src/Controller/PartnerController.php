@@ -115,7 +115,7 @@ class PartnerController extends AbstractController
             $this->errors['email'] = 'L\'email n\'est pas valide';
         }
 
-        if ((strlen($partner['phone']) != 10) || (!filter_var($partner['phone'], FILTER_VALIDATE_INT))) {
+        if (!filter_var($partner['phone'], FILTER_VALIDATE_REGEXP, ["options" => ["regexp" => "/^[0-9]{10}+$/"]])) {
             $this->errors['phone'] = "Numéro invalide. Le numéro doit contenir 10 chiffres.";
         }
         return $this->errors ?? [];
