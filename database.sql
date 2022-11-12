@@ -52,3 +52,27 @@ UPDATE wine SET favorite = 1 WHERE id BETWEEN 1 and 3;
 SELECT * FROM partner;
 SELECT * FROM wine;
 
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `pseudo` varchar(45) NOT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `addresse` VARCHAR(255) DEFAULT NULL,
+  `phone` VARCHAR(10) DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES (1,'marty@wilders.com','$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK','Marty','Marty','McFly');
+UNLOCK TABLES;
+
+-- pseudo : marty
+-- email : marty@wilders.com
+-- password : Wilder4Ever

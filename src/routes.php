@@ -25,4 +25,7 @@ return [
     'partners/add' => ['PartnerController', 'add',],
     'partners/delete' => ['PartnerController', 'delete',],
     'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
+    'login' => ['UserController', 'login',],
+    'logout' => ['UserController', 'logout',],
+    'register' => ['UserController', 'register',],
 ];

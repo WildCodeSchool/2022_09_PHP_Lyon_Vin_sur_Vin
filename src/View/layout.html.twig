@@ -44,7 +44,8 @@
                     </ul>
 
                     <button class="mx-1" id="connectionbutton">
-                        <a href="/connexion" id="connexion">Connexion</a>
+                      {% if user %} <a href="/logout" id="connexion">Déconnexion</a> {% else %}
+                        <a href="/login" id="connexion">Connexion</a>{% endif %}
                     </button>
 
                 </div>
