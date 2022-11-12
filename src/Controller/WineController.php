@@ -72,7 +72,7 @@ class WineController extends AbstractController
             $this->errors = $this->validate($wine);
 
             if (!empty($this->errors)) {
-                return $this->twig->render('Wine/add.html.twig', ['errors' => $this->errors]);
+                return $this->twig->render('Wine/add.html.twig', ['errors' => $this->errors, 'partners' => $partners]);
             }
 
             $id = $wineManager->insert($wine);
