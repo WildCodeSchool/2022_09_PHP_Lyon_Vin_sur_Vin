@@ -21,7 +21,7 @@ class PartnerManager extends AbstractManager
         $statement->bindValue('description', $partner['description'], PDO::PARAM_STR);
 
         $statement->execute();
-        return (int)$this->pdo->lastInsertId();        
+        return (int)$this->pdo->lastInsertId();
     }
 
     public function update(array $partner): bool
