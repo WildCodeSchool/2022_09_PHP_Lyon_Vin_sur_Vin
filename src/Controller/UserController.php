@@ -23,7 +23,7 @@ class UserController extends AbstractController
                 return null;
             }
             if ($user == false || !password_verify($credentials['password'], $user['password'])) {
-                $this->errors['wrong'] = 'Les identifiants ne correspondent pas.';
+                $this->errors['wrong'] = 'L\'email et le mot de passe ne correspondent pas.';
             }
         }
         if (!empty($this->errors)) {

@@ -32,7 +32,7 @@ class AdminController extends AbstractController
                 header('Location: /');
             }
             if ($admin == false || !password_verify($credentials['password'], $admin['password'])) {
-                $errors['wrong'] = 'Les identifiants ne correspondent pas';
+                $errors['wrong'] = 'L\'email et le mot de passe ne correspondent pas.';
             }
         }
 
