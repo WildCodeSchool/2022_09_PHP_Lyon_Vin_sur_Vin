@@ -12,27 +12,22 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
-            $this->errors = $this->validate($credentials);
-            if ((!empty($credentials['email'])) && (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL))) {
-                $this->errors['email'] = "L'adresse e-mail saisie est incorrecte. ";
-            }
-            if (empty($credentials['password'])) {
-                $this->errors['empty_password'] = 'Veuillez saisir votre mot de passe.';
-            }
-            if (!empty($this->errors)) {
-                return $this->twig->render('User/login.html.twig', ['errors' => $this->errors]);
-            }
             //      @todo make some controls on email and password fields and if errors, send them to the view
             $userManager = new UserManager();
+            $this->errors = $this->checkUserFields($credentials);
             $user = $userManager->selectOneByEmail($credentials['email']);
-            if (isset($_POST['email'])) {
-                $_SESSION['email'] = $_POST['email'];
-            }
+
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
                 header('Location: /');
                 return null;
             }
+            if ($user == false || !password_verify($credentials['password'], $user['password'])) {
+                $this->errors['wrong'] = 'Les identifiants ne correspondent pas.';
+            }
+        }
+        if (!empty($this->errors)) {
+            return $this->twig->render('User/login.html.twig', ['errors' => $this->errors]);
         }
 
         return $this->twig->render('User/login.html.twig');
@@ -40,6 +35,7 @@ class UserController extends AbstractController
 
     public function logout()
     {
+        unset($_SESSION['admin_id']);
         unset($_SESSION['user_id']);
         header('Location: /');
     }
@@ -102,5 +98,26 @@ class UserController extends AbstractController
         if (!isset($credentials[$field]) || empty($credentials[$field])) {
             $this->errors[$key] = "Ce champ est obligatoire";
         }
+    }
+    public function checkUserFields(array $credentials): array
+    {
+
+        if (empty($credentials['email'])) {
+            $this->errors['empty_mail'] = 'Veuillez saisir votre adresse e-mail.';
+        }
+
+        if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['email'] = "L'adresse e-mail saisie est incorrecte. ";
+        }
+
+        if (empty($credentials['password'])) {
+            $this->errors['empty_password'] = 'Veuillez saisir votre mot de passe.';
+        }
+
+        if (strlen($credentials['password']) > 20) {
+            $this->errors['password_length'] = 'Votre mot de passe ne peut faire plus de 20 caractères.';
+        }
+
+        return $this->errors;
     }
 }

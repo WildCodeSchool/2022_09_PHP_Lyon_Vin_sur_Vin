@@ -19,6 +19,7 @@ return [
     'wines/add' => ['WineController', 'add',],
     'wines/delete' => ['WineController', 'delete',],
     'admin' => ['AdminController', 'index',],
+    'login/admin' => ['AdminController', 'login',],
     'partners' => ['PartnerController', 'list',],
     'partners/edit' => ['PartnerController', 'edit', ['id']],
     'partners/show' => ['PartnerController', 'show', ['id']],

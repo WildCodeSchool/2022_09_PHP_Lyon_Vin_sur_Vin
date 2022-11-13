@@ -57,8 +57,6 @@ label {
 
 a.nav-link {
     color: #fdf2e9;
-
-    font-size: 1.2em;
 }
 
 a.navbar-brand {
@@ -86,6 +84,7 @@ a.navbar-brand {
     background-color: #baa99b;
     height: 5vh;
     font-weight: bold;
+    border-radius: 15px;
 }
 
 .form-control:focus {
@@ -112,14 +111,23 @@ button {
     color: white;
     background-color: #8d3939;
     margin: 1vh;
-    border-radius: 12px;
+    border-radius: 30px;
     border: 0px;
     font-size: 1.5rem;
     padding: 1rem;
 }
 
+button:hover{
+    text-decoration: underline;
+    color: black;
+}
+
 button > a {
     color: white;
+}
+
+button > a:hover {
+    color: black;
 }
 
 #connexion {
@@ -130,7 +138,7 @@ button > a {
 #connectionbutton {
     color: #8d3939;
     background-color: #fdf2e9;
-    border-radius: 12px;
+    border-radius: 30px;
     border: 0px;
     padding: 0.5rem;
 }
@@ -160,8 +168,29 @@ h5 {
 }
 
 .cave {
-    background: url(/assets/images/cave_vin.jpg);
+    background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
     background-size: 100% auto;
+}
+
+.banniere {
+    background: url('/assets/images/vigne-split.jpg') no-repeat;
+    background-size: 100% auto;
+    height: 60vh;
+    color: #FDF2E9;
+}
+
+@media screen and (max-width: 1300px){
+    .cave{
+        background: none;
+    }
+
+    .banniere{
+        background: url('/assets/images/vigne.jpg') no-repeat fixed;
+        background-size: 100% auto;
+        height: 50vh;
+        color: #FDF2E9;
+
+    }
 }
 
 .best-seller {
@@ -172,4 +201,8 @@ h5 {
 
 .divCarousel {
     opacity: calc(90%);
+}
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.2);
 }

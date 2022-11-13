@@ -3,16 +3,16 @@
 {% block content %}
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <h1>Se connecter</h1>
+        <h1 class="p-3">Se connecter</h1></br>
+        <p>Entrez vos identifiants dans le formulaire qui suit :</p>
         <form method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" >
                 {% if errors %}
                 <div class="errors">
-                    {{errors.empty_mail}}<br>
-				    {{errors.email_length}}<br>
-                    {{errors.email}}
+                    {{errors.email}}<br>
+                    {{errors.empty_email}}<br>
                 </div>
                 {% endif %}
             </div>
@@ -26,8 +26,7 @@
                 </div>
                 {% endif %}
             </div>
-            <button type="submit" class="btn btn-success">Me connecter</button>
-            <button class="btn btn-primary"><a href="/register">Inscription</a></button>
+            <button type="submit" class="btn btn-success">Se connecter</button>
             {% if errors %}
                 <div class="errors">
                     {{errors.wrong}}<br>
