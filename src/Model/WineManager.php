@@ -76,13 +76,22 @@ class WineManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
+
     public function selectSearch(string $search): array
     {
-        $query = "SELECT id, name, year, price, description FROM wine  WHERE name, year, price, 
-        description LIKE '% '. $search '.%'";
 
-        return $this->pdo->query($query)->fetchAll();
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name 
+        LIKE :search
+        OR year LIKE  :search
+        OR category LIKE :search
+        OR price LIKE :search
+        OR description LIKE :search");
+        $statement->bindValue('search', '%' . $search . '%', \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
+
     public function selectOneByEmail(string $email): array|false
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");

@@ -56,4 +56,11 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+    public function selectSearch(string $search): array
+    {
+        $query = "SELECT * FROM wine  WHERE name, year, price, 
+        description LIKE '% '. $search '.%'";
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }
