@@ -49,6 +49,22 @@ VALUES ('Beaujolais de Damien', 1989, 10, 1), ('La villageoise de Allan', 2023, 
 ('Viognier de Mathieu', 1994, 12, 4), ('Bordeaux de Jesse', 1995, 11, 5);
 UPDATE wine SET favorite = 1 WHERE id BETWEEN 1 and 3;
 
+-- Table structure for table admin
+--
+
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin (
+  id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  email varchar(100) NOT NULL,
+  password varchar(255) NOT NULL,
+  UNIQUE KEY email_UNIQUE (email)
+);
+
+INSERT INTO admin (email, password)
+VALUES ('ljacobieski@gmail.com','$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS'), ('broyerdamien@gmail.com','$2y$10$x0zb3ZtuSzkeWt0Mp1Ccle7zZ60Lq9utb7oRTDQpxfTsUpd89nBgW'),
+('vallentjesse@live.com','$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri'), ('mat.lecanu@gmail.com','$2y$10$wtQaLMYckQQ35gRgSBFj2u1wjHY2DO0FtHHcanvIq01VXHeKxYEyu');
+
 SELECT * FROM partner;
 SELECT * FROM wine;
+SELECT * FROM admin;
 
