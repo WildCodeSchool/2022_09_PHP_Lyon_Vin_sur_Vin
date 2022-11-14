@@ -4,10 +4,11 @@
 	<div class="banner">
 		<div class="banniere text-center p-4 fs-3">
 		{% if admin %}
-				Bienvenue {{admin.pseudo}}
-		{% endif %}
-        {%if user %}
-            Bonjour frère {{user.pseudo}}
+			Bienvenue admin {{admin.pseudo}}
+		{% elseif user %}
+            Bonjour client {{user.pseudo}}
+        {% elseif pro %}
+            Ave pro {{pro.firstname ~ ' ' ~ pro.lastname}}
         {% endif %}
 		</div>
 	</div>

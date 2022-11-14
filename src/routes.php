@@ -29,4 +29,6 @@ return [
     'login' => ['UserController', 'login',],
     'logout' => ['UserController', 'logout',],
     'register' => ['UserController', 'register',],
+    'login/professional' => ['PartnerController', 'login',],
+    'register/professional' => ['PartnerController', 'setPassword', ['id']],
 ];

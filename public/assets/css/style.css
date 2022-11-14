@@ -181,7 +181,7 @@ h5 {
 
 @media screen and (max-width: 1300px){
     .cave{
-        background: none;
+        background: url(/assets/images/cave_vin.jpg) center/cover;
     }
 
     .banniere{
@@ -194,7 +194,7 @@ h5 {
 }
 
 .best-seller {
-    width: 12vw;
+    width: 20vw;
     opacity: calc(90%);
     color: #8d3939;
 }

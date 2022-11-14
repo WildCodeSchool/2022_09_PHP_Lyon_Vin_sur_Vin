@@ -133,4 +133,74 @@ class PartnerController extends AbstractController
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";
         }
     }
+    public function login(): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $credentials = array_map('trim', $_POST);
+            //      @todo make some controls on email and password fields and if errors, send them to the view
+            $partnerManager = new PartnerManager();
+            $this->errors = $this->checkProFields($credentials);
+            $pro = $partnerManager->selectOneByEmail($credentials['email']);
+
+            if ($pro && password_verify($credentials['password'], $pro['password'])) {
+                $_SESSION['pro_id'] = $pro['id'];
+                header('Location: /');
+                return null;
+            }
+
+            if ($pro == false || !password_verify($credentials['password'], $pro['password'])) {
+                $this->errors['wrong'] = 'L\'email et le mot de passe ne correspondent pas.';
+            }
+        }
+        if (!empty($this->errors)) {
+            return $this->twig->render('Professional/login.html.twig', ['errors' => $this->errors]);
+        }
+
+        return $this->twig->render('Professional/login.html.twig');
+    }
+
+    public function checkProFields(array $credentials): array
+    {
+        if (empty($credentials['email'])) {
+            $this->errors['empty_mail'] = 'Veuillez saisir votre adresse e-mail.';
+        }
+
+        if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['email'] = "L'adresse e-mail saisie est incorrecte. ";
+        }
+
+        if (empty($credentials['password'])) {
+            $this->errors['empty_password'] = 'Veuillez saisir votre mot de passe.';
+        }
+
+        if (strlen($credentials['password']) > 20) {
+            $this->errors['password_length'] = 'Votre mot de passe ne peut faire plus de 20 caractères.';
+        }
+
+        return $this->errors;
+    }
+
+    public function setPassword()
+    {
+        $partnerManager = new PartnerManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $credentials = array_map('trim', $_POST);
+            $partnerManager->selectOneByEmail($credentials['email']);
+            if (empty($credentials['password']) || empty($credentials['password2'])) {
+                $this->errors['empty_password'] = 'Veuillez saisir votre mot de passe.';
+            }
+            if ((!empty($credentials['email'])) && (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL))) {
+                $this->errors['email'] = "L'adresse e-mail saisie est incorrecte. ";
+            }
+            if (!empty($this->errors && $credentials['password'] === $credentials['password2'])) {
+                return $this->twig->render('Professional/set_password.html.twig', ['errors' => $this->errors]);
+            }
+                //      @todo make some controls and if errors send them to the view
+            if (empty($this->errors)) {
+                $partnerManager->addPassword($credentials);
+                return $this->login();
+            }
+        }
+        return $this->twig->render('Professional/set_password.html.twig');
+    }
 }

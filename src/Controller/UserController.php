@@ -37,6 +37,7 @@ class UserController extends AbstractController
     {
         unset($_SESSION['admin_id']);
         unset($_SESSION['user_id']);
+        unset($_SESSION['pro_id']);
         header('Location: /');
     }
 
@@ -81,9 +82,6 @@ class UserController extends AbstractController
         $this->checkIfEmpty($credentials, 'email', 'empty_email');
         $this->checkIfEmpty($credentials, 'pseudo', 'empty_pseudo');
 
-        if ((strlen($credentials['phone']) != 10) || (!filter_var($credentials['phone'], FILTER_VALIDATE_INT))) {
-            $this->errors['phone'] = "Numéro invalide. Le numéro doit contenir 10 chiffres.";
-        }
         return $this->errors ?? [];
     }
     public function checkLength(array $credentials, string $field, int $maxLength, string $key)

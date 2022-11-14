@@ -8,6 +8,15 @@ class PartnerManager extends AbstractManager
 {
     public const TABLE = 'partner';
 
+    public function selectOneByEmail(string $email): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
     public function insert(array $partner): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
@@ -38,5 +47,14 @@ class PartnerManager extends AbstractManager
         $statement->bindValue('description', $partner['description'], PDO::PARAM_STR);
 
         return $statement->execute();
+    }
+
+    public function addPassword(array $credentials)
+    {
+        $statement = $this->pdo->prepare("UPDATE " . static::TABLE .
+        " SET `password` = :password WHERE email=:email");
+        $statement->bindValue(':email', $credentials['email']);
+        $statement->bindValue(':password', password_hash($credentials['password'], PASSWORD_DEFAULT));
+        $statement->execute();
     }
 }

@@ -37,12 +37,17 @@
                             <a class="nav-link p-2 fs-5" href="/wines">Catalogue</a>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link p-2 fs-5" href="/login/professional">Pro</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link p-2 fs-5" href="/login/admin">Administrateur</a>
                         </li>
                         <button class="col d-flex align-self-center" id="connectionbutton">
                             {% if admin %}
                             <a id="connexion" href="/logout">Déconnexion</a>
                             {% elseif user %}
+                            <a id="connexion" href="/logout">Déconnexion</a>
+                            {% elseif pro %}
                             <a id="connexion" href="/logout">Déconnexion</a>
                             {% else %}
                             <a id="connexion" href="/login">Connexion</a>

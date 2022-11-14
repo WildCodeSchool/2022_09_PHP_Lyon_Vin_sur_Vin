@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Se connecter</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+                {% if errors %}
+                <div class="errors">
+                    {{errors.empty_mail}}<br>
+				    {{errors.email_length}}<br>
+                    {{errors.email}}
+                </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" >
+                {% if errors %}
+                <div class="errors">
+                    {{errors.empty_password}}<br>
+                    {{errors.password_length}}<br>
+                </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-success">Me connecter</button>
+            <button class="btn btn-primary"><a href="/register/professional">Première connexion</a></button>
+            {% if errors %}
+                <div class="errors">
+                    {{errors.wrong}}<br>
+                </div>
+                {% endif %}
+        </form>
+    </div>
+</div>
+{%  endblock %}
