@@ -1,13 +1,15 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<div class="banner">
-		<div class="banniere text-center p-4 fs-3">
+		<h3 class="welcome text-center p-2 mb-0">
 		{% if admin %}
 				Bienvenue {{admin.pseudo}}
 		{% endif %}
-		</div>
+		</h3>
+	<div class="banner">
+		<img src="/assets/images/vigne-split.jpg" alt="bannière vigne" class="img-fluid">
 	</div>
+
 
 	<section class="row align-items-center justify-content-around mx-3 mb-5">
 		<div class="align-self-start col-xl-6 col-lg-10 col-md-10 col-sm-11 col-xs-11">
