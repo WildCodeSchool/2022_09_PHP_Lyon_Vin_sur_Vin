@@ -136,8 +136,8 @@ class PartnerController extends AbstractController
 
     public function partnerList(): string
     {
-      $partnersForUserManager = new PartnerManager();
-      $partnersForUsers = $partnersForUserManager->selectAll();
-      return $this->twig->render('Shared/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
+        $partnersManager = new PartnerManager();
+        $partnersForUsers = $partnersManager->selectAll();
+        return $this->twig->render('Shared/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
     }
 }
