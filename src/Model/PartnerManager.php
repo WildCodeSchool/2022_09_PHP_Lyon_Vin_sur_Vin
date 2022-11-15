@@ -42,11 +42,11 @@ class PartnerManager extends AbstractManager
 
     public function showPartnerWine(int $id): array
     {
-        $statement = $this->pdo->prepare('SELECT p.id, w.id, w.name, w.year, w.price FROM partner AS p INNER JOIN wine as w ON p.id = w.partner_id WHERE p.id=:id');
+        $statement = $this->pdo->prepare('SELECT p.id, w.id, w.name, w.year, w.price 
+        FROM partner AS p INNER JOIN wine as w ON p.id = w.partner_id WHERE p.id=:id');
         $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
     }
-    
 }
