@@ -121,8 +121,17 @@ button {
     padding: 1rem;
 }
 
+button:hover {
+    text-decoration: underline;
+    color: black;
+}
+
 button>a {
     color: white;
+}
+
+button>a:hover {
+    color: black;
 }
 
 #connexion {
@@ -155,8 +164,9 @@ h5 {
     font-family: "swap";
 }
 
-.banner {
-    margin-bottom: 50px;
+.welcome {
+    color: #FDF2E9;
+    background-color: black;
 }
 
 .footerbar {
@@ -164,7 +174,8 @@ h5 {
 }
 
 .cave {
-    background: url(/assets/images/cave_vin.jpg);
+
+    background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
     background-size: 100% auto;
 }
 

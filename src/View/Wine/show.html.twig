@@ -3,37 +3,40 @@
 
 		<h2 class="text-center m-5">
 		Fiche produit</h2>
-		
+
 		<div class="container d-flex flex-row justify-content-evenly bg-white shadow-lg p-3 mb-5 bg-white rounded">
 			<ul class="row">
 				<li class="row">
-					<div class="col-md-2 fw-bold">Identifiant:</div>
-					<div class="col-md-10">
-					{{ wine.id }}</div>
+					<div class="col-md-3 fw-bold">Nom du produit:</div>
+					<div class="col-md-9">{{ wine.name }}</div>
 				</li>
 				<li class="row">
-					<div class="col-md-2 fw-bold">Nom du produit:</div>
-					<div class="col-md-10">{{ wine.name }}</div>
+					<div class="col-md-3 fw-bold">Année:</div>
+					<div class="col-md-9">{{ wine.year }}</div>
 				</li>
 				<li class="row">
-					<div class="col-md-2 fw-bold">Année:</div>
-					<div class="col-md-10">{{ wine.year }}</div>
+					<div class="col-md-3 fw-bold">Prix:</div>
+					<div class="col-md-9">{{ wine.price }}</div>
 				</li>
 				<li class="row">
-					<div class="col-md-2 fw-bold">Prix:</div>
-					<div class="col-md-10">{{ wine.price }}</div>
+					<div class="col-md-3 fw-bold">Couleur:</div>
+					<div class="col-md-9">{{ wine.color }}</div>
+				</li>
+                <li class="row">
+					<div class="col-md-3 fw-bold">Région:</div>
+					<div class="col-md-9">{{ wine.region }}</div>
+				</li>
+                <li class="row">
+					<div class="col-md-3 fw-bold">Cépage:</div>
+					<div class="col-md-9">{{ wine.grape }}</div>
 				</li>
 				<li class="row">
-					<div class="col-md-2 fw-bold">Catégorie:</div>
-					<div class="col-md-10">{{ wine.category }}</div>
+					<div class="col-md-3 fw-bold">Description:</div>
+					<div class="col-md-9">{{ wine.description }}</div>
 				</li>
 				<li class="row">
-					<div class="col-md-2 fw-bold">Description:</div>
-					<div class="col-md-10">{{ wine.description }}</div>
-				</li>
-				<li class="row">
-					<div class="col-md-2 fw-bold">ID fournisseur:</div>
-					<div class="col-md-10">{{ wine.partner_id }}</div>
+					<div class="col-md-3 fw-bold">Fournisseur:</div>
+					<div class="col-md-9">{{ wine.lastname ~ " " ~ wine.firstname}}</div>
 				</li>
 			</ul>
 				<div>
@@ -42,10 +45,9 @@
 						<input type="hidden" name="id" value="{{ wine.id }}">
 						<button class="btn btn-xl align-self-center" role="button"><i class="bi bi-trash3-fill"></i></button>
 					</form>
-				</div>			
+				</div>
 		</div>
 				<button class="m-3">
 					<a href="/wines">Retour</a>
 				</button>
-	</main>
 {% endblock %}

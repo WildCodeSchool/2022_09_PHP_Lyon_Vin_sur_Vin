@@ -1,10 +1,9 @@
-<div class="container d-flex flex-column">
-	<form method="post" class="col align-self-center">
-		<div>
-			<input type="hidden" value="{{ partner.id }}" name="id">
-		</div>
+<div class="container d-flex">
+	<form method="post" class="row gy-3 justify-content-center my-5">
 
-		<div>
+		<input type="hidden" value="{{ partner.id }}" name="id">
+
+		<div class="col-md-5 col-sm-5 col-xs-8 col-10">
 			<label for="lastname">Nom :</label><br>
 			<input type="text" class="form-control" value="{{ partner.lastname }}" name="lastname" id="lastname">
 			{% if errors %}
@@ -13,7 +12,8 @@
 				</div>
 			{% endif %}
 		</div>
-		<div>
+
+		<div class="col-md-5 col-sm-5 col-xs-8 col-10">
 
 			<label for="firstname">Prénom :</label><br>
 			<input type="text" class="form-control" value="{{ partner.firstname }}" name="firstname" id="firstname">
@@ -24,33 +24,35 @@
 			{% endif %}
 		</div>
 
-		<div>
-			<label for="address">Adresse :</label><br>
-			<input type="text" class="form-control" value="{{ partner.address }}" name="address" id="address">
+		<div class="col-md-5 col-sm-5 col-xs-8 col-10">
+			<label for="email">Email :</label><br>
+			<input type="email" class="form-control" value="{{ partner.email }}" name="email" id="email">
 			{% if errors %}
 				<div class="errors">{{errors.empty_address}}<br>
 					{{errors.address_length}}
 				</div>
 			{% endif %}
 		</div>
-		<div>
-			<label for="email">Email :</label><br>
-			<input type="email" class="form-control" value="{{ partner.email }}" name="email" id="email">
+
+		<div class="col-md-5 col-sm-5 col-xs-8 col-10">
+			<label for="phone">Téléphone :</label><br>
+			<input type="tel" class="form-control" value="{{ partner.phone }}" name="phone" id="phone">
 			{% if errors %}
 				<div class="errors">{{errors.email}}<br>{{errors.empty_email}}<br>{{errors.email_length}}
 				</div>
 			{% endif %}
 		</div>
-		<div>
-			<label for="phone">Téléphone :</label><br>
-			<input type="tel" class="form-control" value="{{ partner.phone }}" name="phone" id="phone">
+
+		<div class="col-xs-8 col-10">
+			<label for="address">Adresse :</label><br>
+			<input type="text" class="form-control" value="{{ partner.address }}" name="address" id="address">
 			{% if errors %}
 				<div class="errors">{{errors.phone}}<br>{{errors.empty_phone}}
 				</div>
 			{% endif %}
 		</div>
 
-		<div>
+		<div class="col-xs-8 col-10">
 			<label for="description">Description :</label><br>
 			<textarea name="description" class="form-control" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
 			{% if errors %}
@@ -59,7 +61,8 @@
 				</div>
 			{% endif %}
 		</div>
-
-		<button>Envoyer</button>
+		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
+			<button>Envoyer</button>
+		</div>
 	</form>
 </div>

@@ -8,7 +8,6 @@ class WineController extends AbstractController
 {
     public array $errors = [];
 
-
     public function list(): ?string
     {
         if (!$this->admin) {
@@ -29,7 +28,7 @@ class WineController extends AbstractController
             return null;
         }
         $wineManager = new WineManager();
-        $wine = $wineManager->selectOneById($id);
+        $wine = $wineManager->selectOneWineById($id);
         return $this->twig->render('Wine/show.html.twig', ['wine' => $wine]);
     }
 
@@ -47,7 +46,10 @@ class WineController extends AbstractController
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
             if (!empty($this->errors)) {
-                return $this->twig->render('Wine/edit.html.twig', ['errors' => $this->errors]);
+                return $this->twig->render(
+                    'Wine/edit.html.twig',
+                    ['errors' => $this->errors, 'wine' => $wine, 'partners' => $partners]
+                );
             }
             $wineManager->update($wine);
             header('Location: /wines/show?id=' . $id);
@@ -70,7 +72,7 @@ class WineController extends AbstractController
             $this->errors = $this->validate($wine);
 
             if (!empty($this->errors)) {
-                return $this->twig->render('Wine/add.html.twig', ['errors' => $this->errors]);
+                return $this->twig->render('Wine/add.html.twig', ['errors' => $this->errors, 'partners' => $partners]);
             }
 
             $id = $wineManager->insert($wine);
@@ -99,6 +101,8 @@ class WineController extends AbstractController
         $this->checkIfEmpty($wine, 'name', 'empty_name');
         $this->checkIfEmpty($wine, 'price', 'empty_price');
         $this->checkIfEmpty($wine, 'year', 'empty_year');
+        $this->checkIfEmpty($wine, 'color', 'empty_color');
+        $this->checkIfEmpty($wine, 'region', 'empty_region');
 
         if (
             filter_var(
@@ -109,7 +113,6 @@ class WineController extends AbstractController
         ) {
             $this->errors['year'] = 'L\'année doit être comprise entre 1901 et 2023';
         }
-
         if (
             filter_var(
                 $wine['price'],

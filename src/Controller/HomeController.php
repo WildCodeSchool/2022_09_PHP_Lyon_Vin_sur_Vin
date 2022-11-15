@@ -35,3 +35,4 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines]);
     }
 }
+/** Faire une fonction partner pour afficher la page partner */
