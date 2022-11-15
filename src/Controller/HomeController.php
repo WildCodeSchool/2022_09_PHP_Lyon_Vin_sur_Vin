@@ -28,7 +28,7 @@ class HomeController extends AbstractController
 
     public function searchCatalog($search): string
     {
-
+        $search = trim($search);
         $wineManager = new WineManager();
         $wines = $wineManager->selectSearch($search);
 

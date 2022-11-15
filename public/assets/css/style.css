@@ -198,3 +198,21 @@ h5 {
     height: 50vh;
     color: #FDF2E9;
 }
+
+.color_text {
+    color: #FFC700;
+
+}
+
+.search {
+    background-color: #baa99b;
+    color: white;
+
+    margin: 0vh;
+    border-radius: 30px;
+    border: 0px;
+    font-size: 1.5rem;
+    padding: 1rem;
+
+
+}
