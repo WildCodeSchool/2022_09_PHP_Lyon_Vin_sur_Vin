@@ -140,4 +140,15 @@ class PartnerController extends AbstractController
         $partnersForUsers = $partnersManager->selectAll();
         return $this->twig->render('Shared/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
     }
+
+    public function partnerShow(int $id): string
+    {
+        $partnerManager = new PartnerManager();
+        $partner = $partnerManager->selectOneById($id);
+
+        $wineManager = new PartnerManager();
+        $wines = $wineManager->showPartnerWine($id);
+
+        return $this->twig->render('Shared/onePartner.html.twig', ['partner' => $partner, 'wines' => $wines]);
+    }
 }

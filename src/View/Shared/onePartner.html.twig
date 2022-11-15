@@ -3,11 +3,10 @@
 {% block content %}
 	<section class="container d-flex flex-column">
 		<div class="row align-self-center">
-			<h1 class="m-5">NOS PARTENAIRES</h1>
+			<h1 class="m-5">{{partner.firstname}} {{partner.lastname}}</h1>
 		</div>
     <div>
-    {% for partner in partnersForUser %}
-      <div class="card mb-3 p-2 col-md-10 container d-flex flex-column">
+       <div class="card mb-3 p-2 col-md-10 container d-flex flex-column">
         <div class="row g-0 justify-content-start">
           <div class="col-md-3">
             <img src="/assets/images/PhotoDamien.png" class="img-fluid rounded-start" alt="photoDamienBroyer">
@@ -19,14 +18,19 @@
               <p class="card-text">{{partner.address}}</p>
               <p class="card-text">{{partner.email}}</p>
               <p class="card-text">{{partner.phone}}</p>
-              <button class="col-4 p-1">
-              <a class="fs-5" href="/onePartner?id={{partner.id}}">Voir mes produits</a>
-              </button>
             </div>
           </div>
         </div>
       </div>
-    {% endfor %}
     </div>
+    <div class="row align-self-center">
+			<h1 class="m-5">Les vins de {{partner.firstname}} {{partner.lastname}}</h1>
+		</div>
+    {% for wine in wines %}
+    <div>
+    {{wine.name}}  {{wine.price}}
+    </div>
+    {% endfor %}
+
   </section>
 {% endblock %}
