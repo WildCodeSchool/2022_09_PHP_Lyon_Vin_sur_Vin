@@ -206,3 +206,15 @@ h5 {
 .copyright {
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+.card {
+    background-color: #393737;
+    border-radius: 20px;
+    color: #FDF2E9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+

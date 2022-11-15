@@ -133,4 +133,11 @@ class PartnerController extends AbstractController
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";
         }
     }
+
+    public function partnerList(): string
+    {
+      $partnersForUserManager = new PartnerManager();
+      $partnersForUsers = $partnersForUserManager->selectAll();
+      return $this->twig->render('Shared/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
+    }
 }

@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<section class="container d-flex flex-column">
+		<div class="row align-self-center">
+			<h1 class="m-5">NOS PARTENAIRES</h1>
+		</div>
+    <div>
+    {% for partner in partnersForUser %}
+      <div class="card mb-3 p-2 col-md-10 container d-flex flex-column">
+        <div class="row g-0 justify-content-start">
+          <div class="col-md-3">
+            <img src="/assets/images/PhotoDamien.png" class="img-fluid rounded-start" alt="photoDamienBroyer">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body flex-row">
+              <h5 class="card-title fw-bold">{{partner.firstname}} {{partner.lastname}}</h5>
+              <p class="card-text">Description : {{partner.description}}</p>
+              <p class="card-text">{{partner.address}}</p>
+              <p class="card-text">{{partner.email}}</p>
+              <p class="card-text">{{partner.phone}}</p>
+              <button class="d-flex align-items-end">
+              <a href="/catalologByPartner">Voir mes produits</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </section>
+{% endblock %}
