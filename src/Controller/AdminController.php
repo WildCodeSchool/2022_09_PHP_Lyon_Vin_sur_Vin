@@ -21,10 +21,12 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+        {
             $credentials = array_map('trim', $_POST);
             //      @todo faire des controles pour dire si l'email et le mdp est bon
             $errors = [];
+            
             if (empty($credentials['email'])) {
                 $errors['enter_email'] = 'Veuillez saisir votre adresse e-mail.';
             }
@@ -43,8 +45,11 @@ class AdminController extends AbstractController
                 $_SESSION['admin_id'] = $user['id'];
                 header('Location: /');
             }
-        }
 
+            if ($user == false || !password_verify($credentials['password'], $user['password'])) {
+                $errors['wrong'] = "Vous n'avez pas de compte ou vous avez fait une faute de frappe";
+            }
+        }
         if (!empty($errors)) {
             return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
         }

@@ -25,7 +25,12 @@
                 </div>
                 {% endif %}
             </div>
-            <button type="submit" class="btn btn-success">Se connecter</button>
+            <button type="submit" class="button">Se connecter</button>
+                {% if errors %}
+                <div class="errors">
+                    {{errors.wrong}}<br>
+                </div>
+                {% endif %}
         </form>
     </div>
 </div>
