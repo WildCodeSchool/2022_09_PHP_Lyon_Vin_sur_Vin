@@ -13,10 +13,7 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
-    public function displayCatalog(): string
-    {
-        return $this->twig->render('Home/catalog.html.twig');
-    }
+
 
     public function showCatalog(): string
     {
