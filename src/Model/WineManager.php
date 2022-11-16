@@ -13,7 +13,7 @@ class WineManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare('SELECT w.id as id, name, year, price, region, color, grape, partner_id,
         w.description, p.lastname as lastname, p.firstname as firstname FROM ' . static::TABLE .
-        ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
+            ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -94,5 +94,31 @@ class WineManager extends AbstractManager
         $query = 'SELECT id, lastname, firstname FROM partner ';
 
         return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function selectSearch(string $search): array
+    {
+
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name 
+        LIKE :search
+        OR year LIKE  :search
+        OR price LIKE :search
+        OR region LIKE :search
+        OR color LIKE :search
+        OR grape LIKE :search
+        OR description LIKE :search");
+        $statement->bindValue('search', '%' . $search . '%', \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    public function selectOneByEmail(string $email): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }
