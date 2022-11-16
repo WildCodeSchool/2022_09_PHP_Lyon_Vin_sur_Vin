@@ -19,7 +19,7 @@
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
 			<label for="Prix">Prix :</label>
-			<input type="float" class="form-control" value="{{ wine.price }}" id="price" name="price">
+			<input type="number" step="0.01" class="form-control" value="{{ wine.price }}" id="price" name="price">
 			{% if errors %}
 			<div class="errors">{{errors.empty_price}}<br>
 				{{errors.price}}</div>
