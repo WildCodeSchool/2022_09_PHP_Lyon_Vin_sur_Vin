@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use PDO;
+use App\Controller\AbstractController;
 
 class WineManager extends AbstractManager
 {
@@ -92,6 +93,16 @@ class WineManager extends AbstractManager
     public function selectPartner(): array
     {
         $query = 'SELECT id, lastname, firstname FROM partner ';
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+
+    public function selectWinesFromPartner(int $id): array
+    {
+        $id = $_SESSION['pro_id'];
+
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE partner_id =' . $id;
+
 
         return $this->pdo->query($query)->fetchAll();
     }

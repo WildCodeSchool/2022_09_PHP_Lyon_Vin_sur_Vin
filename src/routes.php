@@ -26,9 +26,10 @@ return [
     'partners/add' => ['PartnerController', 'add',],
     'partners/delete' => ['PartnerController', 'delete',],
     'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
+    'logout' => ['AccountService', 'logout',],
     'login' => ['UserController', 'login',],
-    'logout' => ['UserController', 'logout',],
     'register' => ['UserController', 'register',],
-    'login/professional' => ['PartnerController', 'login',],
-    'register/professional' => ['PartnerController', 'setPassword', ['id']],
+    'login/professional' => ['ProController', 'login',],
+    'register/professional' => ['ProController', 'setPassword', ['id']],
+    'professional' => ['ProController', 'index',['id']],
 ];

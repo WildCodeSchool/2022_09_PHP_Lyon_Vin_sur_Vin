@@ -25,6 +25,7 @@
 				{{errors.price}}</div>
 			{% endif %}
 		</div>
+        {% if admin %}
 		<div class="col-md-4 col-sm-5 col-xs-8 col-10">
 			<label for="partner_id">Partenaire :</label>
 			<select class="form-control form-select" id="partner_id" name="partner_id">
@@ -37,6 +38,9 @@
 			<div class="errors">{{errors.partner}}</div>
 			{% endif %}
 		</div>
+        {% elseif pro %}
+            <input type="hidden" value="{{ pro.id }}" name="partner_id">
+        {% endif %}
         <div class="col-md-3 col-sm-5 col-xs-8 col-10">
 			<label for="color">Couleur :</label>
 			<select class="form-control form-select" id="color" name="color">

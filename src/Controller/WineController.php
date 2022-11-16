@@ -6,8 +6,6 @@ use App\Model\WineManager;
 
 class WineController extends AbstractController
 {
-    public array $errors = [];
-
     public function list(): ?string
     {
         if (!$this->admin) {
