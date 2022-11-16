@@ -102,8 +102,10 @@ class WineManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name 
         LIKE :search
         OR year LIKE  :search
-        OR category LIKE :search
         OR price LIKE :search
+        OR region LIKE :search
+        OR color LIKE :search
+        OR grape LIKE :search
         OR description LIKE :search");
         $statement->bindValue('search', '%' . $search . '%', \PDO::PARAM_STR);
         $statement->execute();
