@@ -26,11 +26,10 @@
     <div class="row align-self-center">
 			<h1 class="m-5">Les vins de {{partner.firstname}} {{partner.lastname}}</h1>
 		</div>
+    <div class="row justify-content-center">
     {% for wine in wines %}
-    <div>
-    {{wine.name}}  {{wine.price}}
-    </div>
+    {% include "Shared/_wine_catalog.html.twig" %}
     {% endfor %}
-
+    </div>
   </section>
 {% endblock %}
