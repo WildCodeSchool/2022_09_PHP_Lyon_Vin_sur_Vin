@@ -2,9 +2,6 @@ DROP DATABASE IF EXISTS vin_sur_vin;
 CREATE DATABASE vin_sur_vin;
 USE vin_sur_vin;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 CREATE TABLE `item` (
   `id` int(11) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL
@@ -16,9 +13,6 @@ INSERT INTO `item` (`id`, `title`) VALUES
 
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
  DROP TABLE IF EXISTS partner;
 CREATE TABLE partner (
@@ -96,7 +90,7 @@ CREATE TABLE `user` (
   `lastname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+)
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
