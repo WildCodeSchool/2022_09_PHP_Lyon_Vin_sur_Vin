@@ -14,7 +14,7 @@ class WineManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare('SELECT w.id as id, name, year, price, region, color, grape, partner_id,
         w.description, p.lastname as lastname, p.firstname as firstname FROM ' . static::TABLE .
-        ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
+            ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
