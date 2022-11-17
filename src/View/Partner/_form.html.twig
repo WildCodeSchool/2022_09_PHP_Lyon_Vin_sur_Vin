@@ -53,16 +53,25 @@
 		</div>
 
 		<div class="col-xs-8 col-10">
-			<label for="description">Description :</label><br>
-			<textarea name="description" class="form-control" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
+			<label for="image">Photo du partenaire :</label>
+			<input type="text" class="form-control" placeholder="Entrer l'url vers une image" value="{{ partner.image }}" id="image" name="image">
 			{% if errors %}
-				<div class="errors">
-					{{errors.description_length}}
-				</div>
-			{% endif %}
-		</div>
-		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
-			<button>Envoyer</button>
-		</div>
-	</form>
-</div>
+				<div class="errors">{{errors.empty_image}}<br>
+					{{error.url_length}}
+				{% endif %}
+			</div>
+
+			<div class="col-xs-8 col-10">
+				<label for="description">Description :</label><br>
+				<textarea name="description" class="form-control" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
+				{% if errors %}
+					<div class="errors">
+						{{errors.description_length}}
+					</div>
+				{% endif %}
+			</div>
+			<div class="button d-flex justify-content-center align-self-center" id="addbutton">
+				<button>Envoyer</button>
+			</div>
+		</form>
+	</div>

@@ -100,16 +100,19 @@ class PartnerController extends AbstractController
         $partner['firstname'] = filter_var($partner['firstname'], FILTER_SANITIZE_ENCODED);
         $partner['email'] = filter_var($partner['email'], FILTER_SANITIZE_ENCODED);
         $partner['address'] = filter_var($partner['address'], FILTER_SANITIZE_ENCODED);
+        $partner['image'] = filter_var($partner['image'], FILTER_SANITIZE_ENCODED);
         $this->checkLength($partner, 'lastname', 100, 'last_length');
         $this->checkLength($partner, 'firstname', 100, 'first_length');
         $this->checkLength($partner, 'email', 100, 'email_length');
-        $this->checkLength($partner, 'address', 250, 'adress_length');
+        $this->checkLength($partner, 'address', 255, 'adress_length');
         $this->checkLength($partner, 'description', 1000, 'description_length');
+        $this->checkLength($partner, 'image', 255, 'url_length');
         $this->checkIfEmpty($partner, 'lastname', 'empty_lastname');
         $this->checkIfEmpty($partner, 'firstname', 'empty_firstname');
         $this->checkIfEmpty($partner, 'email', 'empty_email');
         $this->checkIfEmpty($partner, 'address', 'empty_address');
         $this->checkIfEmpty($partner, 'phone', 'empty_phone');
+        $this->checkIfEmpty($partner, 'image', 'empty_image');
 
         if (!filter_var($partner['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = 'L\'email n\'est pas valide';

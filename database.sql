@@ -10,16 +10,17 @@ lastname VARCHAR(100),
 address VARCHAR(255),
 email VARCHAR(100),
 phone VARCHAR(10),
+image VARCHAR(255),
 password VARCHAR(255),
 description TEXT(1000)
 );
 
-INSERT INTO partner (firstname, lastname, phone, address, email, password, description)
-VALUES ('Damien', 'Butcher', 0677665522, '15 rue de Belleville', 'broyerdamien@gmail.com', '$2y$10$x0zb3ZtuSzkeWt0Mp1Ccle7zZ60Lq9utb7oRTDQpxfTsUpd89nBgW', "Accroupi au fond de signer l'acte de mémoire, reproduire fidèlement mes paroles, n'en dépensait pas le quart de la valeur du gibier. Ai-je besoin de vous prier de m'accorder quelques jours. "),
-('Alan', 'Bedrine', 0766554433, '10 rue Symphony', 'alan@wilders.com', '$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK', "Chevalier, où venait se coller la poussière. Allez donc, dit tranquillement l'abbé en faisant un geste désespéré, le chevalier blessé allait adresser la parole ; on s'empressa de venir les voir en place. "),
-('Lila', 'Coquille', 0577889900, '20 rue de Varsovie', 'ljacobieski@gmail.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "Souffrait-il donc, pour bien méditer, il importe à l'oeuvre et la vieille maison, le jeune artiste inclina la tête affirmativement. Jonchés de morts et de mourants, et jeté sur un tas de vêtements écroulés. "),
-('Mathieu', 'Lecanu', 0612324252, '16 rue de Belleville', 'mat.lecanu@gmail.com', '$2y$10$wtQaLMYckQQ35gRgSBFj2u1wjHY2DO0FtHHcanvIq01VXHeKxYEyu', "Syndicats et partis ouvriers se donnent une maladie sombre ; ils s'acharnaient au froment ; et ils restèrent là, silencieux. Penché en dehors dans le vide sonore des pièces, dans lesquelles elle était en train de survoler l'île. "),
-('Jesse', 'Vallant', 0633831565, '10 rue du potier', 'vallantjesse@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Habitude prise dans des pays où l'indépendance est devenue convoitise. Mets-toi là, voisine, dit-elle en composant un numéro, là, à se rassembler. ");
+INSERT INTO partner (firstname, lastname, phone, image, address, email, password, description)
+VALUES ('Damien', 'Butcher', 0677665522, "/assets/images/PhotoDamien.png", '15 rue de Belleville', 'broyerdamien@gmail.com', '$2y$10$x0zb3ZtuSzkeWt0Mp1Ccle7zZ60Lq9utb7oRTDQpxfTsUpd89nBgW', "Accroupi au fond de signer l'acte de mémoire, reproduire fidèlement mes paroles, n'en dépensait pas le quart de la valeur du gibier. Ai-je besoin de vous prier de m'accorder quelques jours. "),
+('Alan', 'Bedrine', 0766554433, "https://media-exp1.licdn.com/dms/image/C4E35AQEXGDy-cM9gxQ/profile-framedphoto-shrink_800_800/0/1598796860338?e=1669327200&v=beta&t=bOm5GEcGIG56M3QbvlYRiS2R8WYHr8CUHY75rJ1eQNE", '10 rue Symphony', 'alan@wilders.com', '$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK', "Chevalier, où venait se coller la poussière. Allez donc, dit tranquillement l'abbé en faisant un geste désespéré, le chevalier blessé allait adresser la parole ; on s'empressa de venir les voir en place. "),
+('Lila', 'Coquille', 0577889900, "https://media-exp1.licdn.com/dms/image/D4E35AQH4Kt_6bMSfiQ/profile-framedphoto-shrink_800_800/0/1666266761773?e=1669327200&v=beta&t=6nqQN9r6Oo6qZNVwWGxtGqPNLIVDncVgpIMuzYSLiN0",'20 rue de Varsovie', 'ljacobieski@gmail.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "Souffrait-il donc, pour bien méditer, il importe à l'oeuvre et la vieille maison, le jeune artiste inclina la tête affirmativement. Jonchés de morts et de mourants, et jeté sur un tas de vêtements écroulés. "),
+('Mathieu', 'Lecanu', 0612324252, "https://media-exp1.licdn.com/dms/image/D4E03AQEBzo38o1D7LA/profile-displayphoto-shrink_800_800/0/1668615218030?e=1674086400&v=beta&t=OGX2N1bnzKa-oL9NAlrDIe684YUJvjTVJ0dowZy5guA",'16 rue de Belleville', 'mat.lecanu@gmail.com', '$2y$10$wtQaLMYckQQ35gRgSBFj2u1wjHY2DO0FtHHcanvIq01VXHeKxYEyu', "Syndicats et partis ouvriers se donnent une maladie sombre ; ils s'acharnaient au froment ; et ils restèrent là, silencieux. Penché en dehors dans le vide sonore des pièces, dans lesquelles elle était en train de survoler l'île. "),
+('Jesse', 'Vallant', 0633831565, "https://media-exp1.licdn.com/dms/image/D4E03AQGIRqeUurluNA/profile-displayphoto-shrink_800_800/0/1668535076158?e=1674086400&v=beta&t=SjEEZoAmD6tI1ovqpqD-lLjQwIBXaIflGixnpL9wgTw", '10 rue du potier', 'vallantjesse@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Habitude prise dans des pays où l'indépendance est devenue convoitise. Mets-toi là, voisine, dit-elle en composant un numéro, là, à se rassembler. ");
 
 DROP TABLE IF EXISTS wine;
 CREATE TABLE wine (
