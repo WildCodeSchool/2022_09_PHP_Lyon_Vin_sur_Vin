@@ -21,22 +21,13 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-        {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             //      @todo faire des controles pour dire si l'email et le mdp est bon
             $errors = [];
-            
-            if (empty($credentials['email'])) {
-                $errors['enter_email'] = 'Veuillez saisir votre adresse e-mail.';
-            }
 
             if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL) && !empty($credentials['email'])) {
                 $errors['email_incorrect'] = "L'adresse e-mail saisie est incorrecte. ";
-            }
-
-            if (empty($credentials['password'])) {
-                $errors['enter_password'] = 'Veuillez saisir votre mot de passe.';
             }
 
             $adminManager = new AdminManager();
