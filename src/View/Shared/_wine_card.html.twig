@@ -1,20 +1,16 @@
-{% for wine in wines %}
-	<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
-		<img src="https://media.auchan.fr/P02000000000X2QPRIMARY_512x512/B2CD/%22/%3E" class="card-img-top" alt="Bouteille de vin">
-		<div class="card-body d-flex flex-column">
-			<h3 class="card-title text-center mt-4 mb-2">
-				<strong>{{wine.name}}</strong>
-			</h3>
-			<h4 class="card-subtitle px-3 my-3">
-				<u>Prix :</u>
-				{{wine.price}}€</h4>
-			<h4 class="card-subtitle px-3 my-3">
-				<u>Cuvée :</u>
-				{{wine.year}}</h4>
+<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+	<img src="https://media.auchan.fr/P02000000000X2QPRIMARY_512x512/B2CD/%22/%3E" class="card-img-top" alt="Bouteille de vin">
+	<div class="card-body d-flex flex-column">
+		<h3 class="card-title text-center mt-4 mb-2">
+			<strong>{{wine.name}}</strong>
+		</h3>
+		<h4 class="color_text card-subtitle px-3 my-3">>
+			{{wine.price}}€</h4>
+		<h4 class="color_text card-subtitle px-3 my-3">
+			{{wine.year}}</h4>
 
-			<button class="align-self-center mb-3 mt-4 mx-5">
-				<a href="wines/show?id={{ wine.id }}">Détails</a>
-			</button>
-		</div>
+		<button class="align-self-center mb-3 mt-4 mx-5">
+			<a href="wines/show?id={{ wine.id }}">Détails</a>
+		</button>
 	</div>
-{% endfor %}
+</div>

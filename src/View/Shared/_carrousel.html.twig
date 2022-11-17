@@ -13,8 +13,10 @@
 					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=" bg-dark" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class=" bg-dark" aria-label="Slide 3"></button>
 				</div>
-				<div class="carousel-inner ">
-					{% include "Shared/_wine_card.html.twig" %}
+				<div class="carousel-inner">
+					{% for wine in wines %}
+						{% include "Shared/_wine_card.html.twig" %}
+					{% endfor %}
 				</div>
 
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

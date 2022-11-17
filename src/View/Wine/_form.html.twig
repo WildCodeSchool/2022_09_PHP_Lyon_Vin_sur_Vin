@@ -18,7 +18,8 @@
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<<<<<<<HEAD<labelfor="price">Prix:</label><inputtype="number"class="form-control"value="{{wine.price}}"id="price"name="price">=======<labelfor="Prix">Prix:</label><inputtype="number"step="0.01"class="form-control"value="{{wine.price}}"id="price"name="price">>>>>>>> dev
+			<label for="price">Prix :</label>
+			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
 			{% if errors %}
 				<div class="errors">{{errors.empty_price}}<br>
 					{{errors.price}}</div>
