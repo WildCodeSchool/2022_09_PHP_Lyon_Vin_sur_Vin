@@ -94,13 +94,16 @@ class WineController extends AbstractController
     {
         $wine['description'] = filter_var($wine['description'], FILTER_SANITIZE_ENCODED);
         $wine['name'] = filter_var($wine['name'], FILTER_SANITIZE_ENCODED);
+        $wine['image'] = filter_var($wine['image'], FILTER_SANITIZE_ENCODED);
         $this->checkLength($wine, 'name', 100, 'name_length');
         $this->checkLength($wine, 'description', 1000, 'description_length');
+        $this->checkLength($wine, 'image', 255, 'url_length');
         $this->checkIfEmpty($wine, 'name', 'empty_name');
         $this->checkIfEmpty($wine, 'price', 'empty_price');
         $this->checkIfEmpty($wine, 'year', 'empty_year');
         $this->checkIfEmpty($wine, 'color', 'empty_color');
         $this->checkIfEmpty($wine, 'region', 'empty_region');
+        $this->checkIfEmpty($wine, 'image', 'empty_image');
 
         if (
             filter_var(

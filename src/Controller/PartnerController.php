@@ -98,6 +98,8 @@ class PartnerController extends AbstractController
         $partner['description'] = filter_var($partner['description'], FILTER_SANITIZE_ENCODED);
         $partner['lastname'] = filter_var($partner['lastname'], FILTER_SANITIZE_ENCODED);
         $partner['firstname'] = filter_var($partner['firstname'], FILTER_SANITIZE_ENCODED);
+        $partner['email'] = filter_var($partner['email'], FILTER_SANITIZE_ENCODED);
+        $partner['address'] = filter_var($partner['address'], FILTER_SANITIZE_ENCODED);
         $this->checkLength($partner, 'lastname', 100, 'last_length');
         $this->checkLength($partner, 'firstname', 100, 'first_length');
         $this->checkLength($partner, 'email', 100, 'email_length');

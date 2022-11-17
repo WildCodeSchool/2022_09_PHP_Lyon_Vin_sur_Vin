@@ -24,8 +24,8 @@ class WineManager extends AbstractManager
     public function insert(array $wine): int
     {
         $query = "INSERT INTO " . self::TABLE .
-            " (`name`, `year`, `price`, `partner_id`, `color`, `region`, `grape`, `description`, `favorite`)
-        VALUES (:name, :year, :price, :partner_id, :color, :region, :grape, :description, 0)";
+            " (`name`, `year`, `price`, `partner_id`, `color`, `region`, `grape`, `image`, `description`, `favorite`)
+        VALUES (:name, :year, :price, :partner_id, :color, :region, :grape, :image, :description, 0)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $wine['year'], \PDO::PARAM_INT);
@@ -34,6 +34,7 @@ class WineManager extends AbstractManager
         $statement->bindValue(':color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue(':region', $wine['region'], \PDO::PARAM_STR);
         $statement->bindValue(':grape', $wine['grape'], \PDO::PARAM_STR);
+        $statement->bindValue(':image', $wine['image'], \PDO::PARAM_STR);
         $statement->bindValue(':description', $wine['description'], \PDO::PARAM_STR);
         $statement->execute();
 
@@ -43,7 +44,7 @@ class WineManager extends AbstractManager
     {
         $query = "UPDATE " . self::TABLE . " SET `name` = :name, `year` = :year, `price` = :price,
         `partner_id` = :partner_id, `color` = :color, `region` = :region,
-        `grape`= :grape, `description`= :description WHERE id=:id";
+        `grape`= :grape, `image` = :image, `description`= :description WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $wine['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $wine['name'], \PDO::PARAM_STR);
@@ -53,6 +54,7 @@ class WineManager extends AbstractManager
         $statement->bindValue('color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue('region', $wine['region'], \PDO::PARAM_STR);
         $statement->bindValue('grape', $wine['grape'], \PDO::PARAM_STR);
+        $statement->bindValue(':image', $wine['image'], \PDO::PARAM_STR);
         $statement->bindValue('description', $wine['description'], \PDO::PARAM_STR);
         return $statement->execute();
     }

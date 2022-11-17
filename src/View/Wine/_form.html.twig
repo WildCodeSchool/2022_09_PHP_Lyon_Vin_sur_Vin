@@ -2,7 +2,7 @@
 	<form method="post" class="row gy-3 justify-content-center my-5">
 		<input type="hidden" value="{{ wine.id }}" name="id">
 		<div class="col-10 col-xs-8">
-			<label for="Nom du produit">Nom du produit :</label>
+			<label for="name">Nom du produit :</label>
 			<input type="text" class="form-control" value="{{ wine.name }}" id="name" name="name">
 			{% if errors %}
 			<div class="errors">{{errors.empty_name}}<br>
@@ -10,7 +10,7 @@
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="Année">Année :</label>
+			<label for="year">Année :</label>
 			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
 			{% if errors %}
 			<div class="errors">{{errors.empty_year}}<br>
@@ -18,7 +18,7 @@
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="Prix">Prix :</label>
+			<label for="price">Prix :</label>
 			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
 			{% if errors %}
 			<div class="errors">{{errors.empty_price}}<br>
@@ -114,11 +114,11 @@
 			</select>
 		</div>
         <div {% if admin %}class="col-10 col-xs-8"{% else %}class="col-md-4 col-sm-5 col-xs-8 col-10"{% endif %}>
-			<label for="Nom du produit">Image :</label>
-			<input type="text" class="form-control" placeholder="Entrer l'url vers une image" value="{{ wine.name }}" id="name" name="name">
+			<label for="image">Photo du produit :</label>
+			<input type="text" class="form-control" placeholder="Entrer l'url vers une image" value="{{ wine.image }}" id="image" name="image">
 			{% if errors %}
-			<div class="errors">{{errors.empty_name}}<br>
-				{{errors.name_length}}</div>
+			<div class="errors">{{errors.empty_image}}<br>
+            {{error.url_length}}
 			{% endif %}
 		</div>
 
