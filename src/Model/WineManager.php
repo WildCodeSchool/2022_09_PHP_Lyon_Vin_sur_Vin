@@ -28,7 +28,7 @@ class WineManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $wine['year'], \PDO::PARAM_INT);
-        $statement->bindValue(':price', $wine['price'], \PDO::PARAM_INT);
+        $statement->bindValue(':price', $wine['price'], \PDO::PARAM_STR);
         $statement->bindValue(':partner_id', $wine['partner_id'], \PDO::PARAM_INT);
         $statement->bindValue(':color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue(':region', $wine['region'], \PDO::PARAM_STR);
@@ -47,7 +47,7 @@ class WineManager extends AbstractManager
         $statement->bindValue('id', $wine['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue('year', $wine['year'], \PDO::PARAM_INT);
-        $statement->bindValue('price', $wine['price'], \PDO::PARAM_INT);
+        $statement->bindValue('price', strval($wine['price']), \PDO::PARAM_STR);
         $statement->bindValue('partner_id', $wine['partner_id'], \PDO::PARAM_INT);
         $statement->bindValue('color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue('region', $wine['region'], \PDO::PARAM_STR);
