@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\PartnerManager;
 use App\Model\WineManager;
 
 class WineController extends AbstractController
@@ -39,7 +40,8 @@ class WineController extends AbstractController
         }
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
-        $partners = $wineManager->selectPartner();
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
@@ -64,7 +66,8 @@ class WineController extends AbstractController
             return null;
         }
         $wineManager = new WineManager();
-        $partners = $wineManager->selectPartner();
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);

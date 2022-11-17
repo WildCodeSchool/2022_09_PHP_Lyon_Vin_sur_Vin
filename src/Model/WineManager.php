@@ -92,9 +92,12 @@ class WineManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectPartner(): array
+    public function selectWinesFromPartner(int $id): array
     {
-        $query = 'SELECT id, lastname, firstname FROM partner ';
+        $id = $_SESSION['pro_id'];
+
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE partner_id =' . $id;
+
 
         return $this->pdo->query($query)->fetchAll();
     }

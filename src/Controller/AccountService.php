@@ -15,7 +15,7 @@ class AccountService extends AbstractController
     public function checkLoginFields(array $credentials): array
     {
 
-        if (empty($credentials['email']) || !isset($credentials['email'])) {
+        if (empty($credentials['email'])) {
             $this->errors['empty_email'] = 'Veuillez saisir votre adresse e-mail.';
         }
 
@@ -23,7 +23,7 @@ class AccountService extends AbstractController
             $this->errors['email'] = "L'adresse e-mail saisie est incorrecte. ";
         }
 
-        if (empty($credentials['password']) || !isset($credentials['password'])) {
+        if (empty($credentials['password'])) {
             $this->errors['empty_password'] = 'Veuillez saisir votre mot de passe.';
         }
 
