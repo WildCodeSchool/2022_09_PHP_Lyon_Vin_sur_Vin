@@ -43,24 +43,46 @@ grape VARCHAR(20),
 price INT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
+image VARCHAR(255),
 favorite BOOLEAN,
-CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id)
+CONSTRAINT fk_wine_partner FOREIGN KEY (partner_id) REFERENCES partner(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO partner (firstname, phone, password)
 VALUES ('Damien', 0677665522, 'Damdam32'), ('Allan', 0766554433, 'Allan99'), ('Lila', 0577889900, 'Lili32'), ('Mathieu', 0612324252, 'Matmat48'), ('Jesse', 0633831565, 'Jeje21');
 
-INSERT INTO wine (name, color, region, year, price, partner_id)
-VALUES ('Beaujolais de Damien', 'Rouge', 'Beaujolais', 1989, 10, 1), ('Saint Joseph de Damien', 'Rouge', 'Vallée du Rhône', 2018, 18, 1), ('Pommard de Damien', 'Rouge', 'Bourguogne', 2015, 38, 1),
-('Nuit Saint George de Damien', 'Rouge', 'Bourguogne', 2018, 18, 1), ('Mercurey', 'Rouge', 'Bourgogne', 2018, 18, 1), ('Romanée-Conti de Damien', 'Rouge', 'Bourgogne', 1995, 10, 1),
-('La villageoise de Allan', 'Blanc', 'Auvergne', 2023, 2, 2), ('Jurançon', 'Rouge', 'Jura', 2010, 6, 2), ('Côtes de Bordeaux', 'Rouge', 'Bordeaux', 2016, 9, 2),
-('Pinot Blanc', 'Blanc', 'Jura', 2018, 7, 2), ('Pinot Noir', 'Rouge', 'Jura', 2019, 8, 2),
-('Rosé de Lila ', 'Rosé', "Provence-Alpes-Côte-d'Azur", 1987, 7, 3), ('Viré-Clessé', 'Blanc', 'Vallée de la Loire', 2006, 12, 3), ('Pouilly-Fussé', 'Blanc', 'Bourgogne', 2001, 24, 3),
-('Côtes de Provence', 'Rosé', "Provence-Alpes-Côte-d'Azur", 2012, 14, 3), ('Riesling', 'Blanc', 'Alsace', , 10, 3),
-('Viognier de Mathieu', 'Blanc', 'Vallée du Rhône', 1994, 12, 4), ('Languedoc', 'Rosé', 'Languedoc', 1998, 7, 4), ('Crozes-Hermitage', 'Rouge', "Drôme", 2002, 14, 4),
-('Saint-Emilion', 'Rouge', 'Bordeaux', 2000, 18, 4), ('Saint-Julien', 'Rouge', 'Bordeaux', 2007, 16, 4),
-('Bordeaux de Jesse', 'Rouge', 'Bordeaux', 1995, 11, 5), ('Pommard', 'Blanc', 'Bourgogne', 2020, 12, 5), ('Mercurey', 'Rouge', 'Beaujolais', 2019, 15, 5),
-('Côte du Rhône', 'Rouge', 'Vallée du Rhône', 2017, 10, 5), ('Vin de Savoie', 'Blanc', 'Savoie', 2015, 12, 5),
+INSERT INTO wine (name, color, region, year, price, partner_id, image)
+VALUES ('Beaujolais de Damien', 'Rouge', 'Beaujolais', 1989, 10, 1, 'https://media.carrefour.fr/medias/1c633b6717ea30ca8ebe4104e78ccecf/p_540x540/3455180049498-photosite-20191206-141127-0.jpg'), 
+('Saint Joseph de Damien', 'Rouge', 'Vallée du Rhône', 2018, 18, 1, 'https://medias.nicolas.com/media/sys_master/images/hbf/h9d/9382516916254.png'), 
+('Pommard de Damien', 'Rouge', 'Bourguogne', 2015, 38, 1, 'https://www.vinatis.com/65595-detail_default/pommard-2020-domaine-bourgogne-devaux.png'),
+('Nuit Saint George de Damien', 'Rouge', 'Bourguogne', 2018, 18, 1, 'https://medias.nicolas.com/media/sys_master/images/h5c/h59/9205686108190.png'), 
+('Mercurey', 'Rouge', 'Bourgogne', 2018, 18, 1, 'https://media.carrefour.fr/medias/16d4b542670c3696924650817ab3d33a/p_540x540/03296313134205-a1n1-s01.jpg'), 
+('Romanée-Conti de Damien', 'Rouge', 'Bourgogne', 1995, 10, 1, 'https://pleasurewine.com/10679-superlarge_default/romanee-conti-1999-domaine-de-la-romanee-conti.jpg'),
+('La villageoise de Allan', 'Rouge', 'Auvergne', 2023, 2, 2, 'https://media.carrefour.fr/medias/6b9cfa6f8c8834d88e45566f643da13f/p_540x540/03175529631732-a1c1-s02.jpg'), 
+('Jurançon', 'Blanc', 'Jura', 2010, 6, 2, 'https://media.carrefour.fr/medias/13880c34d2d43c98ae45efabaa25d7c9/p_540x540/03300943502096-a1r1-s01.jpg'), 
+('Côtes de Bordeaux', 'Rouge', 'Bordeaux', 2016, 9, 2, 'https://www.le-gout-de-nos-regions.com/5126-large_default/aoc-blaye-cotes-de-bordeaux-rouge.jpg'),
+('Pinot Blanc', 'Blanc', 'Jura', 2018, 7, 2, 'https://www.geiler.fr/134-thickbox_default/pinot-blanc.jpg'), 
+('Pinot Noir', 'Rouge', 'Jura', 2019, 8, 2, 'https://media.carrefour.fr/medias/b9d0fb3316463968a9e7fc0be2bf4248/p_540x540/3267980003132-photosite-20180327-043950-0.jpg'), 
+('Saint-Chinian', 'Rouge', 'Languedoc', 2013, 14, 2, 'https://www.vinoclub.fr/895-thickbox_default/vin-saint-chinian-le-mysterieux-2019.jpg'),
+('Rosé de Lila ', 'Rosé', "Provence-Alpes-Côte-d'Azur", 1987, 7, 3, 'https://medias.nicolas.com/media/sys_master/images/h29/h30/9373877305374.png'), 
+('Viré-Clessé', 'Blanc', 'Vallée de la Loire', 2006, 12, 3, 'https://cave-lugny.com/boutique/84-large_default/vire-clesse.jpg'), 
+('Pouilly-Fussé', 'Blanc', 'Bourgogne', 2001, 24, 3, 'https://www.cdiscount.com/pdt2/e/1/8/1/700x700/jbpfuisse18/rw/jean-bouchard-2018-pouilly-fuisse-vin-blanc-de-b.jpg'),
+('Côtes de Provence', 'Rosé', "Provence-Alpes-Côte-d'Azur", 2012, 14, 3, 'https://medias.nicolas.com/media/sys_master/images/h1b/h7f/8810764599326.png'), 
+('Riesling', 'Blanc', 'Alsace', 2017, 15, 3, 'https://www.geiler.fr/135-large_default/riesling-alsace.jpg'), 
+('Muscat', 'Blanc', 'Alsace', 2018, 16, 3, 'https://saint-chinian.pro/734-large_default/cave-le-muscat-muscat-de-saint-jean-de-minervois.jpg'),
+('Viognier de Mathieu', 'Blanc', 'Vallée du Rhône', 1994, 12, 4, 'https://www.placedesgrandsvins.com/wp-content/uploads/2014/07/delas-viognier-.png'), 
+('Languedoc', 'Rosé', 'Languedoc', 1998, 7, 4, 'https://media.carrefour.fr/medias/6dc194f902163b198eb1125798cce95c/p_540x540/03211200021017-a1r1-s02.jpg'), 
+('Crozes-Hermitage', 'Rouge', "Drôme", 2002, 14, 4, 'https://medias.nicolas.com/media/sys_master/images/h05/h69/8808839249950.png'),
+('Saint-Emilion', 'Rouge', 'Bordeaux', 2000, 18, 4, 'https://www.lalandemoreau.com/1317-large_default/saint-emilion-aoc-2019-personnalise.jpg'), 
+('Saint-Julien', 'Rouge', 'Bordeaux', 2007, 16, 4, 'https://medias.nicolas.com/media/sys_master/h9d/hfe/9199944368158.png'), 
+('Saint-Amour', 'Rouge', 'Beaujolais', 2019, 11, 4, 'https://medias.nicolas.com/media/sys_master/images/h7d/h67/8814504542238.png'),
+('Bordeaux de Jesse', 'Rouge', 'Bordeaux', 1995, 11, 5, 'https://www.punch-et-cocktail.com/media/catalog/product/cache/7/image/400x/9df78eab33525d08d6e5fb8d27136e95/i/m/image_4959.jpg'), 
+('Pommard', 'Blanc', 'Bourgogne', 2020, 12, 5, 'https://www.vinatis.com/65595-detail_default/pommard-2020-domaine-bourgogne-devaux.png'), 
+('Mercurey', 'Rouge', 'Bourgogne', 2019, 15, 5, 'https://media.carrefour.fr/medias/16d4b542670c3696924650817ab3d33a/p_540x540/03296313134205-a1n1-s01.jpg'),
+('Côte du Rhône', 'Rouge', 'Vallée du Rhône', 2017, 10, 5, 'https://toulouvin.com/1540-large_default/tradition-cave-des-coteaux-du-rhone.webp'), 
+('Vin de Savoie', 'Blanc', 'Savoie', 2015, 12, 5, 'https://media.carrefour.fr/medias/b297c691dc3f3ba083ded3261b52f669/p_540x540/03288577511335-a1r1-s02.jpg'), 
+('Vin du Bugey', 'Blanc', 'Savoie', 2013, 15, 5, 'https://medias.nicolas.com/media/sys_master/h9e/h4d/9278169186334.png');
+
 UPDATE wine SET favorite = 1 WHERE id BETWEEN 1 and 3;
 
 DROP TABLE IF EXISTS `user`;

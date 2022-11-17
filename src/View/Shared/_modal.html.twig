@@ -1,0 +1,40 @@
+<div class="modal fade" id="modal{{wine.id}}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title text-center fs- " id="modalLabel">{{wine.name}}</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="  container-fluid d-flex flex-column flex-lg-row modal-body ">
+
+				<img src=" {{wine.image}}" class=" img_modal img-fluid row" alt=" bouteille de vin">
+				<div class="row text-center text-lg-start">
+					<div class="année fs-2">
+						Année:
+						{{wine.year}}</div>
+					<div class="prix fs-2">
+						Prix:
+						{{wine.price}}€</div>
+					<div class="couleur fs-2">
+						Type:
+						{{wine.color}}</div>
+					<div class="région fs-2">
+						Région:
+						{{wine.region}}</div>
+					<div class="cépage fs-2">
+						Cépage:
+						{{wine.grape}}</div>
+					<div class="fournisseur fs-2">
+						Producteur:
+						{{wine.partner_id}}</div>
+					<div class="description fs-2">
+						description:
+						{{wine.description}}</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class=" button btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

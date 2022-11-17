@@ -11,7 +11,7 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Home/index.html.twig', ['session' => $_SESSION]);
     }
 
 
@@ -20,7 +20,8 @@ class HomeController extends AbstractController
 
         $wineManager = new WineManager();
         $wines = $wineManager->selectAll();
-        return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines]);
+        $partners = $wineManager->selectPartner();
+        return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines, 'partners' => $partners]);
     }
 
     public function searchCatalog($search): string

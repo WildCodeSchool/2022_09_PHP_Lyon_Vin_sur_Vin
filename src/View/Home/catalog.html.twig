@@ -4,14 +4,14 @@
 
 
 	<div class="container my-5">
-		<h2 class="mt-5 mx-auto rounded text-center  bg-white">
-			<strong>
-				Notre catalogue</strong>
-		</h2>
+		<h1 class="mt-5 mx-auto rounded text-center  bg-white">
+
+			Notre catalogue
+		</h1>
 
 		<div class="row justify-content-center gap-5 p-5">
 
-			{% include "Shared/_barreDeRecherche.html.twig" %}
+			{% include "Shared/_search_bar.html.twig" %}
 
 		</div>
 
@@ -21,4 +21,5 @@
 
 			{% endfor %}
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

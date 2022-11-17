@@ -207,3 +207,12 @@ h5 {
     color: #FFC700;
 
 }
+
+.img_card {
+    height: 300px;
+    background-color: #fff;
+}
+
+.img_modal {
+    height: 500px;
+}
