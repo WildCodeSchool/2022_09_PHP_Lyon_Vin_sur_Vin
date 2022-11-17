@@ -1,11 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-		<h3 class="welcome text-center p-2 mb-0">
+	<h3 class="welcome text-center p-2 mb-0">
 		{% if admin %}
-				Bienvenue {{admin.email}}
+			Bienvenue
+			{{admin.pseudo}}
+			<br>
+			Boire un canon c'est sauvez un vignerons!
 		{% endif %}
-		</h3>
+	</h3>
 	<div class="banner">
 		<img src="/assets/images/vigne-split.jpg" alt="bannière vigne" class="img-fluid">
 	</div>
@@ -16,7 +19,7 @@
 			<h1 class="mt-5 mb-5 text-center">Achetez votre vin directement à la source</h1>
 			<br>
 			<p class="fs-4 text-center">Ce site a pour vocation de permettre à de petits exploitants d'avoir de la visibilité sur internet.
-																																								En passant par notre plateforme pour boire votre canon, vous contribuez à sauver les petits vignerons.<br>
+																																																				En passant par notre plateforme pour boire votre canon, vous contribuez à sauver les petits vignerons.<br>
 				Vous trouverez ici des vins que vous n'auriez jamais découverts ailleurs.
 			</p>
 		</div>
