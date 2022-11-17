@@ -19,7 +19,7 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
-        unset($_SESSION['user_id']);
+        unset($_SESSION['admin_id']);
         unset($_SESSION['pro_id']);
 
         if ($this->admin != false) {
@@ -36,11 +36,11 @@ class AdminController extends AbstractController
                 $_SESSION['admin_id'] = $admin['id'];
                 header('Location: /admin');
             }
+
             if ($admin == false || !password_verify($credentials['password'], $admin['password'])) {
-                $this->errors['wrong'] = 'L\'email et le mot de passe ne correspondent pas.';
+                $this->errors['wrong'] = "Vous n'avez pas de compte ou vous avez fait une faute de frappe";
             }
         }
-
         if (!empty($this->errors)) {
             return $this->twig->render('Admin/login.html.twig', ['errors' => $this->errors]);
         }

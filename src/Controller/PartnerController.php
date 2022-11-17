@@ -147,7 +147,7 @@ class PartnerController extends AbstractController
         $partner = $partnerManager->selectOneById($id);
 
         $wineManager = new PartnerManager();
-        $wines = $wineManager->showPartnerWine($id);
+        $wines = $wineManager->getWinesByPartner($id);
 
         return $this->twig->render('Home/onePartner.html.twig', ['partner' => $partner, 'wines' => $wines]);
     }

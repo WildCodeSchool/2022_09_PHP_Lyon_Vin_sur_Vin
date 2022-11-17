@@ -52,13 +52,13 @@ class PartnerManager extends AbstractManager
     public function addPassword(array $credentials)
     {
         $statement = $this->pdo->prepare("UPDATE " . static::TABLE .
-        " SET `password` = :password WHERE email=:email");
+            " SET `password` = :password WHERE email=:email");
         $statement->bindValue(':email', $credentials['email']);
         $statement->bindValue(':password', password_hash($credentials['password'], PASSWORD_DEFAULT));
         $statement->execute();
     }
 
-    public function showPartnerWine(int $id): array
+    public function getWinesByPartner(int $id): array
     {
         $statement = $this->pdo->prepare('SELECT p.id, w.id, w.name, w.year, w.price
         FROM partner AS p INNER JOIN wine as w ON p.id = w.partner_id WHERE p.id=:id');
