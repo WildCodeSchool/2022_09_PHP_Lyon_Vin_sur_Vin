@@ -33,5 +33,7 @@ return [
     'login/professional' => ['ProController', 'login',],
     'register/professional' => ['ProController', 'setPassword', ['id']],
     'professional' => ['ProController', 'index',['id']],
+    'catalog' => ['HomeController', 'showCatalog',],
+    'catalog/search' => ['HomeController', 'searchCatalog', ['search']],
     'onePartner' => ['PartnerController','partnerShow', ['id']],
 ];

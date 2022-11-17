@@ -14,7 +14,7 @@ class WineManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare('SELECT w.id as id, name, year, price, region, color, grape, partner_id,
         w.description, p.lastname as lastname, p.firstname as firstname FROM ' . static::TABLE .
-        ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
+            ' as w INNER JOIN partner as p ON p.id = w.partner_id WHERE w.id=:id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -29,7 +29,7 @@ class WineManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue(':year', $wine['year'], \PDO::PARAM_INT);
-        $statement->bindValue(':price', $wine['price'], \PDO::PARAM_INT);
+        $statement->bindValue(':price', $wine['price'], \PDO::PARAM_STR);
         $statement->bindValue(':partner_id', $wine['partner_id'], \PDO::PARAM_INT);
         $statement->bindValue(':color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue(':region', $wine['region'], \PDO::PARAM_STR);
@@ -49,7 +49,7 @@ class WineManager extends AbstractManager
         $statement->bindValue('id', $wine['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $wine['name'], \PDO::PARAM_STR);
         $statement->bindValue('year', $wine['year'], \PDO::PARAM_INT);
-        $statement->bindValue('price', $wine['price'], \PDO::PARAM_INT);
+        $statement->bindValue('price', strval($wine['price']), \PDO::PARAM_STR);
         $statement->bindValue('partner_id', $wine['partner_id'], \PDO::PARAM_INT);
         $statement->bindValue('color', $wine['color'], \PDO::PARAM_STR);
         $statement->bindValue('region', $wine['region'], \PDO::PARAM_STR);
@@ -107,5 +107,29 @@ class WineManager extends AbstractManager
 
 
         return $this->pdo->query($query)->fetchAll();
+    public function selectSearch(string $search): array
+    {
+
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name 
+        LIKE :search
+        OR year LIKE  :search
+        OR price LIKE :search
+        OR region LIKE :search
+        OR color LIKE :search
+        OR grape LIKE :search
+        OR description LIKE :search");
+        $statement->bindValue('search', '%' . $search . '%', \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    public function selectOneByEmail(string $email): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }

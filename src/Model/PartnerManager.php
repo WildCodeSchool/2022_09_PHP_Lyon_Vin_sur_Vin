@@ -58,7 +58,7 @@ class PartnerManager extends AbstractManager
         $statement->execute();
     }
 
-    public function showPartnerWine(int $id): array
+    public function getWinesByPartner(int $id): array
     {
         $statement = $this->pdo->prepare('SELECT p.id, w.id, w.name, w.year, w.price
         FROM partner AS p INNER JOIN wine as w ON p.id = w.partner_id WHERE p.id=:id');

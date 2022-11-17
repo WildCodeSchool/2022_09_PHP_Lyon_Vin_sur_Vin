@@ -114,11 +114,17 @@ class WineController extends AbstractController
         ) {
             $this->errors['year'] = 'L\'année doit être comprise entre 1901 et 2023';
         }
+        //verification que le prix contient bien un point et accepte la virgule.
+
+        if ((strpos($wine['price'], ",")) !== false) {
+            $wine['price'] = str_replace(",", ".", $wine['price']);
+        }
+
         if (
             filter_var(
                 $wine['price'],
                 FILTER_VALIDATE_FLOAT,
-                array("options" => array("min_range" => 1, "max_range" => 10000))
+                array("options" => array("min_range" => 1, "max_range" => 10000)),
             ) === false
         ) {
             $this->errors['price'] = 'Le prix n\'est pas correct';
@@ -126,10 +132,9 @@ class WineController extends AbstractController
         if (!isset($wine['partner_id']) || empty($wine['partner_id'])) {
             $this->errors['partner'] = "Veuillez sélectionner un partenaire";
         }
-        // A FAIRE : MODIFIER partner_id pour qu'il soit automatiquement associer à un partnenaire
+        // A FAIRE : MODIFIER partner_id pour qu'il soit automatiquement associer à un partnenaire.
         return $this->errors ?? [];
     }
-
     public function checkLength(array $wine, string $field, int $maxLength, string $key)
     {
         if (strlen($wine[$field]) > $maxLength && isset($wine[$field]) && !empty($wine[$field])) {

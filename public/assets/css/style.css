@@ -11,15 +11,19 @@ body {
 .table {
     font-size: 1.5em;
 }
+
 ul {
     font-size: 1.5rem;
 }
+
 h1 {
     color: #807165;
 }
+
 h3 {
     color: #807165;
 }
+
 a {
     text-decoration: none;
     color: black;
@@ -41,7 +45,7 @@ label {
     border: 0px;
 }
 
-.navbar > .container-fluid {
+.navbar>.container-fluid {
     background-color: #8d3939;
     justify-content: left;
 }
@@ -117,16 +121,16 @@ button {
     padding: 1rem;
 }
 
-button:hover{
+button:hover {
     text-decoration: underline;
     color: black;
 }
 
-button > a {
+button>a {
     color: white;
 }
 
-button > a:hover {
+button>a:hover {
     color: black;
 }
 
@@ -159,18 +163,20 @@ h4,
 h5 {
     font-family: "swap";
 }
+
 .welcome {
-    color : #FDF2E9;
+    color: #FDF2E9;
     background-color: black;
 }
+
 .footerbar {
     background-color: #8d3939;
 }
 
 .cave {
 
-        background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
-        background-size: 100% auto;
+    background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
+    background-size: 100% auto;
 }
 
 .best-seller {
@@ -195,6 +201,20 @@ h5 {
 .admin {
     border: 2px solid black;
     background-color: #9a7d6c;
+
+.card_catalog {
+
+    background-color: #393737;
+    color: white;
+}
+
+.h3_card_catalog {
+    color: white;
+}
+
+.color_text {
+    color: #FFC700;
+
 }
 .card {
     background-color: #393737;
