@@ -159,39 +159,18 @@ h4,
 h5 {
     font-family: "swap";
 }
-
-.banner {
-    margin-bottom: 50px;
+.welcome {
+    color : #FDF2E9;
+    background-color: black;
 }
-
 .footerbar {
     background-color: #8d3939;
 }
 
 .cave {
-    background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
-    background-size: 100% auto;
-}
 
-.banniere {
-    background: url('/assets/images/vigne-split.jpg') no-repeat;
-    background-size: 100% auto;
-    height: 60vh;
-    color: #FDF2E9;
-}
-
-@media screen and (max-width: 1300px){
-    .cave{
-        background: url(/assets/images/cave_vin.jpg) center/cover;
-    }
-
-    .banniere{
-        background: url('/assets/images/vigne.jpg') no-repeat fixed;
+        background: url(/assets/images/cave_vin.jpg) no-repeat fixed;
         background-size: 100% auto;
-        height: 50vh;
-        color: #FDF2E9;
-
-    }
 }
 
 .best-seller {
@@ -217,3 +196,14 @@ h5 {
     border: 2px solid black;
     background-color: #9a7d6c;
 }
+.card {
+    background-color: #393737;
+    border-radius: 20px;
+    color: #FDF2E9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
