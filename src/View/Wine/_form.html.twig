@@ -41,18 +41,6 @@
         {% elseif pro %}
             <input type="hidden" value="{{ pro.id }}" name="partner_id">
         {% endif %}
-        <div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="color">Couleur :</label>
-			<select class="form-control form-select" id="color" name="color">
-				<option value="">Choisir une couleur</option>
-				<option value="Rouge">Rouge</option>
-				<option value="Blanc">Blanc</option>
-				<option value="Rosé">Rosé</option>
-			</select>
-			{% if errors %}
-			<div class="errors">{{errors.empty_color}}</div>
-			{% endif %}
-		</div>
         <div class="col-md-4 col-sm-5 col-xs-8 col-10">
 			<label for="region">Région :</label>
 			<select class="form-control form-select" id="region" name="region">
@@ -74,6 +62,18 @@
 			</select>
 			{% if errors %}
 			<div class="errors">{{errors.empty_region}}</div>
+			{% endif %}
+		</div>
+        <div class="col-md-3 col-sm-5 col-xs-8 col-10">
+			<label for="color">Couleur :</label>
+			<select class="form-control form-select" id="color" name="color">
+				<option value="">Choisir une couleur</option>
+				<option value="Rouge">Rouge</option>
+				<option value="Blanc">Blanc</option>
+				<option value="Rosé">Rosé</option>
+			</select>
+			{% if errors %}
+			<div class="errors">{{errors.empty_color}}</div>
 			{% endif %}
 		</div>
         <div class="col-md-3 col-sm-5 col-xs-8 col-10">
@@ -111,9 +111,15 @@
 				<option value="Trebbiano">Trebbiano</option>
 				<option value="Verdejo">Verdejo</option>
 				<option value="Viogner">Viogner</option>
-
 			</select>
-
+		</div>
+        <div {% if admin %}class="col-10 col-xs-8"{% else %}class="col-md-4 col-sm-5 col-xs-8 col-10"{% endif %}>
+			<label for="Nom du produit">Image :</label>
+			<input type="text" class="form-control" placeholder="Entrer l'url vers une image" value="{{ wine.name }}" id="name" name="name">
+			{% if errors %}
+			<div class="errors">{{errors.empty_name}}<br>
+				{{errors.name_length}}</div>
+			{% endif %}
 		</div>
 
 		<div class="col-10 col-xs-8">
