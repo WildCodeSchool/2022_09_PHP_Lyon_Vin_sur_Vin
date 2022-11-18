@@ -9,9 +9,6 @@ use App\Model\AdminManager;
 use App\Model\UserManager;
 use App\Model\PartnerManager;
 
-/**
- * Initialized some Controller common features (Twig...)
- */
 abstract class AbstractController
 {
     public array $errors = [];
