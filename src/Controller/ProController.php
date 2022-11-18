@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\AccountService;
+use App\Controller\AccountController;
 use App\Model\WineManager;
 use App\Model\PartnerManager;
 
@@ -49,14 +49,14 @@ class ProController extends AbstractController
     {
         $wine['description'] = filter_var($wine['description'], FILTER_SANITIZE_ENCODED);
         $wine['name'] = filter_var($wine['name'], FILTER_SANITIZE_ENCODED);
-        $accountService = new AccountService();
-        $accountService->checkLength($wine, 'name', 100, 'name_length');
-        $accountService->checkLength($wine, 'description', 1000, 'description_length');
-        $accountService->checkIfEmpty($wine, 'name', 'empty_name');
-        $accountService->checkIfEmpty($wine, 'price', 'empty_price');
-        $accountService->checkIfEmpty($wine, 'year', 'empty_year');
-        $accountService->checkIfEmpty($wine, 'color', 'empty_color');
-        $accountService->checkIfEmpty($wine, 'region', 'empty_region');
+        $accountController = new AccountController();
+        $accountController->checkLength($wine, 'name', 100, 'name_length');
+        $accountController->checkLength($wine, 'description', 1000, 'description_length');
+        $accountController->checkIfEmpty($wine, 'name', 'empty_name');
+        $accountController->checkIfEmpty($wine, 'price', 'empty_price');
+        $accountController->checkIfEmpty($wine, 'year', 'empty_year');
+        $accountController->checkIfEmpty($wine, 'color', 'empty_color');
+        $accountController->checkIfEmpty($wine, 'region', 'empty_region');
 
         if (
             filter_var(
@@ -82,8 +82,7 @@ class ProController extends AbstractController
 
     public function login(): ?string
     {
-        unset($_SESSION['admin_id']);
-        unset($_SESSION['user_id']);
+        session_destroy();
 
         if ($this->pro != false) {
             header('Location: /professional');
@@ -92,8 +91,8 @@ class ProController extends AbstractController
             $credentials = array_map('trim', $_POST);
             //      @todo make some controls on email and password fields and if errors, send them to the view
             $partnerManager = new PartnerManager();
-            $accountService = new AccountService();
-            $this->errors = $accountService->checkLoginFields($credentials);
+            $accountController = new AccountController();
+            $this->errors = $accountController->checkLoginFields($credentials);
             $pro = $partnerManager->selectOneByEmail($credentials['email']);
 
             if ($pro && password_verify($credentials['password'], $pro['password'])) {
@@ -119,12 +118,13 @@ class ProController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             $partnerManager->selectOneByEmail($credentials['email']);
-            $accountService = new AccountService();
-            $this->errors = $accountService->checkLoginFields($credentials);
+            $accountController = new AccountController();
+            $this->errors = $accountController->checkLoginFields($credentials);
             if (empty($credentials['password']) || empty($credentials['password2'])) {
                 $this->errors['do_not_match'] = 'Les deux mots de passe doivent être identiques';
             }
-            if (!empty($this->errors && $credentials['password'] === $credentials['password2'])) {
+            if (!empty($thisunset($_SESSION['admin_id']);
+            unset($_SESSION['pro_id']);->errors && $credentials['password'] === $credentials['password2'])) {
                 return $this->twig->render('Professional/set_password.html.twig', ['errors' => $this->errors]);
             }
             //      @todo make some controls and if errors send them to the view

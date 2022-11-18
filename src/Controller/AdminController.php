@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
-use App\Controller\AccountService;
+use App\Controller\AccountController;
 
 class AdminController extends AbstractController
 {
@@ -19,8 +19,7 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
-        unset($_SESSION['admin_id']);
-        unset($_SESSION['pro_id']);
+        session_destroy();
 
         if ($this->admin != false) {
             header('Location: /admin');
@@ -29,8 +28,8 @@ class AdminController extends AbstractController
             $credentials = array_map('trim', $_POST);
             //      @todo faire des controles pour dire si l'email et le mdp est bon
             $adminManager = new AdminManager();
-            $accountService = new AccountService();
-            $this->errors = $accountService->checkLoginFields($credentials);
+            $accountController = new AccountController();
+            $this->errors = $accountController->checkLoginFields($credentials);
             $admin = $adminManager->selectOneByEmail($credentials['email']);
             if ($admin && password_verify($credentials['password'], $admin['password'])) {
                 $_SESSION['admin_id'] = $admin['id'];

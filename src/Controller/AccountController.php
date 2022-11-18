@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-class AccountService extends AbstractController
+class AccountController
 {
+    public array $errors = [];
+
     public function logout()
     {
         session_destroy();
