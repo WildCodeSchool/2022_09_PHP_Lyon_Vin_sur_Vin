@@ -25,16 +25,9 @@ class AdminController extends AbstractController
             $credentials = array_map('trim', $_POST);
             //      @todo faire des controles pour dire si l'email et le mdp est bon
             $errors = [];
-            if (empty($credentials['email'])) {
-                $errors['enter_email'] = 'Veuillez saisir votre adresse e-mail.';
-            }
 
             if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL) && !empty($credentials['email'])) {
                 $errors['email_incorrect'] = "L'adresse e-mail saisie est incorrecte. ";
-            }
-
-            if (empty($credentials['password'])) {
-                $errors['enter_password'] = 'Veuillez saisir votre mot de passe.';
             }
 
             $adminManager = new AdminManager();
@@ -43,8 +36,11 @@ class AdminController extends AbstractController
                 $_SESSION['admin_id'] = $user['id'];
                 header('Location: /');
             }
-        }
 
+            if ($user == false || !password_verify($credentials['password'], $user['password'])) {
+                $errors['wrong'] = "Vous n'avez pas de compte ou vous avez fait une faute de frappe";
+            }
+        }
         if (!empty($errors)) {
             return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
         }

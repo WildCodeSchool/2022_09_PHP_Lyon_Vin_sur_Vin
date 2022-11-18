@@ -26,10 +26,9 @@ return [
     'partners/show' => ['PartnerController', 'show', ['id']],
     'partners/add' => ['PartnerController', 'add',],
     'partners/delete' => ['PartnerController', 'delete',],
+    'nospartenaires' => ['PartnerController', 'partnerList',],
     'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
     'catalog' => ['HomeController', 'showCatalog',],
     'catalog/search' => ['HomeController', 'searchCatalog', ['search']],
-
-
-
+    'onePartner' => ['PartnerController', 'partnerShow', ['id']],
 ];
