@@ -19,9 +19,9 @@ class HomeController extends AbstractController
     {
 
         $wineManager = new WineManager();
-        $wines = $wineManager->selectAll();
-        $partners = $wineManager->selectPartner();
-        return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines, 'partners' => $partners]);
+        $wines = $wineManager->getAllWithPartner();
+
+        return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines]);
     }
 
     public function searchCatalog($search): string

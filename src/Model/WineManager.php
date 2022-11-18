@@ -58,7 +58,7 @@ class WineManager extends AbstractManager
 
     public function selectFavorites(): array
     {
-        $query = 'SELECT id, name, year, price, description FROM ' . static::TABLE . ' WHERE favorite = true';
+        $query = 'SELECT id, name, year, price, description, image FROM ' . static::TABLE . ' WHERE favorite = true';
 
         return $this->pdo->query($query)->fetchAll();
     }
@@ -123,5 +123,16 @@ class WineManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function getAllWithPartner(): array
+    {
+        $statement = $this->pdo->prepare('SELECT p.firstname, p.lastname, p.address,
+         p.email, p.phone, p.image, p.description as partner_description, 
+         w.id, w.name, w.year, w.price, w.color, w.region, w.grape, w.image, w.partner_id
+        FROM ' . self::TABLE . ' AS w INNER JOIN partner as p ON p.id = w.partner_id');
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

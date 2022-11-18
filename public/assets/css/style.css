@@ -216,3 +216,11 @@ h5 {
 .img_modal {
     height: 500px;
 }
+
+.card-image-top {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 12rem;
+    width: 98%
+}
