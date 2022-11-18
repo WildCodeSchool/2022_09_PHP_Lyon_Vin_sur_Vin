@@ -3,20 +3,21 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
-use App\Controller\AccountController;
+use App\Controller\AccountService;
 
 class UserController extends AbstractController
 {
     public function login(): ?string
     {
-        session_destroy();
+        unset($_SESSION['admin_id']);
+        unset($_SESSION['pro_id']);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             //      @todo make some controls on email and password fields and if errors, send them to the view
             $userManager = new UserManager();
-            $accountController = new AccountController();
-            $this->errors = $accountController->checkLoginFields($credentials);
+            $accountService = new AccountService();
+            $this->errors = $accountService->checkLoginFields($credentials);
             $user = $userManager->selectOneByEmail($credentials['email']);
 
             if ($user && password_verify($credentials['password'], $user['password'])) {
@@ -37,9 +38,7 @@ class UserController extends AbstractController
 
     public function logout()
     {
-        unset($_SESSION['admin_id']);
-        unset($_SESSION['user_id']);
-        unset($_SESSION['pro_id']);
+        session_destroy();
         header('Location: /');
     }
 
@@ -74,16 +73,16 @@ class UserController extends AbstractController
         $credentials['adress'] = filter_var($credentials['address'], FILTER_SANITIZE_ENCODED);
         $credentials['email'] = filter_var($credentials['email'], FILTER_SANITIZE_ENCODED);
         $credentials['password'] = filter_var($credentials['password'], FILTER_SANITIZE_ENCODED);
-        $accountController = new AccountController();
-        $accountController->checkLength($credentials, 'lastname', 45, 'last_length');
-        $accountController->checkLength($credentials, 'firstname', 45, 'first_length');
-        $accountController->checkLength($credentials, 'email', 100, 'email_length');
-        $accountController->checkLength($credentials, 'address', 255, 'adress_length');
-        $accountController->checkLength($credentials, 'pseudo', 20, 'pseudo_length');
-        $accountController->checkLength($credentials, 'password', 20, 'password_length');
-        $accountController->checkIfEmpty($credentials, 'firstname', 'empty_firstname');
-        $accountController->checkIfEmpty($credentials, 'email', 'empty_email');
-        $accountController->checkIfEmpty($credentials, 'pseudo', 'empty_pseudo');
+        $accountService = new AccountService();
+        $accountService->checkLength($credentials, 'lastname', 45, 'last_length');
+        $accountService->checkLength($credentials, 'firstname', 45, 'first_length');
+        $accountService->checkLength($credentials, 'email', 100, 'email_length');
+        $accountService->checkLength($credentials, 'address', 255, 'adress_length');
+        $accountService->checkLength($credentials, 'pseudo', 20, 'pseudo_length');
+        $accountService->checkLength($credentials, 'password', 20, 'password_length');
+        $accountService->checkIfEmpty($credentials, 'firstname', 'empty_firstname');
+        $accountService->checkIfEmpty($credentials, 'email', 'empty_email');
+        $accountService->checkIfEmpty($credentials, 'pseudo', 'empty_pseudo');
 
         return $this->errors ?? [];
     }

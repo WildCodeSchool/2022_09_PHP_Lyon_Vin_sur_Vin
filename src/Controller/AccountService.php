@@ -2,15 +2,9 @@
 
 namespace App\Controller;
 
-class AccountController
+class AccountService
 {
     public array $errors = [];
-
-    public function logout()
-    {
-        session_destroy();
-        header('Location: /');
-    }
 
     public function checkLoginFields(array $credentials): array
     {

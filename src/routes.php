@@ -27,7 +27,7 @@ return [
     'partners/delete' => ['PartnerController', 'delete',],
     'nospartenaires' => ['PartnerController', 'partnerList',],
     'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
-    'logout' => ['AccountController', 'logout',],
+    'logout' => ['UserController', 'logout',],
     'login' => ['UserController', 'login',],
     'register' => ['UserController', 'register',],
     'login/professional' => ['ProController', 'login',],
