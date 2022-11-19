@@ -1,0 +1,10 @@
+{% extends "Shared/admin.html.twig" %}
+{% block content %}
+	<h1 class="text-center m-5">Modifier le produit</h1>
+	<section>
+		{% include 'Wine/_form.html.twig' %}
+	</section>
+	<button>
+		<a href="/wines/show?id={{wine.id}}">Retour</a>
+	</button>
+{% endblock %}

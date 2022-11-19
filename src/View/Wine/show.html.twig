@@ -1,0 +1,53 @@
+{% extends "Shared/admin.html.twig" %}
+{% block content %}
+
+		<h2 class="text-center m-5">
+		Fiche produit</h2>
+
+		<div class="container d-flex flex-row justify-content-evenly bg-white shadow-lg p-3 mb-5 bg-white rounded">
+			<ul class="row">
+				<li class="row">
+					<div class="col-md-3 fw-bold">Nom du produit:</div>
+					<div class="col-md-9 fw-normal">{{ wine.name }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-3 fw-bold">Année:</div>
+					<div class="col-md-9 fw-normal">{{ wine.year }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-3 fw-bold">Prix:</div>
+					<div class="col-md-9 fw-normal">{{ wine.price }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-3 fw-bold">Couleur:</div>
+					<div class="col-md-9 fw-normal">{{ wine.color }}</div>
+				</li>
+                <li class="row">
+					<div class="col-md-3 fw-bold">Région:</div>
+					<div class="col-md-9 fw-normal">{{ wine.region }}</div>
+				</li>
+                <li class="row">
+					<div class="col-md-3 fw-bold">Cépage:</div>
+					<div class="col-md-9 fw-normal">{{ wine.grape }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-3 fw-bold">Description:</div>
+					<div class="col-md-9 fw-normal">{{ wine.description }}</div>
+				</li>
+				<li class="row">
+					<div class="col-md-3 fw-bold">Fournisseur:</div>
+					<div class="col-md-9 fw-normal">{{ wine.lastname ~ " " ~ wine.firstname}}</div>
+				</li>
+			</ul>
+				<div>
+					<a role="button" class="btn btn-xl align-self-center" href="/wines/edit?id={{wine.id}}"><i class="bi bi-pencil-fill"></i></a>
+					<form action="/wines/delete" method="POST">
+						<input type="hidden" name="id" value="{{ wine.id }}">
+						<button class="btn btn-xl align-self-center" role="button"><i class="bi bi-trash3-fill"></i></button>
+					</form>
+				</div>
+		</div>
+				<button class="m-3">
+					<a href="/wines">Retour</a>
+				</button>
+{% endblock %}

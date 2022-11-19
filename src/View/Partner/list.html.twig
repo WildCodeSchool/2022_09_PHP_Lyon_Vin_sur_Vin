@@ -1,0 +1,52 @@
+{% extends "Shared/admin.html.twig" %}
+{% block content %}
+	<section class="container">
+		<div class="row">
+			<h1 class="text-center m-5">Liste des super partenaires !</h1>
+		</div>
+
+		<div class="container d-flex flex-column">
+			<table class="table col align-self-center">
+				<thead>
+					<tr>
+						<th>Nom du partenaire</th>
+						<th>Modifier</th>
+						<th>Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for partner in partners %}
+						<tr>
+							<td class="align-middle">
+								<a href="/partners/show?id={{ partner.id }}">{{ partner.id }}.
+									{{ partner.firstname }}
+									{{ partner.lastname }}</a>
+							</td>
+							<td class="align-middle">
+								<a class="btn btn-xl align-self-center" href="/partners/edit?id={{ partner.id }}" role="button">
+									<i class="bi bi-pencil-fill"></i>
+								</a>
+							</td>
+							<td class="align-middle">
+								<form action="/partners/delete" method="POST">
+									<input type="hidden" name="id" value="{{ partner.id }}">
+									<button class="btn btn-xl align-self-center" role="button">
+										<i class="bi bi-trash3-fill"></i>
+									</button>
+								</td>
+							</td>
+						</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+
+			<div class="col align-self-center">
+				<button>
+					<a href="/partners/add">Ajouter un partenaire</a>
+				</button>
+			</div>
+		</div>
+	</section>
+{% endblock %}

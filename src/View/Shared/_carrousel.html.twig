@@ -1,0 +1,32 @@
+<div class="container my-5">
+	<h2 class="mt-5 mx-auto rounded text-center best-seller bg-white">
+		<strong>
+			Best-Sellers</strong>
+	</h2>
+	<div class="row justify-content-center">
+		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-10 divCarousel border rounded shadow bg-white p-3">
+
+
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+				<div class="carousel-indicators position-sticky">
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-dark" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=" bg-dark" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class=" bg-dark" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner ">
+					{% include "Shared/_wine_card.html.twig" %}
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon btn btn-dark" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+					<span class="carousel-control-next-icon btn btn-dark" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>
