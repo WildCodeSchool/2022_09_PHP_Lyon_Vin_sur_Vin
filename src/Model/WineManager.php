@@ -105,14 +105,17 @@ class WineManager extends AbstractManager
     public function selectSearch(string $search): array
     {
 
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name
-        LIKE :search
+        $statement = $this->pdo->prepare("SELECT name, year, price, region, color, grape, p.firstname, p.lastname FROM "
+            . static::TABLE . " as w LEFT JOIN partner as p ON p.id = w.partner_id
+        WHERE name LIKE :search
         OR year LIKE  :search
         OR price LIKE :search
         OR region LIKE :search
         OR color LIKE :search
         OR grape LIKE :search
-        OR description LIKE :search");
+        OR p.firstname LIKE :search
+        OR p.lastname LIKE :search
+        OR w.description LIKE :search");
         $statement->bindValue('search', '%' . $search . '%', \PDO::PARAM_STR);
         $statement->execute();
 
@@ -126,5 +129,16 @@ class WineManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function getAllWithPartner(): array
+    {
+        $statement = $this->pdo->prepare('SELECT p.firstname, p.lastname, p.address,
+         p.email, p.phone, p.image as partner_image, p.description as partner_description,
+         w.id, w.name, w.year, w.price, w.color, w.region, w.grape, w.image, w.partner_id
+        FROM ' . self::TABLE . ' AS w INNER JOIN partner as p ON p.id = w.partner_id');
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

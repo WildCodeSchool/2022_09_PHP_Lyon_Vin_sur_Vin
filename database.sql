@@ -106,5 +106,3 @@ SELECT * FROM admin;
 SELECT * FROM partner;
 SELECT * FROM wine;
 SELECT * FROM user;
-
-

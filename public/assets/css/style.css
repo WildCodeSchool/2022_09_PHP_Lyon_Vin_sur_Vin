@@ -213,6 +213,24 @@ h5 {
 .color_text {
     color: #ffc700;
 }
+
+.img_card {
+    height: 300px;
+    background-color: #fff;
+}
+
+.img_modal {
+    height: 550px;
+}
+
+.card-image-top {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 12rem;
+    width: 98%;
+}
+
 .card {
     background-color: #393737;
     border-radius: 20px;
