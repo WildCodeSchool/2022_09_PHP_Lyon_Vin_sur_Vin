@@ -12,12 +12,10 @@
 				{{partner.firstname}}
 				{{partner.lastname}}</h1>
 		</div>
-		{% for wine in wines %}
-			<div>
-				{{wine.name}}
-				{{wine.price}}
-			</div>
-		{% endfor %}
-
+		<div class="row justify-content-center gap-3">
+			{% for wine in wines %}
+				{% include "Shared/_wine_catalog.html.twig" %}
+			{% endfor %}
+		</div>
 	</section>
 {% endblock %}

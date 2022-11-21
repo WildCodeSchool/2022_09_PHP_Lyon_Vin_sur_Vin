@@ -105,7 +105,8 @@ class WineManager extends AbstractManager
     public function selectSearch(string $search): array
     {
 
-        $statement = $this->pdo->prepare("SELECT name, year, price, region, color, grape, p.firstname, p.lastname FROM "
+        $statement = $this->pdo->prepare("SELECT name, year, price, region, color, grape, w.image,
+         p.firstname, p.lastname FROM "
             . static::TABLE . " as w LEFT JOIN partner as p ON p.id = w.partner_id
         WHERE name LIKE :search
         OR year LIKE  :search
@@ -136,7 +137,7 @@ class WineManager extends AbstractManager
         $statement = $this->pdo->prepare('SELECT p.firstname, p.lastname, p.address,
          p.email, p.phone, p.image as partner_image, p.description as partner_description,
          w.id, w.name, w.year, w.price, w.color, w.region, w.grape, w.image, w.partner_id, w.description
-        FROM ' . self::TABLE . ' AS w INNER JOIN partner as p ON p.id = w.partner_id');
+        FROM ' . self::TABLE . ' AS w INNER JOIN partner as p ON p.id = w.partner_id ORDER BY w.name ASC');
         $statement->execute();
 
         return $statement->fetchAll();
