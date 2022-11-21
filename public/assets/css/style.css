@@ -241,3 +241,31 @@ h5 {
 .card-title {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.cépage {
+    border: 2px solid #925fa3;
+    color: #37474f;
+    background-color: rgba(146, 95, 163, 0.15);
+}
+
+.année {
+    border: 2px solid #ffb840;
+    color: #37474f;
+    background-color: rgba(255, 184, 64, 0.15);
+}
+
+.couleur {
+    border: 2px solid #90230d;
+    color: #37474f;
+    background-color: rgba(144, 35, 13, 0.15);
+}
+
+.région {
+    border: 2px solid #300e0e;
+    color: #37474f;
+    background-color: rgba(48, 14, 14, 0.15);
+}
+
+.prix {
+    font-weight: bolder;
+}
