@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 class UserManager extends AbstractManager
 {
     public const TABLE = 'user';
@@ -19,13 +21,15 @@ class UserManager extends AbstractManager
     public function insert(array $credentials): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
-        " (`email`, `password`, `pseudo`, `firstname`, `lastname`)
-        VALUES (:email, :password, :pseudo, :firstname, :lastname)");
-        $statement->bindValue(':email', $credentials['email']);
+            " (`email`, `password`, `pseudo`, `firstname`, `lastname`, `address`, `phone`)
+        VALUES (:email, :password, :pseudo, :firstname, :lastname, :address, :phone)");
+        $statement->bindValue(':email', $credentials['email'], PDO::PARAM_STR);
         $statement->bindValue(':password', password_hash($credentials['password'], PASSWORD_DEFAULT));
-        $statement->bindValue(':pseudo', $credentials['pseudo']);
-        $statement->bindValue(':firstname', $credentials['firstname']);
-        $statement->bindValue(':lastname', $credentials['lastname']);
+        $statement->bindValue(':pseudo', $credentials['pseudo'], PDO::PARAM_STR);
+        $statement->bindValue(':firstname', $credentials['firstname'], PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $credentials['lastname'], PDO::PARAM_STR);
+        $statement->bindValue(':address', $credentials['address'], PDO::PARAM_STR);
+        $statement->bindValue(':phone', $credentials['phone'], PDO::PARAM_STR);
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

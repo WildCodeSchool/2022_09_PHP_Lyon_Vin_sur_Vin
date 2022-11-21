@@ -19,7 +19,7 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
-        unset($_SESSION['admin_id']);
+        unset($_SESSION['user_id']);
         unset($_SESSION['pro_id']);
 
         if ($this->admin != false) {

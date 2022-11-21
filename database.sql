@@ -81,6 +81,8 @@ CREATE TABLE `user` (
   `pseudo` varchar(45) DEFAULT NULL,
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
+  `address` varchar(255),
+  `phone` varchar(10),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 );
