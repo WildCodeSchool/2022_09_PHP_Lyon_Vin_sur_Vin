@@ -122,16 +122,16 @@
 					{{error.url_length}}
 				{% endif %}
 			</div>
-
-			<div class="col-10 col-xs-8">
-				<label for="description">Description :</label>
-				<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>
-				{% if errors %}
-					<div class="errors">{{errors.description_length}}</div>
-				{% endif %}
-			</div>
-			<div class="button d-flex justify-content-center align-self-center" id="addbutton">
-				<button>Envoyer</button>
-			</div>
-		</form>
-	</div>
+		</div>
+		<div class="col-10 col-xs-8">
+			<label for="description">Description :</label>
+			<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>
+			{% if errors %}
+				<div class="errors">{{errors.description_length}}</div>
+			{% endif %}
+		</div>
+		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
+			<button>Envoyer</button>
+		</div>
+	</form>
+</div>

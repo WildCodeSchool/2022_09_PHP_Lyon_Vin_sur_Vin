@@ -36,13 +36,13 @@ class UserController extends AbstractController
         return $this->twig->render('User/login.html.twig');
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_destroy();
         header('Location: /');
     }
 
-    public function register()
+    public function register(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);

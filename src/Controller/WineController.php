@@ -138,14 +138,14 @@ class WineController extends AbstractController
         // A FAIRE : MODIFIER partner_id pour qu'il soit automatiquement associer à un partnenaire.
         return $this->errors ?? [];
     }
-    public function checkLength(array $wine, string $field, int $maxLength, string $key)
+    public function checkLength(array $wine, string $field, int $maxLength, string $key): void
     {
         if (strlen($wine[$field]) > $maxLength && isset($wine[$field]) && !empty($wine[$field])) {
             $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $wine, string $field, string $key)
+    public function checkIfEmpty(array $wine, string $field, string $key): void
     {
         if (!isset($wine[$field]) || empty($wine[$field])) {
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";

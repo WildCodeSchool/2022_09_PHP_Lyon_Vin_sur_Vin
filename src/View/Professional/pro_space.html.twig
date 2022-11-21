@@ -2,7 +2,7 @@
 {% block content %}
 	<h1 class="text-center m-3">ESPACE PRO</h1>
 
-	<section class="col-6 mt-5">
+	<section class="mt-5">
 		<h2 class="text-center">Ajoutez un produit</h2>
 		{% include "Wine/_form.html.twig" %}
 	</section>
@@ -12,8 +12,8 @@
 		<div class="row justify-content-center gap-5 p-5">
 			{% for wine in wines %}
 				{% include "Shared/_wine_catalog.html.twig" %}
-			</div>
-		{% endfor %}
+			{% endfor %}
+		</div>
 	</section>
 
 

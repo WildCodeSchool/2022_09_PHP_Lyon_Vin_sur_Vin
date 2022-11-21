@@ -28,14 +28,14 @@ class AccountService
         return $this->errors;
     }
 
-    public function checkLength(array $credentials, string $field, int $maxLength, string $key)
+    public function checkLength(array $credentials, string $field, int $maxLength, string $key): void
     {
         if (strlen($credentials[$field]) > $maxLength && isset($credentials[$field]) && !empty($credentials[$field])) {
             $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $credentials, string $field, string $key)
+    public function checkIfEmpty(array $credentials, string $field, string $key): void
     {
         if (!isset($credentials[$field]) || empty($credentials[$field])) {
             $this->errors[$key] = "Ce champ est obligatoire";

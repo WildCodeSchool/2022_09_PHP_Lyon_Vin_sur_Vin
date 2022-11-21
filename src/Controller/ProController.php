@@ -18,15 +18,15 @@ class ProController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->add();
         }
-        $wineManager = new WineManager();
-        $wines = $wineManager->selectWinesFromPartner($this->pro['id']);
+        $partnerManager = new PartnerManager();
+        $wines = $partnerManager->getWinesByPartner($this->pro['id']);
 
         return $this->twig->render(
             'Professional/pro_space.html.twig',
             ['wines' => $wines, 'session' => $_SESSION, 'errors' => $this->errors]
         );
     }
-    public function add()
+    public function add(): ?string
     {
 
         $wineManager = new WineManager();
@@ -43,6 +43,7 @@ class ProController extends AbstractController
             header('Location:/');
             return null;
         }
+        return $this->twig->render('Professional/pro_space.html.twig', ['errors' => $this->errors]);
     }
 
     public function validate(array $wine): array
@@ -113,7 +114,7 @@ class ProController extends AbstractController
         return $this->twig->render('Professional/login.html.twig');
     }
 
-    public function setPassword()
+    public function setPassword(): string
     {
         $partnerManager = new PartnerManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

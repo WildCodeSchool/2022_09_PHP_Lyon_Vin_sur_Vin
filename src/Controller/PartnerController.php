@@ -123,14 +123,14 @@ class PartnerController extends AbstractController
         }
         return $this->errors ?? [];
     }
-    public function checkLength(array $partner, string $field, int $maxLength, string $key)
+    public function checkLength(array $partner, string $field, int $maxLength, string $key): void
     {
         if (strlen($partner[$field]) > $maxLength && isset($partner[$field]) && !empty($partner[$field])) {
             $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $partner, string $field, string $key)
+    public function checkIfEmpty(array $partner, string $field, string $key): void
     {
         if (!isset($partner[$field]) || empty($partner[$field])) {
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";
