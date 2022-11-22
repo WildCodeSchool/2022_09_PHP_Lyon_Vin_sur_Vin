@@ -40,7 +40,7 @@ class ProController extends AbstractController
             }
 
             $wineManager->insert($wine);
-            header('Location:/');
+            header('Location:/professional');
             return null;
         }
         return $this->twig->render('Professional/pro_space.html.twig', ['errors' => $this->errors]);
@@ -114,7 +114,7 @@ class ProController extends AbstractController
         return $this->twig->render('Professional/login.html.twig');
     }
 
-    public function setPassword(): string
+    public function setPassword(): ?string
     {
         $partnerManager = new PartnerManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -125,7 +125,10 @@ class ProController extends AbstractController
             if (empty($credentials['password']) || empty($credentials['password2'])) {
                 $this->errors['do_not_match'] = 'Les deux mots de passe doivent être identiques';
             }
-            if (!empty($this->errors && $credentials['password'] === $credentials['password2'])) {
+            if ($credentials['password'] !== $credentials['password2']) {
+                $this->errors['do_not_match'] = 'Les deux mots de passe doivent être identiques';
+            }
+            if (!empty($this->errors)) {
                 return $this->twig->render('Professional/set_password.html.twig', ['errors' => $this->errors]);
             }
             //      @todo make some controls and if errors send them to the view

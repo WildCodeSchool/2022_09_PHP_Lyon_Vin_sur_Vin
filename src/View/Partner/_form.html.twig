@@ -28,8 +28,8 @@
 			<label for="email">Email :</label><br>
 			<input type="email" class="form-control" value="{{ partner.email }}" name="email" id="email">
 			{% if errors %}
-				<div class="errors">{{errors.empty_address}}<br>
-					{{errors.address_length}}
+				<div class="errors">{{errors.empty_email}}<br>
+					{{errors.email}}
 				</div>
 			{% endif %}
 		</div>

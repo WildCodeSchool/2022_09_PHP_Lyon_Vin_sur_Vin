@@ -20,13 +20,14 @@ class PartnerManager extends AbstractManager
     public function insert(array $partner): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
-         (`firstname`, `lastname`, `address`, `email`, `phone`, `description` )
-        VALUES (:firstname, :lastname, :address, :email, :phone, :description)");
+         (`firstname`, `lastname`, `address`, `email`, `phone`, `image`, `description` )
+        VALUES (:firstname, :lastname, :address, :email, :phone, :image, :description)");
         $statement->bindValue('firstname', $partner['firstname'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $partner['lastname'], PDO::PARAM_STR);
         $statement->bindValue('address', $partner['address'], PDO::PARAM_STR);
         $statement->bindValue('email', $partner['email'], PDO::PARAM_STR);
         $statement->bindValue('phone', $partner['phone'], PDO::PARAM_STR);
+        $statement->bindValue('image', $partner['image'], PDO::PARAM_STR);
         $statement->bindValue('description', $partner['description'], PDO::PARAM_STR);
 
         $statement->execute();
@@ -37,13 +38,14 @@ class PartnerManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `firstname` = :firstname,
         `lastname` = :lastname, `address` = :address, `email` = :email, `phone` = :phone,
-        `description` = :description WHERE id=:id");
+        `image` = :image ,`description` = :description WHERE id=:id");
         $statement->bindValue('id', $partner['id'], PDO::PARAM_INT);
         $statement->bindValue('firstname', $partner['firstname'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $partner['lastname'], PDO::PARAM_STR);
         $statement->bindValue('address', $partner['address'], PDO::PARAM_STR);
         $statement->bindValue('email', $partner['email'], PDO::PARAM_STR);
         $statement->bindValue('phone', $partner['phone'], PDO::PARAM_STR);
+        $statement->bindValue('image', $partner['image'], PDO::PARAM_STR);
         $statement->bindValue('description', $partner['description'], PDO::PARAM_STR);
 
         return $statement->execute();
