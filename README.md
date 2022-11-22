@@ -1,81 +1,66 @@
-# Simple MVC
+# Vin sur Vin
 
 ## Description
 
-This repository is a simple PHP MVC structure from scratch.
+Nous sommes Mathieu, Lila, Jesse et Damien ! Quatre étudiants à la Wild Code School de Lyon, spécialisés en cursus PHP.
 
-It uses some cool vendors/libraries such as Twig and Grumphp.
-For this one, just a simple example where users can choose one of their databases and see tables in it.
+Ce site est notre deuxième projet au sein de la formation !
+Nous l'avons réalisé en équipe et en cinq semaines en ayant certaines contraintes de technologie (Simple MVC, Twig, Composer)
+ainsi que des contraintes de méthodes (Méthode Agile)
 
-## Steps
+Ce site a pour vocation de permettre à de petits exploitants viticoles d'avoir de la visibilité sur internet.
 
-1. Clone the repo from Github.
-2. Run `composer install`.
-3. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters. Don't delete the *.dist* file, it must be kept.
+    ----------------------------------------------------------------------------------------------------------------
+
+We are Mathieu, Lila, Jesse and Damien ! Four students at the Wild Code School of Lyon, specialized in PHP course.
+
+This website is our second project within the formation !
+We did it as a team and in five weeks with certain technology constraints (Simple MVC, Twig, Composer)
+as well as method constraints (Agile Method)
+
+The purpose of this site is to allow small winegrowers to have visibility on the internet.
+
+## Etapes d'installation / Installation steps
+
+1. Cloner le repo depuis Github.
+2. Lancer `composer install`.
+3. Créer _config/db.php_ depuis le fichier _config/db.php.dist_ et ajouter vos paramètres de BD.
+
 ```php
-define('APP_DB_HOST', 'your_db_host');
-define('APP_DB_NAME', 'your_db_name');
+definir('APP_DB_USER', 'your_db_user_wich_is_not_root');
+definir('APP_DB_PASSWORD', 'your_db_password');
+definir('APP_DB_HOST', 'your_db_host');
+definir('APP_DB_NAME', 'vin_sur_vin');
+```
+
+4. Importer _database.sql_ dans votre serveur SQL, vous pouvez le faire manuellement ou utiliser le script _migration.php_ qui va importer le fichier _database.sql_.
+5. Lancer le webserveur PHP interne avec `php -S localhost:8000 -t public/`.
+6. Allez sur `localhost:8000` avec votre navigateur préféré.
+
+    ----------------------------------------------------------------------------------------------------------------
+
+7. Clone the repo from Github.
+8. Run `composer install`.
+9. Create _config/db.php_ from _config/db.php.dist_ file and add your DB parameters.
+
+```php
 define('APP_DB_USER', 'your_db_user_wich_is_not_root');
 define('APP_DB_PASSWORD', 'your_db_password');
+define('APP_DB_HOST', 'your_db_host');
+define('APP_DB_NAME', 'vin_sur_vin');
 ```
-4. Import *database.sql* in your SQL server, you can do it manually or use the *migration.php* script which will import a *database.sql* file.
-5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
+
+4. Import _database.sql_ in your SQL server, you can do it manually or use the _migration.php_ script which will import a _database.sql_ file.
+5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`.
 6. Go to `localhost:8000` with your favorite browser.
-7. From this starter kit, create your own web application.
 
-### Windows Users
+## Langage utilisé / Language used
 
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
+-   HTML, CSS (Bootstrap)
+-   PHP, MySQL (avec tables relationnelles)
+-   Twig, Composer
+-   Simple MVC
 
-`git config --global core.autocrlf true`
+## Visuel du site / Website visual
 
-## Example 
-
-An example (a basic list of items) is provided (you can load the *simple-mvc.sql* file in a test database). The accessible URLs are :
-
-* Home page at [localhost:8000/](localhost:8000/)
-* Items list at [localhost:8000/items](localhost:8000/items)
-* Item details [localhost:8000/items/show?id=:id](localhost:8000/item/show?id=2)
-* Item edit [localhost:8000/items/edit?id=:id](localhost:8000/items/edit?id=2)
-* Item add [localhost:8000/items/add](localhost:8000/items/add)
-* Item deletion [localhost:8000/items/delete?id=:id](localhost:8000/items/delete?id=2)
-
-You can find all these routes declared in the file `src/routes.php`. This is the very same file where you'll add your own new routes to the application.
-
-## How does URL routing work ?
-
-![simple_MVC.png](.tours/simple_MVC.png)
-
-
-## Ask for a tour !
-
-<img src="https://raw.githubusercontent.com/WildCodeSchool/simple-mvc/codetour/.tours/photo-1632178151697-fd971baa906f.jpg" alt="Guided tour" width="150"/>
-
-We prepare a little guided tour to start with the simple-MVC.
-
-To take it, you need to install the `Code Tour` extension for Visual Studio Code : [Code Tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-
-It will give access to a new menu on your IDE where you'll find the different tours about the simple-MVC. Click on play to start one : 
-
-![menu](https://raw.githubusercontent.com/WildCodeSchool/simple-mvc/codetour/.tours/code_tour_menu.png)
-
-
-
-## Run it on docker
-
-If you don't know what is docker, skip this chapter. ;) 
-
-Otherwise, you probably see, this project is ready to use with docker. 
-
-To build the image, go into the project directory and in your CLI type:
-
-```
-docker build -t simple-mvc-container .
-```
-
-then, run it to open it on your localhot :
-
-```
-docker run -i -t --name simple-mvc  -p 80:80 simple-mvc-container
-```
-
+![Vin_sur_vin_readme.png](public/assets/images/Vin_sur_vin_readme.png)
