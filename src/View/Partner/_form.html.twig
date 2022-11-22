@@ -38,7 +38,7 @@
 			<label for="phone">Téléphone :</label><br>
 			<input type="tel" class="form-control" value="{{ partner.phone }}" name="phone" id="phone">
 			{% if errors %}
-				<div class="errors">{{errors.email}}<br>{{errors.empty_email}}<br>{{errors.email_length}}
+				<div class="errors">{{errors.phone}}<br>{{errors.empty_phone}}<br>{{errors.phone_length}}
 				</div>
 			{% endif %}
 		</div>
@@ -58,20 +58,22 @@
 			{% if errors %}
 				<div class="errors">{{errors.empty_image}}<br>
 					{{error.url_length}}
-				{% endif %}
-			</div>
+				</div>
+			{% endif %}
+		</div>
 
-			<div class="col-xs-8 col-10">
-				<label for="description">Description :</label><br>
-				<textarea name="description" class="form-control" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
-				{% if errors %}
-					<div class="errors">
-						{{errors.description_length}}
-					</div>
-				{% endif %}
-			</div>
-			<div class="button d-flex justify-content-center align-self-center" id="addbutton">
-				<button>Envoyer</button>
-			</div>
-		</form>
-	</div>
+		<div class="col-xs-8 col-10">
+			<label for="description">Description :</label><br>
+			<textarea name="description" class="form-control" value="{{ partner.description }}" id="description" rows=" 10" cols=" 50"></textarea>
+			{% if errors %}
+				<div class="errors">
+					{{errors.description_length}}
+				</div>
+			{% endif %}
+		</div>
+		<div class="button d-flex justify-content-center align-self-center" id="addbutton">
+			<button>Envoyer</button>
+		</div>
+
+	</form>
+</div>

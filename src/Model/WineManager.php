@@ -61,7 +61,7 @@ class WineManager extends AbstractManager
 
     public function selectFavorites(): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE favorite = true';
+        $query = 'SELECT id, name, year, price, description, image FROM ' . static::TABLE . ' WHERE favorite = true';
 
         return $this->pdo->query($query)->fetchAll();
     }
@@ -105,8 +105,9 @@ class WineManager extends AbstractManager
     public function selectSearch(string $search): array
     {
 
-        $statement = $this->pdo->prepare("SELECT name, year, price, region, color, grape, w.image,
-         p.firstname, p.lastname FROM "
+        $statement = $this->pdo->prepare("SELECT p.firstname, p.lastname, p.address,
+         p.email, p.phone, p.image as partner_image, p.description as partner_description,
+         w.id, w.name, w.year, w.price, w.color, w.region, w.grape, w.image, w.partner_id, w.description FROM "
             . static::TABLE . " as w LEFT JOIN partner as p ON p.id = w.partner_id
         WHERE name LIKE :search
         OR year LIKE  :search

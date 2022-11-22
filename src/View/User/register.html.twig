@@ -10,74 +10,74 @@
 					<label for="pseudo" class="form-label">Pseudo</label>
 					<input class="form-control" type="text" id="pseudo" name="pseudo">
 					{% if errors %}
-                    <div class="errors">
-                        {{errors.empty_pseudo}}<br>
-						{{errors.pseudo_length}}
-                    </div>
-                    {% endif %}
+						<div class="errors">
+							{{errors.empty_pseudo}}<br>
+							{{errors.pseudo_length}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label>
 					<input class="form-control" type="email" id="email" name="email">
 					{% if errors %}
-                    <div class="errors">
-                        {{errors.empty_email}}<br>
-						{{errors.email_length}}<br>
-						{{errors.email}}
-                    </div>
-                    {% endif %}
+						<div class="errors">
+							{{errors.empty_email}}<br>
+							{{errors.email_length}}<br>
+							{{errors.email}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="password" class="form-label">Mot de passe</label>
 					<input class="form-control" type="password" id="password" name="password">
 					{% if errors %}
-                    <div class="errors">
-                        {{errors.empty_password}}<br>
-						{{errors.password_length}}
-                    </div>
-                    {% endif %}
+						<div class="errors">
+							{{errors.empty_password}}<br>
+							{{errors.password_length}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="firstname" class="form-label">Prénom</label>
 					<input class="form-control" type="text" id="firstname" name="firstname">
-                    {% if errors %}
-					<div class="errors">
-                        {{errors.empty_firstname}}<br>
-						{{errors.first_length}}
-                    </div>
-                    {% endif %}
+					{% if errors %}
+						<div class="errors">
+							{{errors.empty_firstname}}<br>
+							{{errors.first_length}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="lastname" class="form-label">Nom</label>
 					<input class="form-control" type="text" id="lastname" name="lastname">
-                    {% if errors %}
-					<div class="errors">
-                            {{errors.last_length}}
-                    </div>
-                    {% endif %}
+					{% if errors %}
+						<div class="errors">
+							{{errors.last_length}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="phone">Téléphone :</label><br>
 					<input type="tel" class="form-control" name="phone" id="phone">
-                    {% if errors %}
-					<div class="errors">
-                        {{errors.phone}}
-                    </div>
-                    {% endif %}
+					{% if errors %}
+						<div class="errors">
+							{{errors.phone}}
+						</div>
+					{% endif %}
 				</div>
 				<div class="mb-3">
 					<label for="address">Adresse :</label><br>
 					<input type="text" class="form-control" name="address" id="address">
-                    {% if errors %}
-					<div class="errors">
-                        {{errors.adress_length}}
-                    </div>
-                    {% endif %}
+					{% if errors %}
+						<div class="errors">
+							{{errors.adress_length}}
+						</div>
+					{% endif %}
 				</div>
 
 				<div class="mb-3">
-					<button type="submit" class="btn btn-success">Créer un compte</button>
-					<button class="btn btn-primary">
+					<button type="submit" class="button">Créer un compte</button>
+					<button class="button">
 						<a href="/login">Connexion</a>
 					</button>
 				</div>

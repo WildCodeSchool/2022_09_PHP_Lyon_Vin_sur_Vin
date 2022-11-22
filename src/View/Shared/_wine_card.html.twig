@@ -1,6 +1,6 @@
 {% for wine in wines %}
 	<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
-		<div class=" card-image-top bg-light rounded-5 " style="background-image: url( {{wine.image}} )"></div>
+		<div class=" card-image-top bg-light rounded-5 " style="background-image: url({{wine.image}})"></div>
 		<div class="card-body d-flex flex-column">
 			<h3 class="card-title text-center mt-4 mb-2">
 				<strong>{{wine.name}}</strong>
@@ -12,10 +12,9 @@
 				<u>Cuvée :</u>
 				{{wine.year}}</h4>
 
-			<button class="align-self-center mb-3 mt-4 mx-5" data-bs-toggle="modal" data-bs-target="#modal">
-				Détails
+			<button class="align-self-center mb-3 mt-4 mx-5">
+				<a href="/catalog">Détails</a>
 			</button>
 		</div>
 	</div>
-	{% include "Shared/_modal.html.twig" %}
 {% endfor %}
