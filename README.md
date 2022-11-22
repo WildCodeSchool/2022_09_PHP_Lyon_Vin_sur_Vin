@@ -10,7 +10,7 @@ ainsi que des contraintes de méthodes (Méthode Agile)
 
 Ce site a pour vocation de permettre à de petits exploitants viticoles d'avoir de la visibilité sur internet.
 
-    ----------------------------------------------------------------------------------------------------------------
+---
 
 We are Mathieu, Lila, Jesse and Damien ! Four students at the Wild Code School of Lyon, specialized in PHP course.
 
@@ -37,11 +37,11 @@ definir('APP_DB_NAME', 'vin_sur_vin');
 5. Lancer le webserveur PHP interne avec `php -S localhost:8000 -t public/`.
 6. Allez sur `localhost:8000` avec votre navigateur préféré.
 
-    ----------------------------------------------------------------------------------------------------------------
+---
 
-7. Clone the repo from Github.
-8. Run `composer install`.
-9. Create _config/db.php_ from _config/db.php.dist_ file and add your DB parameters.
+1. Clone the repo from Github.
+2. Run `composer install`.
+3. Create _config/db.php_ from _config/db.php.dist_ file and add your DB parameters.
 
 ```php
 define('APP_DB_USER', 'your_db_user_wich_is_not_root');
@@ -64,3 +64,5 @@ define('APP_DB_NAME', 'vin_sur_vin');
 ## Visuel du site / Website visual
 
 ![Vin_sur_vin_readme.png](public/assets/images/Vin_sur_vin_readme.png)
+![Best_seller_readme.png](public/assets/images/Best_seller_readme.png)
+![Catalogue_readme.png](public/assets/images/Catalogue_readme.png)
