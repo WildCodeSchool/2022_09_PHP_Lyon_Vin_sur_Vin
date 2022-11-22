@@ -30,7 +30,7 @@ year YEAR NOT NULL,
 color VARCHAR(10),
 region VARCHAR(50),
 grape VARCHAR(20),
-price FLOAT NOT NULL,
+price INT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
 image VARCHAR(255),
@@ -81,6 +81,8 @@ CREATE TABLE `user` (
   `pseudo` varchar(45) DEFAULT NULL,
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
+  `address` varchar(255),
+  `phone` varchar(10),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 );

@@ -1,11 +1,5 @@
 <?php
 
-// list of accessible routes of your application, add every new route here
-// key : route to match
-// values : 1. controller name
-//          2. method name
-//          3. (optional) array of query string keys to send as parameter to the method
-// e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
     '' => ['WineController', 'showFavorites',],
     'items' => ['ItemController', 'index',],
@@ -19,8 +13,7 @@ return [
     'wines/add' => ['WineController', 'add',],
     'wines/delete' => ['WineController', 'delete',],
     'admin' => ['AdminController', 'index',],
-    'login' => ['AdminController', 'login',],
-    'logout' => ['AdminController', 'logout',],
+    'login/admin' => ['AdminController', 'login',],
     'partners' => ['PartnerController', 'list',],
     'partners/edit' => ['PartnerController', 'edit', ['id']],
     'partners/show' => ['PartnerController', 'show', ['id']],
@@ -28,6 +21,12 @@ return [
     'partners/delete' => ['PartnerController', 'delete',],
     'nospartenaires' => ['PartnerController', 'partnerList',],
     'wines/togglesuper' => ['WineController', 'toggleSuper', ['id']],
+    'logout' => ['UserController', 'logout',],
+    'login' => ['UserController', 'login',],
+    'register' => ['UserController', 'register',],
+    'login/professional' => ['ProController', 'login',],
+    'register/professional' => ['ProController', 'setPassword', ['id']],
+    'professional' => ['ProController', 'index', ['id']],
     'catalog' => ['HomeController', 'showCatalog',],
     'catalog/search' => ['HomeController', 'searchCatalog', ['search']],
     'onePartner' => ['PartnerController', 'partnerShow', ['id']],

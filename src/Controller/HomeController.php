@@ -6,9 +6,6 @@ use App\Model\WineManager;
 
 class HomeController extends AbstractController
 {
-    /**
-     * Display home page
-     */
     public function index(): string
     {
         return $this->twig->render('Home/index.html.twig', ['session' => $_SESSION]);
@@ -33,4 +30,3 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/catalog.html.twig', ['wines' => $wines]);
     }
 }
-/** Faire une fonction partner pour afficher la page partner */

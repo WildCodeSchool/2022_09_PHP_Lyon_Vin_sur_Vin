@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<section class="container d-flex flex-column">
+		<div class="row align-self-center">
+			<h1 class="m-5">NOS PARTENAIRES</h1>
+		</div>
+		<div>
+			{% for partner in partnersForUser %}
+				{% include "Shared/_card_partner.html.twig" %}
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

@@ -2,12 +2,11 @@
 
 namespace App\Controller;
 
+use App\Model\PartnerManager;
 use App\Model\WineManager;
 
 class WineController extends AbstractController
 {
-    public array $errors = [];
-
     public function list(): ?string
     {
         if (!$this->admin) {
@@ -41,7 +40,8 @@ class WineController extends AbstractController
         }
         $wineManager = new WineManager();
         $wine = $wineManager->selectOneById($id);
-        $partners = $wineManager->selectPartner();
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
@@ -66,7 +66,8 @@ class WineController extends AbstractController
             return null;
         }
         $wineManager = new WineManager();
-        $partners = $wineManager->selectPartner();
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $wine = array_map('trim', $_POST);
             $this->errors = $this->validate($wine);
@@ -96,13 +97,16 @@ class WineController extends AbstractController
     {
         $wine['description'] = filter_var($wine['description'], FILTER_SANITIZE_ENCODED);
         $wine['name'] = filter_var($wine['name'], FILTER_SANITIZE_ENCODED);
+        $wine['image'] = filter_var($wine['image'], FILTER_SANITIZE_ENCODED);
         $this->checkLength($wine, 'name', 100, 'name_length');
         $this->checkLength($wine, 'description', 1000, 'description_length');
+        $this->checkLength($wine, 'image', 255, 'url_length');
         $this->checkIfEmpty($wine, 'name', 'empty_name');
         $this->checkIfEmpty($wine, 'price', 'empty_price');
         $this->checkIfEmpty($wine, 'year', 'empty_year');
         $this->checkIfEmpty($wine, 'color', 'empty_color');
         $this->checkIfEmpty($wine, 'region', 'empty_region');
+        $this->checkIfEmpty($wine, 'image', 'empty_image');
 
         if (
             filter_var(
@@ -134,14 +138,14 @@ class WineController extends AbstractController
         // A FAIRE : MODIFIER partner_id pour qu'il soit automatiquement associer à un partnenaire.
         return $this->errors ?? [];
     }
-    public function checkLength(array $wine, string $field, int $maxLength, string $key)
+    public function checkLength(array $wine, string $field, int $maxLength, string $key): void
     {
         if (strlen($wine[$field]) > $maxLength && isset($wine[$field]) && !empty($wine[$field])) {
             $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $wine, string $field, string $key)
+    public function checkIfEmpty(array $wine, string $field, string $key): void
     {
         if (!isset($wine[$field]) || empty($wine[$field])) {
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";

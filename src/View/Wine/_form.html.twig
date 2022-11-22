@@ -2,7 +2,7 @@
 	<form method="post" class="row gy-3 justify-content-center my-5">
 		<input type="hidden" value="{{ wine.id }}" name="id">
 		<div class="col-10 col-xs-8">
-			<label for="Nom du produit">Nom du produit :</label>
+			<label for="name">Nom du produit :</label>
 			<input type="text" class="form-control" value="{{ wine.name }}" id="name" name="name">
 			{% if errors %}
 				<div class="errors">{{errors.empty_name}}<br>
@@ -10,7 +10,7 @@
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="Année">Année :</label>
+			<label for="year">Année :</label>
 			<input type="number" class="form-control" value="{{ wine.year }}" id="year" name="year">
 			{% if errors %}
 				<div class="errors">{{errors.empty_year}}<br>
@@ -18,37 +18,29 @@
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="Prix">Prix :</label>
-			<input type="number" step="0.01" class="form-control" value="{{ wine.price }}" id="price" name="price">
+			<label for="price">Prix :</label>
+			<input type="number" class="form-control" value="{{ wine.price }}" id="price" name="price">
 			{% if errors %}
 				<div class="errors">{{errors.empty_price}}<br>
 					{{errors.price}}</div>
 			{% endif %}
 		</div>
-		<div class="col-md-4 col-sm-5 col-xs-8 col-10">
-			<label for="partner_id">Partenaire :</label>
-			<select class="form-control form-select" id="partner_id" name="partner_id">
-				<option value="">Sélectionner un partenaire</option>
-				{% for partner in partners %}
-					<option value="{{partner.id}}">{{partner.lastname ~ ' ' ~ partner.firstname}}</option>
-				{% endfor %}
-			</select>
-			{% if errors %}
-				<div class="errors">{{errors.partner}}</div>
-			{% endif %}
-		</div>
-		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
-			<label for="color">Couleur :</label>
-			<select class="form-control form-select" id="color" name="color">
-				<option value="">Choisir une couleur</option>
-				<option value="Rouge">Rouge</option>
-				<option value="Blanc">Blanc</option>
-				<option value="Rosé">Rosé</option>
-			</select>
-			{% if errors %}
-				<div class="errors">{{errors.empty_color}}</div>
-			{% endif %}
-		</div>
+		{% if admin %}
+			<div class="col-md-4 col-sm-5 col-xs-8 col-10">
+				<label for="partner_id">Partenaire :</label>
+				<select class="form-control form-select" id="partner_id" name="partner_id">
+					<option value="">Sélectionner un partenaire</option>
+					{% for partner in partners %}
+						<option value="{{partner.id}}">{{partner.lastname ~ ' ' ~ partner.firstname}}</option>
+					{% endfor %}
+				</select>
+				{% if errors %}
+					<div class="errors">{{errors.partner}}</div>
+				{% endif %}
+			</div>
+		{% elseif pro %}
+			<input type="hidden" value="{{ pro.id }}" name="partner_id">
+		{% endif %}
 		<div class="col-md-4 col-sm-5 col-xs-8 col-10">
 			<label for="region">Région :</label>
 			<select class="form-control form-select" id="region" name="region">
@@ -71,6 +63,18 @@
 			</select>
 			{% if errors %}
 				<div class="errors">{{errors.empty_region}}</div>
+			{% endif %}
+		</div>
+		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
+			<label for="color">Couleur :</label>
+			<select class="form-control form-select" id="color" name="color">
+				<option value="">Choisir une couleur</option>
+				<option value="Rouge">Rouge</option>
+				<option value="Blanc">Blanc</option>
+				<option value="Rosé">Rosé</option>
+			</select>
+			{% if errors %}
+				<div class="errors">{{errors.empty_color}}</div>
 			{% endif %}
 		</div>
 		<div class="col-md-3 col-sm-5 col-xs-8 col-10">
@@ -108,10 +112,17 @@
 				<option value="Trebbiano">Trebbiano</option>
 				<option value="Verdejo">Verdejo</option>
 				<option value="Viogner">Viogner</option>
-
 			</select>
 		</div>
-
+		<div {% if admin %} class="col-10 col-xs-8" {% else %} class="col-md-4 col-sm-5 col-xs-8 col-10" {% endif %}>
+			<label for="image">Photo du produit :</label>
+			<input type="text" class="form-control" placeholder="Entrer l'url vers une image" value="{{ wine.image }}" id="image" name="image">
+			{% if errors %}
+				<div class="errors">{{errors.empty_image}}<br>
+					{{error.url_length}}
+				</div>
+			{% endif %}
+		</div>
 		<div class="col-10 col-xs-8">
 			<label for="description">Description :</label>
 			<textarea id="description" class="form-control" value="{{ wine.description }}" name="description"></textarea>

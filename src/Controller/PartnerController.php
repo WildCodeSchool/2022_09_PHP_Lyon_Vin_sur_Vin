@@ -6,8 +6,6 @@ use App\Model\PartnerManager;
 
 class PartnerController extends AbstractController
 {
-    public array $errors = [];
-
     public function list(): ?string
     {
         if (!$this->admin) {
@@ -100,16 +98,20 @@ class PartnerController extends AbstractController
         $partner['description'] = filter_var($partner['description'], FILTER_SANITIZE_ENCODED);
         $partner['lastname'] = filter_var($partner['lastname'], FILTER_SANITIZE_ENCODED);
         $partner['firstname'] = filter_var($partner['firstname'], FILTER_SANITIZE_ENCODED);
+        $partner['address'] = filter_var($partner['address'], FILTER_SANITIZE_ENCODED);
+        $partner['image'] = filter_var($partner['image'], FILTER_SANITIZE_ENCODED);
         $this->checkLength($partner, 'lastname', 100, 'last_length');
         $this->checkLength($partner, 'firstname', 100, 'first_length');
         $this->checkLength($partner, 'email', 100, 'email_length');
-        $this->checkLength($partner, 'address', 250, 'adress_length');
+        $this->checkLength($partner, 'address', 255, 'adress_length');
         $this->checkLength($partner, 'description', 1000, 'description_length');
+        $this->checkLength($partner, 'image', 255, 'url_length');
         $this->checkIfEmpty($partner, 'lastname', 'empty_lastname');
         $this->checkIfEmpty($partner, 'firstname', 'empty_firstname');
         $this->checkIfEmpty($partner, 'email', 'empty_email');
         $this->checkIfEmpty($partner, 'address', 'empty_address');
         $this->checkIfEmpty($partner, 'phone', 'empty_phone');
+        $this->checkIfEmpty($partner, 'image', 'empty_image');
 
         if (!filter_var($partner['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors['email'] = 'L\'email n\'est pas valide';
@@ -120,14 +122,14 @@ class PartnerController extends AbstractController
         }
         return $this->errors ?? [];
     }
-    public function checkLength(array $partner, string $field, int $maxLength, string $key)
+    public function checkLength(array $partner, string $field, int $maxLength, string $key): void
     {
         if (strlen($partner[$field]) > $maxLength && isset($partner[$field]) && !empty($partner[$field])) {
             $this->errors[$key] = "C'est trop long, $maxLength caractères MAX";
         }
     }
 
-    public function checkIfEmpty(array $partner, string $field, string $key)
+    public function checkIfEmpty(array $partner, string $field, string $key): void
     {
         if (!isset($partner[$field]) || empty($partner[$field])) {
             $this->errors[$key] = "Ce champ est aussi vide que mon verre";
@@ -138,7 +140,7 @@ class PartnerController extends AbstractController
     {
         $partnersManager = new PartnerManager();
         $partnersForUsers = $partnersManager->selectAll();
-        return $this->twig->render('Shared/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
+        return $this->twig->render('Home/partnersForUsers.html.twig', ['partnersForUser' => $partnersForUsers]);
     }
 
     public function partnerShow(int $id): string
@@ -149,6 +151,6 @@ class PartnerController extends AbstractController
         $wineManager = new PartnerManager();
         $wines = $wineManager->getWinesByPartner($id);
 
-        return $this->twig->render('Shared/onePartner.html.twig', ['partner' => $partner, 'wines' => $wines]);
+        return $this->twig->render('Home/onePartner.html.twig', ['partner' => $partner, 'wines' => $wines]);
     }
 }

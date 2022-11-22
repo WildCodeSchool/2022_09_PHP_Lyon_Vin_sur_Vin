@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
+use App\Controller\AccountService;
 
 class AdminController extends AbstractController
 {
-    /**
-     * Display home page
-     */
     public function index(): ?string
     {
         if (!$this->admin) {
@@ -21,35 +19,31 @@ class AdminController extends AbstractController
 
     public function login(): string
     {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['pro_id']);
+
+        if ($this->admin != false) {
+            header('Location: /admin');
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             //      @todo faire des controles pour dire si l'email et le mdp est bon
-            $errors = [];
-
-            if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL) && !empty($credentials['email'])) {
-                $errors['email_incorrect'] = "L'adresse e-mail saisie est incorrecte. ";
-            }
-
             $adminManager = new AdminManager();
-            $user = $adminManager->selectOneByEmail($credentials['email']);
-            if ($user && password_verify($credentials['password'], $user['password'])) {
-                $_SESSION['admin_id'] = $user['id'];
-                header('Location: /');
+            $accountService = new AccountService();
+            $this->errors = $accountService->checkLoginFields($credentials);
+            $admin = $adminManager->selectOneByEmail($credentials['email']);
+            if ($admin && password_verify($credentials['password'], $admin['password'])) {
+                $_SESSION['admin_id'] = $admin['id'];
+                header('Location: /admin');
             }
 
-            if ($user == false || !password_verify($credentials['password'], $user['password'])) {
-                $errors['wrong'] = "Vous n'avez pas de compte ou vous avez fait une faute de frappe";
+            if ($admin == false || !password_verify($credentials['password'], $admin['password'])) {
+                $this->errors['wrong'] = "Vous n'avez pas de compte ou vous avez fait une faute de frappe";
             }
         }
-        if (!empty($errors)) {
-            return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
+        if (!empty($this->errors)) {
+            return $this->twig->render('Admin/login.html.twig', ['errors' => $this->errors]);
         }
         return $this->twig->render('Admin/login.html.twig');
-    }
-
-    public function logout()
-    {
-        unset($_SESSION['admin_id']);
-        header('Location: /');
     }
 }
