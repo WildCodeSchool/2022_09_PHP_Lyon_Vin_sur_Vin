@@ -20,7 +20,16 @@ VALUES ('Damien', 'Butcher', 0677665522, "/assets/images/PhotoDamien.png", '15 r
 ('Alan', 'Bedrine', 0766554433, "https://media-exp1.licdn.com/dms/image/C4E35AQEXGDy-cM9gxQ/profile-framedphoto-shrink_800_800/0/1598796860338?e=1669327200&v=beta&t=bOm5GEcGIG56M3QbvlYRiS2R8WYHr8CUHY75rJ1eQNE", '10 rue Symphony', 'alan@wilders.com', '$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK', "Chevalier, où venait se coller la poussière. Allez donc, dit tranquillement l'abbé en faisant un geste désespéré, le chevalier blessé allait adresser la parole ; on s'empressa de venir les voir en place. "),
 ('Lila', 'Coquille', 0577889900, "https://media-exp1.licdn.com/dms/image/D4E35AQH4Kt_6bMSfiQ/profile-framedphoto-shrink_800_800/0/1666266761773?e=1669327200&v=beta&t=6nqQN9r6Oo6qZNVwWGxtGqPNLIVDncVgpIMuzYSLiN0",'20 rue de Varsovie', 'ljacobieski@gmail.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "Souffrait-il donc, pour bien méditer, il importe à l'oeuvre et la vieille maison, le jeune artiste inclina la tête affirmativement. Jonchés de morts et de mourants, et jeté sur un tas de vêtements écroulés. "),
 ('Mathieu', 'Lecanu', 0612324252, "https://media-exp1.licdn.com/dms/image/D4E03AQEBzo38o1D7LA/profile-displayphoto-shrink_800_800/0/1668615218030?e=1674086400&v=beta&t=OGX2N1bnzKa-oL9NAlrDIe684YUJvjTVJ0dowZy5guA",'16 rue de Belleville', 'mat.lecanu@gmail.com', '$2y$10$wtQaLMYckQQ35gRgSBFj2u1wjHY2DO0FtHHcanvIq01VXHeKxYEyu', "Syndicats et partis ouvriers se donnent une maladie sombre ; ils s'acharnaient au froment ; et ils restèrent là, silencieux. Penché en dehors dans le vide sonore des pièces, dans lesquelles elle était en train de survoler l'île. "),
-('Jesse', 'Vallant', 0633831565, "https://media-exp1.licdn.com/dms/image/D4E03AQGIRqeUurluNA/profile-displayphoto-shrink_800_800/0/1668535076158?e=1674086400&v=beta&t=SjEEZoAmD6tI1ovqpqD-lLjQwIBXaIflGixnpL9wgTw", '10 rue du potier', 'vallantjesse@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Habitude prise dans des pays où l'indépendance est devenue convoitise. Mets-toi là, voisine, dit-elle en composant un numéro, là, à se rassembler. ");
+('Jesse', 'Vallant', 0633831565, "https://media-exp1.licdn.com/dms/image/D4E03AQGIRqeUurluNA/profile-displayphoto-shrink_800_800/0/1668535076158?e=1674086400&v=beta&t=SjEEZoAmD6tI1ovqpqD-lLjQwIBXaIflGixnpL9wgTw", '10 rue du potier', 'vallantjesse@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Habitude prise dans des pays où l'indépendance est devenue convoitise. Mets-toi là, voisine, dit-elle en composant un numéro, là, à se rassembler. "),
+('Bruce', 'Wayne', 0633831565, "https://media.tenor.com/1ojX4_S5a2YAAAAC/batman-batman-intensifies.gif", 'Ghotam-city', 'Batman@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Fait pousser des choses ilicites dans sa Batcave"),
+('Nabilla', 'Vergara', 0633831565," https://www.leparisien.fr/resizer/6DqZ-LhhdjDK2l13uzUe05u6jSo=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/LIGBNLXIFQPZXCJMNBWBRTPRGM.jpg", 'dubai', 'nabilla@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Non mais ALLO , tu as pas de vignes qui poussent dans l'eau!  "),
+('Anne', 'Hidalgo', 0646831565,"https://external-preview.redd.it/zgSCiVWHvFYBF_nvx_VPRXs3SVgMiVbvUUEQTPnKGt0.jpg?auto=webp&s=2241a461e0f34e3d450f4c3fe6caa3c7fbece798", 'Paris', 'hidalgo@live.com', '$2y$10$xnc5OJC92B0cU/bQGHfLSOl5nugr5ykpZSAdG2rv5PRKD8b5IR3Ri', "Je ne me sens pas cougar!"),
+('Jean', 'Lassale', 0646831865,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3B56HuzIPgntcJZzDNwOHvehubKkH0d49kg&usqp=CAU", 'Bistro', 'lasalle@live.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "le vin sa ce boit!!!"),
+('Vladimir', 'Poutine', 0645831865,"https://static.lexpress.fr/medias_12445/w_2048,h_1146,c_crop,x_0,y_92/w_1000,h_563,c_fill,g_north/v1668950369/le-president-russe-vladimir-poutine-a-moscou-le-9-novembre-2022_6372092.jpg", 'QJB', 'Vladimir@live.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "Il vaut mieux être pendu pour la loyauté que d'être récompensé pour trahison. » ."),
+('Depardieu', 'Gerard', 0645731865,"https://mundus-kosmos.s3.eu-central-1.amazonaws.com/images/sites/23/2022/03/01163749/gerard-depardieu_montner.jpeg", 'Russie', 'depardieu@live.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "« On peut tout dire sur le vin mais, en général, il vaut mieux fermer sa gueule ! »"),
+('Jacouille', 'Lafripouille', 0645731875,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkoiJHF4jipvhnJU8adOnFt4vbuFcvpbhJDtJwE6MTu6JBmW4BaCM8MWeD43pfFPb_BHY&usqp=CAU", 'Elysée', 'jacouille@live.com', '$2y$10$DvtAnEoT7g000MXdYdpxOuJ5sE1rnksfEkU0MSsRW/Iv83EYMzahS', "Et on lui pèlera le jonc comme au bailli du Limousin, qu'on a fendu un beau matin, qu'on a pendu avec ses tripes !");
+
+
 
 DROP TABLE IF EXISTS wine;
 CREATE TABLE wine (
@@ -30,7 +39,7 @@ year YEAR NOT NULL,
 color VARCHAR(10),
 region VARCHAR(50),
 grape VARCHAR(20),
-price INT NOT NULL,
+price FLOAT NOT NULL,
 description TEXT(1000),
 partner_id INT NOT NULL,
 image VARCHAR(255),
@@ -71,7 +80,7 @@ VALUES ('Beaujolais de Damien', 'Rouge', 'Beaujolais', 1989, 10, 1, 'Merlot','ht
 ('Vin de Savoie', 'Blanc', 'Savoie', 2015, 12, 5, 'Sémillon', 'https://media.carrefour.fr/medias/b297c691dc3f3ba083ded3261b52f669/p_540x540/03288577511335-a1r1-s02.jpg', "Retourne avec ta femme, entends-tu ! Rentrant dans l'hiver avec ce dernier, pour que l'impression présente. "),
 ('Vin du Bugey', 'Blanc', 'Savoie', 2013, 15, 5, 'Viogner', 'https://medias.nicolas.com/media/sys_master/h9e/h4d/9278169186334.png', "Leur société était fort bien montée et très uniforme. Drôle de façon, il se dirigea en foule bruyante et passionnée vers les deux heures. ");
 
-UPDATE wine SET favorite = 1 WHERE id BETWEEN 3 and 5;
+UPDATE wine SET favorite = 1 WHERE id BETWEEN 8 and 12;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -87,7 +96,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 );
 
-INSERT INTO `user` VALUES (1,'marty@wilders.com','$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK','Marty','Marty','McFly');
+INSERT INTO `user` VALUES (1,'marty@wilders.com','$2y$10$4Fr/E4Lcj8HRTQ5UtXBE4./ut/diPoZQLzICLRQqqFU5NamJpsKOK','Marty','Marty','McFly', '15 rue de la paix', '0677985634');
 
 DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
@@ -108,3 +117,4 @@ SELECT * FROM admin;
 SELECT * FROM partner;
 SELECT * FROM wine;
 SELECT * FROM user;
+
