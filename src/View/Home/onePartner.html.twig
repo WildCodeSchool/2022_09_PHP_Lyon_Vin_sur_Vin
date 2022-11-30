@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<section class="container d-flex flex-column">
+		<div class="row align-self-center">
+			<h1 class="m-5">{{partner.firstname}}
+				{{partner.lastname}}</h1>
+		</div>
+		{% include "Shared/_card_partner.html.twig" %}
+		<div class="row align-self-center">
+			<h1 class="m-5">Les vins de
+				{{partner.firstname}}
+				{{partner.lastname}}</h1>
+		</div>
+		<div class="row justify-content-center gap-3">
+			{% for wine in wines %}
+				{% include "Shared/_wine_catalog.html.twig" %}
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
